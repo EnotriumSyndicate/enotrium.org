@@ -32,10 +32,10 @@ export function HeroSection() {
 
       {/* Title block */}
       <div className="flex flex-col items-center justify-end pt-24 sm:pt-36 pb-8 px-4 text-center shrink-0">
-        <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.5rem] xl:text-[6.5rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05] tracking-wide">
+        <h1 className="text-[3.5rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05] tracking-wide">
           Enotrium
         </h1>
-        <h2 className="text-[1.9rem] sm:text-[2.6rem] md:text-[3.5rem] lg:text-[5rem] xl:text-[6rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05]">
+       <h2 className="text-[1rem] sm:text-[1.3rem] md:text-[1.6rem] lg:text-[2rem] xl:text-[2.4rem] font-[family-name:var(--font-iceland)] text-white/80 tracking-[0.2em] uppercase mt-4">
           A New Mesopotamia
         </h2>
       </div>
