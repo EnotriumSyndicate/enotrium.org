@@ -31,49 +31,43 @@ export function HeroSection() {
       </div>
 
       {/* Title block */}
-      <div className="flex flex-col items-center justify-end pt-24 sm:pt-36 pb-8 px-4 text-center shrink-0">
-        <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.5rem] xl:text-[6.5rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05] tracking-wide">
+      <div className="flex flex-col items-center justify-center pt-32 sm:pt-44 pb-10 px-4 text-center shrink-0">
+
+        {/* 1. Enotrium */}
+        <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05] tracking-wide">
           Enotrium
         </h1>
-        <h2 className="text-[1.9rem] sm:text-[2.6rem] md:text-[3.5rem] lg:text-[5rem] xl:text-[6rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05]">
+
+        {/* 2. A New Mesopotamia */}
+        <h2
+          className="text-[1rem] sm:text-[1.3rem] md:text-[1.6rem] lg:text-[2rem] xl:text-[2.4rem] font-[family-name:var(--font-inter)] text-white/80 tracking-[0.2em] uppercase mt-4"
+          style={{ textShadow: "0 0 20px rgba(255,255,255,0.15)" }}
+        >
           A New Mesopotamia
         </h2>
-      </div>
 
-      {/* Bordered panel */}
-      <div className="flex-1 mx-0 mb-0 sm:mx-3 sm:mb-3  sm:border-b sm:border-x border-white/15 flex flex-col overflow-hidden min-h-0">
-        {/* Subtitle + info row */}
-        <div className="px-6 pt-8 pb-6 shrink-0 flex flex-col items-center">
-          <p className="text-center text-lg sm:text-xl md:text-2xl lg:text-[1.6rem] text-white/40 leading-snug font-[family-name:var(--font-iceland)] mb-8">
-            Autonomous Coordination
-            <br />
-            for Critical Supply Chains
-          </p>
-
-          <div className="grid grid-cols-3 items-center w-full max-w-xs mx-auto">
-            <span className="text-white/55 text-sm font-[family-name:var(--font-space-grotesk)] leading-snug">
-              Defend the
-              <br />
-              Earth
-            </span>
-            <div className="flex justify-center">
-              <Image
-                src="/logo.png"
-                alt="Enotrium"
-                width={56}
-                height={56}
-                className="opacity-75"
-              />
-            </div>
-            <div className="text-right font-[family-name:var(--font-space-grotesk)]">
-              <div className="text-white/80 text-sm font-bold tracking-[0.2em]">
-                EST. 2025
-              </div>
-              <div className="text-white/55 text-sm">Future of Farming</div>
-            </div>
+        {/* 3. Logo block */}
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <span className="text-white/60 text-sm font-[family-name:var(--font-space-grotesk)] text-right">
+            Defend the<br />Earth
+          </span>
+          <Image
+            src="/logo.png"
+            alt="Enotrium"
+            width={110}
+            height={110}
+            className="opacity-95"
+          />
+          <div className="text-left font-[family-name:var(--font-space-grotesk)]">
+            <div className="text-white/70 text-sm font-bold tracking-[0.2em]">EST. 2025</div>
+            <div className="text-white/50 text-sm">Future of Farming</div>
           </div>
         </div>
 
+      </div>
+
+      {/* Bordered panel */}
+      <div className="flex-1 mx-0 mb-0 sm:mx-3 sm:mb-3 sm:border-b sm:border-x border-white/15 flex flex-col overflow-hidden min-h-0">
         <div className="relative overflow-hidden" style={{ minHeight: "180px", maxHeight: "clamp(180px, 40vw, 500px)", flex: 1 }}>
           <img
             src="/hero-backdrop.jpg"
@@ -90,6 +84,14 @@ export function HeroSection() {
             }}
           />
         </div>
+
+        {/* 4. Transforming Agriculture — pinned to bottom of panel */}
+        <div className="text-center py-6">
+          <p className="text-[1.2rem] sm:text-[1.6rem] md:text-[2rem] lg:text-[2.6rem] text-white/85 leading-tight font-[family-name:var(--font-iceland)]">
+            Transforming Agriculture through Autonomous Systems
+          </p>
+        </div>
+
       </div>
     </section>
   );
