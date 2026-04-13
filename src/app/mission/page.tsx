@@ -37,12 +37,12 @@ export default function MissionPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 lg:px-16 max-w-[1400px] mx-auto">
-        <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-black mb-8">
+        <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-black mb-8 font-[family-name:var(--font-inter)]">
           Mission
         </p>
         <div className="flex items-start justify-between gap-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-tight max-w-2xl font-[family-name:var(--font-inter)]">
-            Transforming Agricultural Economies With Cutting Edge Technology
+          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-tight max-w-4xl font-[family-name:var(--font-inter)]">
+            Transforming Agricultural Economies Through Cutting Edge Technology
           </h1>
           <span className="text-2xl mt-2 shrink-0">↓</span>
         </div>
@@ -68,8 +68,8 @@ export default function MissionPage() {
       </section>
 
       {/* Second Image */}
-      <div className="px-6 lg:px-16 max-w-[1400px] mx-auto">
-        <div className="relative w-full" style={{ height: "380px" }}>
+      <div className="px-6 lg:px-16 mx-auto">
+        <div className="relative w-full" style={{ height: "600px" }}>
           <Image src="/mission-vineyard.png" alt="Vineyard rows" fill className="object-contain" />
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function MissionPage() {
           className="font-[family-name:var(--font-tektur)] tracking-tight uppercase text-center"
           style={{ fontSize: "clamp(40px, 12vw, 180px)", lineHeight: "234px", fontWeight: 400 }}
         >
-          Autonomy<br />For<br />Every Mission
+          Autonomy<br />For<br />Every Farmer
         </h2>
       </section>
 

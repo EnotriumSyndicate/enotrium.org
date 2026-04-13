@@ -45,10 +45,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: [
-      { url: "/NEWFAVICON.jpg", sizes: "any" },
+      { url: "/favicon.ico", sizes: "48x48 32x32 24x24 16x16", type: "image/x-icon" },
+      { url: "/NEWFAVICON.jpg", sizes: "128x128 180x180", type: "image/jpeg" },
     ],
-    shortcut: "/NEWFAVICON.jpg",
-    apple: "/NEWFAVICON.jpg",
+    shortcut: "/favicon.ico",
+    apple: { url: "/NEWFAVICON.jpg", sizes: "180x180", type: "image/jpeg" },
   },
 };
 

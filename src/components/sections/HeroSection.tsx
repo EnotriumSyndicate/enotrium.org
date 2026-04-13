@@ -40,7 +40,7 @@ export function HeroSection() {
 
         {/* 2. A New Mesopotamia */}
         <h2
-          className="text-[1rem] sm:text-[1.3rem] md:text-[1.6rem] lg:text-[2rem] xl:text-[2.4rem] font-[family-name:var(--font-inter)] text-white/80 tracking-[0.2em] uppercase mt-4"
+          className="text-[1rem] sm:text-[1.3rem] md:text-[1.6rem] lg:text-[2rem] xl:text-[2.4rem] font-[family-name:var(--font-inter)] text-white/80 tracking-[0.15em] uppercase mt-2"
           style={{ textShadow: "0 0 20px rgba(255,255,255,0.15)" }}
         >
           A New Mesopotamia
@@ -48,7 +48,7 @@ export function HeroSection() {
 
         {/* 3. Logo block */}
         <div className="flex items-center justify-center gap-6 mt-8">
-          <span className="text-white/60 text-sm font-[family-name:var(--font-space-grotesk)] text-right">
+          <span className="text-neutral-400 text-sm font-[family-name:var(--font-inter)] font-semibold text-right">
             Defend the<br />Earth
           </span>
           <Image
@@ -60,29 +60,8 @@ export function HeroSection() {
           />
           <div className="text-left font-[family-name:var(--font-space-grotesk)]">
             <div className="text-white/70 text-sm font-bold tracking-[0.2em]">EST. 2025</div>
-            <div className="text-white/50 text-sm">Future of Farming</div>
+            <div className="text-white/50 text-sm">The Future of Farming</div>
           </div>
-        </div>
-
-      </div>
-
-      {/* Bordered panel */}
-      <div className="flex-1 mx-0 mb-0 sm:mx-3 sm:mb-3 sm:border-b sm:border-x border-white/15 flex flex-col overflow-hidden min-h-0">
-        <div className="relative overflow-hidden" style={{ minHeight: "180px", maxHeight: "clamp(180px, 40vw, 500px)", flex: 1 }}>
-          <img
-            src="/hero-backdrop.jpg"
-            alt=""
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 60%",
-              opacity: 0.9,
-            }}
-          />
         </div>
 
       </div>

@@ -12,7 +12,7 @@ export default function FoodAndAgriculturePage() {
       <main className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-32 pb-24">
 
         {/* Page Header */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-2 mb-6">
           <Image
             src="/whitelogo.png"
             alt="Enotrium"
@@ -25,7 +25,7 @@ export default function FoodAndAgriculturePage() {
           </span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-[120px] xl:text-[150px] font-bold leading-[0.95] tracking-tight mb-6 font-[family-name:var(--font-inter)]">
+        <h1 className="text-5xl sm:text-6xl lg:text-[120px] xl:text-[150px] font-medium leading-[0.95] tracking-tight mb-6 font-[family-name:var(--font-inter)]">
           Food and
           <br />
           Agriculture

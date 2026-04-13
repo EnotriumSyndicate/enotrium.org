@@ -41,7 +41,7 @@ export default function CareersPage() {
           <div className="space-y-8 max-w-3xl">
             <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
               The Enotrium Fellowship is a three year program that gives enterprising young engineers
-              $50,000 to join Enotrium and work with our founding team in achieving global farm
+              the chance to join Enotrium and work with our founding team in achieving global farm
               security and industrial liberty.
             </p>
 

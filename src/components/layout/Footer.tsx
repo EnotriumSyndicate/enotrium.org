@@ -39,7 +39,7 @@ const footerColumns = [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/enotriumsyndicate" },
       { label: "BlueSky", href: "https://bsky.app/profile/enotrium.bsky.social" },
       { label: "Medium", href: "https://medium.com/@enotrium" },
-      { label: "GitHub", href: "https://github.com/enotrium" },
+      { label: "GitHub", href: "https://github.com/EnotriumSyndicate" },
     ],
   },
 ];
@@ -92,31 +92,25 @@ export function Footer() {
         <div className="border-t border-neutral-800 pt-8 flex flex-col sm:flex-row sm:justify-between gap-6 text-center sm:text-left">
           <div>
             <p className="text-[10px] text-white uppercase mb-4">
-              Copyright &copy; {new Date().getFullYear()} Enotrium
+              Copyright &copy; {new Date().getFullYear()} Enotrium Syndicate
             </p>
-            <ul className="space-y-1">
-              {[
-                "Privacy Policy",
-                "Terms Of Use",
-                "Modern Anti-Slavery Policy",
-                "UK Defence Regulation Plan",
-              ].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-xs text-neutral-500 hover:text-white transition-colors">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-0 leading-none">
+              <li className="leading-none">
+                <Link href="/privacy-policy" className="text-xs text-neutral-500 hover:text-white transition-colors inline leading-none">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="leading-none">
+                <Link href="/terms-of-use" className="text-xs text-neutral-500 hover:text-white transition-colors inline leading-none">
+                  Terms Of Use
+                </Link>
+              </li>
+              <li className="leading-none">
+                <Link href="/anti-slavery-policy" className="text-xs text-neutral-500 hover:text-white transition-colors inline leading-none">
+                  Modern Anti-Slavery Policy
+                </Link>
+              </li>
             </ul>
-          </div>
-          <div>
-            <p className="text-[10px] text-neutral-500 uppercase mb-4">Contact</p>
-            <a
-              href="mailto:enotriumtech@atomicmail.io"
-              className="text-white text-sm hover:text-neutral-400 transition-colors"
-            >
-              enotriumtech@atomicmail.io
-            </a>
           </div>
         </div>
 

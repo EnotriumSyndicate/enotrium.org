@@ -15,7 +15,7 @@ const stats = [
       "We help people help the land and improve conservation of the nation's soil and water resources. We track environmental data, on soil health, crop variety, and land conservation to support the work of American farmers.",
   },
   {
-    number: "6 Million Acres",
+    number: "1 Million Acres",
     label: "Acres Regenerated",
     description:
       "Land Quality requires Stewardship. Enotrium is proud steward of nature and our nation's environment. We seek to convert under-invested regions into regenerative agriculture powerhouses, one farm at a time.",
@@ -53,13 +53,13 @@ export default function BadlandsPage() {
       {/* Hero */}
       <section className="pt-28 pb-6 px-6 lg:px-16 max-w-[1400px] mx-auto">
         <h1
-          className="text-4xl sm:text-8xl lg:text-8xl font-bold"
+          className="text-4xl sm:text-8xl lg:text-8xl font-medium"
           style={{ color: "#111" }}
         >
           Badlands
         </h1>
         <div className="mt-4 mb-6 h-0.5 w-full" style={{ backgroundColor: "#999" }} />
-        <div className="space-y-0.5">
+        <div className="space-y-0">
           <p className="text-sm font-semibold" style={{ color: "#555" }}>
             Built by Enotrium
           </p>
@@ -139,7 +139,7 @@ export default function BadlandsPage() {
             >
               <div>
                 <p
-                  className="text-4xl sm:text-5xl font-extrabold"
+                  className="text-4xl sm:text-5xl font-bold"
                   style={{ color: "#111" }}
                 >
                   {stat.number}
