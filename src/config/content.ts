@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
     commodities: ["AGRICULTURE", "MANUFACTURING", "DEFENSE", "CONSTRUCTION",],
     stats: [
       { label: "Industries", value: "4", sub: "Sectors" },
-      { label: "Partners", value: "34", sub: "Networks" },
+      { label: "Partners", value: "34", sub: "Members" },
       { label: "Coverage", value: "30", sub: "States" },
     ],
   },

@@ -21,7 +21,7 @@ export function SupplyChainSection() {
               </span>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-wide leading-tight mt-6 font-[family-name:var(--font-space-grotesk)]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-wide leading-tight mt-6 font-[family-name:var(--font-inter)]">
                 {siteConfig.supplyChain.title.map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}

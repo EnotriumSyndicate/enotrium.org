@@ -88,12 +88,12 @@ export const Globe = memo(function Globe({ className }: { className?: string }) 
         phi: 0,
         theta: 0.3,
         dark: 1,
-        diffuse: 1.5,
+        diffuse: 1.8,
         mapSamples: isAndroid ? 4000 : isIPad ? 6000 : 8000,
-        mapBrightness: 4,
-        baseColor: [0.1, 0.1, 0.12],
-        markerColor: [0.4, 0.4, 1],
-        glowColor: [0.05, 0.05, 0.1],
+        mapBrightness: 6,
+        baseColor: [0.15, 0.15, 0.18],
+        markerColor: [0.75, 0.75, 1.9],
+        glowColor: [0.12, 0.12, 0.2],
         markers: [],
         onRender: (state) => {
           frame += 1;
