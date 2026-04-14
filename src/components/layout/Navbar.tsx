@@ -74,28 +74,20 @@ export function Navbar({
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [commandMode, setCommandMode] = useState(false);
 
-  // Single close timer — the only state machine we need
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Track whether the pointer is inside the "safe zone":
-  // the navbar trigger area (Company button) OR the dropdown panel itself.
-  // We use a simple counter so re-entrant enter/leave events can't desync.
   const hoverZoneCount = useRef(0);
-
-  // Hover activation timer for 2-second deliberate interaction
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const CLOSE_DELAY = 150; // ms — short enough to feel snappy, long enough to cross the seam
-  const HOVER_DELAY = 2000; // 2 seconds for deliberate interaction
+  // ── FIXED: increased from 150ms to 400ms for diagonal mouse travel
+  const CLOSE_DELAY = 400;
+  const HOVER_DELAY = 2000;
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 50);
-    
-    // Check if user reached near bottom of page
+
     const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
-    
-    // Close Company dropdown when reaching bottom (unless in command mode)
-    if (nearBottom && megaOpen && activeTab === 'company' && !commandMode) {
+
+    if (nearBottom && megaOpen && activeTab === "company" && !commandMode) {
       setMegaOpen(false);
       setActiveTab(null);
       hoverZoneCount.current = 0;
@@ -104,9 +96,8 @@ export function Navbar({
         closeTimer.current = null;
       }
     }
-    
-    // For other tabs, close dropdown on any scroll
-    if (megaOpen && activeTab !== 'company' && !commandMode) {
+
+    if (megaOpen && activeTab !== "company" && !commandMode) {
       setMegaOpen(false);
       setActiveTab(null);
       if (hoverTimer.current) {
@@ -120,11 +111,6 @@ export function Navbar({
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
-
-  // ── Hover zone helpers ──────────────────────────────────────────────────────
-  // Call onEnterZone() whenever pointer enters any part of the safe zone,
-  // and onLeaveZone() whenever it leaves. The menu only closes when the
-  // counter reaches 0 (i.e. the pointer has fully left every zone element).
 
   const onEnterZone = useCallback(() => {
     hoverZoneCount.current += 1;
@@ -143,36 +129,33 @@ export function Navbar({
     }
   }, []);
 
-  // ── Deliberate hover activation (2-second delay) ─────────────────────────────
-  const onTabEnter = useCallback((tabName: string) => {
-    setActiveTab(tabName);
-    
-    if (tabName === 'company') {
-      // Company enters command mode immediately on hover
-      setCommandMode(true);
-      onEnterZone();
-      setMegaOpen(true);
-    }
-  }, [onEnterZone]);
-  
+  const onTabEnter = useCallback(
+    (tabName: string) => {
+      setActiveTab(tabName);
+
+      if (tabName === "company") {
+        setCommandMode(true);
+        onEnterZone();
+        setMegaOpen(true);
+      }
+    },
+    [onEnterZone]
+  );
+
+  // ── FIXED: removed commandMode/activeTab condition — clears activeTab unconditionally
   const onTabLeave = useCallback(() => {
-    // Only close if not in command mode (Company persistence)
-    if (!commandMode && activeTab !== 'company') {
-      setActiveTab(null);
-    }
-  }, [commandMode, activeTab]);
-  
-  // ── Open on Company hover (legacy compatibility) ───────────────────────────
+    setActiveTab(null);
+  }, []);
+
   const onCompanyEnter = useCallback(() => {
-    onTabEnter('company');
+    onTabEnter("company");
   }, [onTabEnter]);
-  
+
   const onCompanyLeave = useCallback(() => {
     onTabLeave();
     onLeaveZone();
   }, [onTabLeave, onLeaveZone]);
 
-  // ── Keyboard accessibility ──────────────────────────────────────────────────
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && megaOpen) {
@@ -188,7 +171,6 @@ export function Navbar({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [megaOpen]);
 
-  // ── Cleanup on unmount ──────────────────────────────────────────────────────
   useEffect(() => {
     return () => {
       if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -269,14 +251,12 @@ export function Navbar({
                   setMegaOpen(true);
                 }}
                 onBlur={() => {
-                  // Only close on blur if pointer isn't in the zone and not in command mode
                   if (hoverZoneCount.current === 0 && !commandMode) {
                     closeTimer.current = setTimeout(() => setMegaOpen(false), CLOSE_DELAY);
                   }
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
-                  // Explicit click toggles command mode
                   if (megaOpen) {
                     setCommandMode(false);
                     setMegaOpen(false);
@@ -285,7 +265,7 @@ export function Navbar({
                   } else {
                     setCommandMode(true);
                     setMegaOpen(true);
-                    setActiveTab('company');
+                    setActiveTab("company");
                   }
                 }}
                 className={`text-xs tracking-widest uppercase transition-colors flex items-center gap-1 font-[family-name:var(--font-inter)] ${
@@ -430,32 +410,19 @@ export function Navbar({
         </div>
       </nav>
 
-      {/*
-        ── Mega Menu Panel ──────────────────────────────────────────────────────
-        IMPORTANT: This element is flush against the navbar bottom (top-16 / top-20).
-        It enters the hover zone so the pointer can travel from the Company button
-        straight down into the panel without the menu flickering closed.
-
-        The seam between the navbar and the panel (any subpixel gap) is covered by
-        the close delay — 150 ms is imperceptible to humans but long enough for the
-        browser to fire the panel's onMouseEnter before the close timer fires.
-        
-        Command Mode: When Company is activated, the menu behaves as a persistent
-        system panel with enhanced dimming and slower animations.
-      */}
+      {/* Mega Menu Panel */}
       <div
         id="mega-menu"
         className={`fixed inset-x-0 top-16 md:top-20 z-40 transition-all ${
-          commandMode
-            ? "duration-300 ease-out"
-            : "duration-200 ease-out"
+          commandMode ? "duration-300 ease-out" : "duration-200 ease-out"
         } ${
           megaOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
-        onMouseEnter={commandMode ? undefined : onEnterZone}
-        onMouseLeave={commandMode ? undefined : onLeaveZone}
+        // ── FIXED: always attach zone handlers — removed commandMode condition
+        onMouseEnter={onEnterZone}
+        onMouseLeave={onLeaveZone}
         role="menu"
         aria-label="Company menu"
         style={{ backgroundColor: "#0a0a0a" }}
@@ -501,31 +468,17 @@ export function Navbar({
         </div>
       </div>
 
-      {/*
-        ── Backdrop ─────────────────────────────────────────────────────────────
-        pointer-events-none so it never intercepts mouse events that should reach
-        the dropdown or the nav. Clicking anywhere outside closes via the onClick.
-        
-        Command Mode: Enhanced dimming for system layer feel.
-      */}
+      {/* Backdrop */}
       {megaOpen && (
         <div
           className={`fixed inset-0 z-30 transition-opacity pointer-events-none ${
-            commandMode
-              ? "bg-black/60 duration-300"
-              : "bg-black/40 duration-300"
+            commandMode ? "bg-black/60 duration-300" : "bg-black/40 duration-300"
           }`}
           aria-hidden="true"
         />
       )}
 
-      {/*
-        Transparent click-away layer — sits above the backdrop but below the
-        dropdown (z-35). Only captures clicks, never mouse-enter/leave events,
-        so it can't accidentally close the menu during normal hover movement.
-        
-        Command Mode: Only closes on explicit click, not on scroll.
-      */}
+      {/* Click-away layer */}
       {megaOpen && (
         <div
           className="fixed inset-0 z-35"
