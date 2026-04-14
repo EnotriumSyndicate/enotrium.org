@@ -83,7 +83,7 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
           }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" target="_self" className="z-10">
               <div className="flex flex-row items-center">
@@ -101,9 +101,9 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Centered */}
             <div
-              className="hidden md:flex items-center gap-10"
+              className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2"
               onMouseEnter={openMega}
               onMouseLeave={closeMega}
             >

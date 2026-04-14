@@ -31,7 +31,7 @@ export function HeroSection() {
       </div>
 
       {/* Title block */}
-      <div className="flex flex-col items-center justify-center pt-32 sm:pt-44 pb-10 px-4 text-center shrink-0">
+      <div className="flex flex-col items-center justify-center pt-32 sm:pt-44 pb-10 px-4 text-center shrink-0 w-full max-w-[1400px] mx-auto">
 
         {/* 1. Enotrium */}
         <h1 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-[family-name:var(--font-iceland)] text-white leading-[1.05] tracking-wide">
