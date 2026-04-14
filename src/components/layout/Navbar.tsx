@@ -248,6 +248,8 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
               ref={navRef}
               className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2"
               role="menubar"
+              onMouseEnter={() => handleNavEnter(-2)}
+              onMouseLeave={handleNavLeave}
             >
               {navItems.map((item, index) => (
                 <Link
@@ -345,10 +347,10 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
         </div>
       </nav>
 
-      {/* Hover Bridge - invisible area to keep menu open when moving from Company to dropdown */}
+      {/* Hover Bridge - invisible area to keep menu open when moving from nav items to dropdown */}
       {megaOpen && (
         <div
-          className="fixed inset-x-0 top-16 md:top-20 z-40 h-8 bg-transparent"
+          className="fixed inset-x-0 top-16 md:top-20 z-40 h-16 bg-transparent"
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}
           aria-hidden="true"
