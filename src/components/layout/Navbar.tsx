@@ -85,7 +85,7 @@ export function Navbar({
   // Hover activation timer for 2-second deliberate interaction
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const CLOSE_DELAY = 150; // ms — short enough to feel snappy, long enough to cross the seam
+  const CLOSE_DELAY = 400; // ms — long enough for diagonal mouse movement across the seam
   const HOVER_DELAY = 2000; // 2 seconds for deliberate interaction
 
   const handleScroll = useCallback(() => {
@@ -156,11 +156,8 @@ export function Navbar({
   }, [onEnterZone]);
   
   const onTabLeave = useCallback(() => {
-    // Only close if not in command mode (Company persistence)
-    if (!commandMode && activeTab !== 'company') {
-      setActiveTab(null);
-    }
-  }, [commandMode, activeTab]);
+    setActiveTab(null);
+  }, []);
   
   // ── Open on Company hover (legacy compatibility) ───────────────────────────
   const onCompanyEnter = useCallback(() => {
@@ -454,8 +451,8 @@ export function Navbar({
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
-        onMouseEnter={commandMode ? undefined : onEnterZone}
-        onMouseLeave={commandMode ? undefined : onLeaveZone}
+        onMouseEnter={onEnterZone}
+        onMouseLeave={onLeaveZone}
         role="menu"
         aria-label="Company menu"
         style={{ backgroundColor: "#0a0a0a" }}
