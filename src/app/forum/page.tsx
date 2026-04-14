@@ -44,7 +44,7 @@ export default function ForumPage() {
                 <p className="text-xs text-muted-foreground">{post.author}</p>
               </div>
               <div>
-                <h2 className="text-2xl sm:text-3xl font-light tracking-tight mb-2 group-hover:opacity-60 transition-opacity">
+                <h2 className="text-2xl sm:text-3xl font-light tracking-tight mb-2 group-hover:opacity-60 transition-opacity font-[family-name:var(--font-inter)]">
                   {post.title}
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
