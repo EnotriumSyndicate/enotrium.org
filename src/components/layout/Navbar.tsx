@@ -248,7 +248,6 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
               ref={navRef}
               className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2"
               role="menubar"
-              onMouseLeave={handleNavLeave}
             >
               {navItems.map((item, index) => (
                 <Link
@@ -258,7 +257,9 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
                   role="menuitem"
                   className="text-xs tracking-widest text-muted-foreground hover:text-foreground transition-colors uppercase font-[family-name:var(--font-space-grotesk)]"
                   onMouseEnter={() => handleNavEnter(index)}
+                  onMouseLeave={handleNavLeave}
                   onFocus={() => handleNavEnter(index)}
+                  onBlur={handleNavLeave}
                   aria-expanded={megaOpen && activeNavIndex === index}
                   aria-haspopup="true"
                   tabIndex={0}
