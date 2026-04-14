@@ -84,22 +84,22 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="flex md:hidden p-2 text-muted-foreground hover:text-foreground"
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            {/* Logo */}
+            <Link href="/" target="_self" className="z-10">
+              <div className="flex flex-row items-center">
+                <Image
+                  src="/logo.jpg"
+                  alt={siteConfig.name}
+                  width={120}
+                  height={32}
+                  className={`h-8 w-auto${invertLogo && !megaOpen ? " invert" : ""}`}
+                  priority
+                />
+                <span className={`${darkText && !megaOpen ? "text-black" : "text-white"} text-4xl font-[family-name:var(--font-iceland)]`}>
+                  Enotrium
+                </span>
+              </div>
+            </Link>
 
             {/* Desktop Navigation - Centered */}
             <div
@@ -119,8 +119,8 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
               ))}
             </div>
 
-            {/* Company dropdown — far left (desktop) */}
-            <div className="hidden md:flex items-center justify-start">
+            {/* Company dropdown — far right */}
+            <div className="hidden md:flex items-center justify-end">
               <button
                 onMouseEnter={openMega}
                 onMouseLeave={closeMega}
@@ -139,22 +139,22 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
               </button>
             </div>
 
-            {/* Logo - Now on right */}
-            <Link href="/" target="_self" className="z-10">
-              <div className="flex flex-row items-center">
-                <Image
-                  src="/logo.jpg"
-                  alt={siteConfig.name}
-                  width={120}
-                  height={32}
-                  className={`h-8 w-auto${invertLogo && !megaOpen ? " invert" : ""}`}
-                  priority
-                />
-                <span className={`${darkText && !megaOpen ? "text-black" : "text-white"} text-4xl font-[family-name:var(--font-iceland)]`}>
-                  Enotrium
-                </span>
-              </div>
-            </Link>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex md:hidden p-2 text-muted-foreground hover:text-foreground"
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
 
           {/* Mobile Menu */}
