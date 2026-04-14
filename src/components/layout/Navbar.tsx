@@ -99,7 +99,7 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
   const isHoveringNav = useRef(false);
   const isHoveringDropdown = useRef(false);
 
-  const CLOSE_DELAY = 250; // ms before closing
+  const CLOSE_DELAY = 300; // ms before closing
   const OPEN_DELAY = 50;   // ms before opening (minimal delay)
 
   const handleScroll = useCallback(() => {
@@ -201,7 +201,6 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
 
   const handleNavLeave = useCallback(() => {
     isHoveringNav.current = false;
-    // Don't close immediately - let the dropdown handle closing
   }, []);
 
   // Handle dropdown hover
@@ -224,6 +223,7 @@ export function Navbar({ invertLogo = false, noScrollBg = false, lightScrollBg =
             : "bg-background border-b border-border md:bg-transparent md:border-transparent"
         } ${!lightScrollBg && !noScrollBg && !megaOpen && scrolled ? "md:bg-background/80 md:backdrop-blur-md md:border-border" : ""}
         `}
+        onMouseEnter={() => isHoveringNav.current = true}
         role="navigation"
         aria-label="Main navigation"
       >
