@@ -78,9 +78,8 @@ export function Navbar({
   const hoverZoneCount = useRef(0);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── FIXED: increased from 150ms to 400ms for diagonal mouse travel
-  const CLOSE_DELAY = 400;
-  const HOVER_DELAY = 2000;
+  const CLOSE_DELAY = 400; // ms — long enough for diagonal mouse movement across the seam
+  const HOVER_DELAY = 2000; // 2 seconds for deliberate interaction
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 50);
@@ -146,7 +145,8 @@ export function Navbar({
   const onTabLeave = useCallback(() => {
     setActiveTab(null);
   }, []);
-
+  
+  // ── Open on Company hover (legacy compatibility) ───────────────────────────
   const onCompanyEnter = useCallback(() => {
     onTabEnter("company");
   }, [onTabEnter]);
@@ -420,7 +420,6 @@ export function Navbar({
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
-        // ── FIXED: always attach zone handlers — removed commandMode condition
         onMouseEnter={onEnterZone}
         onMouseLeave={onLeaveZone}
         role="menu"
