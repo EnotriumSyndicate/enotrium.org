@@ -1,13 +1,30 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { siteConfig } from "@/config/content";
+
+const FLIP_WORDS = [
+  "Orpheus",
+  "Agriculture",
+  "Technology",
+  "Farming",
+  "Arthedain",
+  "Industry",
+  "AIP",
+  "Enotrium",
+];
+
+const FINAL_WORD = "Enotrium";
 
 export function MissionSection() {
   const { mission } = siteConfig;
   const sectionRef = useRef<HTMLElement>(null);
   const linesRef = useRef<(SVGLineElement | null)[]>([]);
+  const [displayWord, setDisplayWord] = useState(FINAL_WORD);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const hasFlipped = useRef(false);
 
+  // Grid line draw-on animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -15,6 +32,12 @@ export function MissionSection() {
           linesRef.current.forEach((line) => {
             line?.classList.add("drawn");
           });
+
+          // Trigger flip once
+          if (!hasFlipped.current) {
+            hasFlipped.current = true;
+            startFlip();
+          }
         }
       },
       { threshold: 0.15 }
@@ -23,95 +46,128 @@ export function MissionSection() {
     return () => observer.disconnect();
   }, []);
 
+  function startFlip() {
+    setIsFlipping(true);
+    let i = 0;
+    // Fast phase: cycle through all words quickly
+    const fastInterval = setInterval(() => {
+      setDisplayWord(FLIP_WORDS[i % FLIP_WORDS.length]);
+      i++;
+      // Once we've cycled through everything, slow down for the final land
+      if (i >= FLIP_WORDS.length - 1) {
+        clearInterval(fastInterval);
+        slowLand(i);
+      }
+    }, 80);
+  }
+
+  function slowLand(startIndex: number) {
+    let i = startIndex;
+    // Progressively slow down over the last 2 steps
+    const delays = [140, 220];
+    let step = 0;
+
+    function nextStep() {
+      if (step < delays.length) {
+        setDisplayWord(FLIP_WORDS[i % FLIP_WORDS.length]);
+        i++;
+        step++;
+        setTimeout(nextStep, delays[step - 1]);
+      } else {
+        // Land on final
+        setDisplayWord(FINAL_WORD);
+        setIsFlipping(false);
+      }
+    }
+    nextStep();
+  }
+
+  // Extract parts of mission.text around "Enotrium"
+  // Assumes mission.text contains "Enotrium" somewhere
+  const missionText: string = mission.text;
+  const flipIndex = missionText.indexOf("Enotrium");
+  const before = flipIndex !== -1 ? missionText.slice(0, flipIndex) : missionText;
+  const after = flipIndex !== -1 ? missionText.slice(flipIndex + "Enotrium".length) : "";
+
+  const textStyle: React.CSSProperties = {
+    fontFamily: '"Söhne", "Inter", system-ui, sans-serif',
+    fontWeight: 300,
+    letterSpacing: "-0.01em",
+    lineHeight: 1.4,
+    color: "rgba(255,255,255,0.85)",
+  };
+
   return (
     <section
       ref={sectionRef}
       className="relative w-full min-h-screen bg-[#000] overflow-hidden"
     >
+      <style>{`
+        .grid-line {
+          stroke-dasharray: var(--l);
+          stroke-dashoffset: var(--l);
+          transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .grid-line.drawn { stroke-dashoffset: 0; }
+
+        .flip-word {
+          display: inline-block;
+          position: relative;
+          color: rgba(255,255,255,0.85);
+          transition: opacity 0.04s ease;
+        }
+        .flip-word.flipping {
+          color: rgba(255,255,255,0.5);
+        }
+        .flip-word::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: rgba(255,255,255,0.25);
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      `}</style>
+
       {/* Animated Grid Lines — SVG layer */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <style>{`
-          .grid-line {
-            stroke-dasharray: var(--l);
-            stroke-dashoffset: var(--l);
-            transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-          }
-          .grid-line.drawn { stroke-dashoffset: 0; }
-        `}</style>
-
-        {/* Vertical line 1 — 25%, draws top → down */}
         <line
           ref={(el) => { linesRef.current[0] = el; }}
           className="grid-line"
           style={{ "--l": "80%" } as React.CSSProperties}
-          x1="25%"
-          y1="0"
-          x2="25%"
-          y2="80%"
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="2"
+          x1="25%" y1="0" x2="25%" y2="80%"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
-          /* delay so h-lines start slightly after */
         />
-
-        {/* Vertical line 2 — 75%, draws top → down, slight delay */}
         <line
           ref={(el) => { linesRef.current[1] = el; }}
           className="grid-line"
-          style={
-            {
-              "--l": "80%",
-              transitionDelay: "0.1s",
-            } as React.CSSProperties
-          }
-          x1="75%"
-          y1="0"
-          x2="75%"
-          y2="80%"
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="2"
+          style={{ "--l": "80%", transitionDelay: "0.1s" } as React.CSSProperties}
+          x1="75%" y1="0" x2="75%" y2="80%"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
-
-        {/* Horizontal line 1 — draws left → right */}
         <line
           ref={(el) => { linesRef.current[2] = el; }}
           className="grid-line"
-          style={
-            {
-              "--l": "100%",
-              transitionDelay: "0.2s",
-            } as React.CSSProperties
-          }
-          x1="0"
-          y1="calc(15% - 1.5cm)"
-          x2="100%"
-          y2="calc(15% - 1.5cm)"
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="2"
+          style={{ "--l": "100%", transitionDelay: "0.2s" } as React.CSSProperties}
+          x1="0" y1="calc(15% - 1.5cm)" x2="100%" y2="calc(15% - 1.5cm)"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
-
-        {/* Horizontal line 2 — draws left → right */}
         <line
           ref={(el) => { linesRef.current[3] = el; }}
           className="grid-line"
-          style={
-            {
-              "--l": "100%",
-              transitionDelay: "0.3s",
-            } as React.CSSProperties
-          }
-          x1="0"
-          y1="calc(55% + 1.5cm)"
-          x2="100%"
-          y2="calc(55% + 1.5cm)"
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="2"
+          style={{ "--l": "100%", transitionDelay: "0.3s" } as React.CSSProperties}
+          x1="0" y1="calc(55% + 1.5cm)" x2="100%" y2="calc(55% + 1.5cm)"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
@@ -144,17 +200,22 @@ export function MissionSection() {
         <ScrollReveal>
           <p
             className="text-[24px] md:text-[28px] lg:text-[32px] text-center"
-            style={{
-              fontFamily: '"Söhne", "Inter", system-ui, sans-serif',
-              fontWeight: 300,
-              letterSpacing: "-0.01em",
-              lineHeight: 1.4,
-              color: "rgba(255,255,255,0.85)",
-            }}
+            style={textStyle}
           >
-            {mission.text}
+            {flipIndex !== -1 ? (
+              <>
+                {before}
+                <span className={`flip-word${isFlipping ? " flipping" : ""}`}>
+                  {displayWord}
+                </span>
+                {after}
+              </>
+            ) : (
+              missionText
+            )}
           </p>
         </ScrollReveal>
+
         <div className="mt-6 ml-4">
           <a
             href={mission.ctaLink}
