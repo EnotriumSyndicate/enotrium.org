@@ -413,7 +413,7 @@ export function Navbar({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {megaMenuColumns.map((col) => (
               <div key={col.heading}>
-                <p className="text-[10px] tracking-[0.2em] text-neutral-500 uppercase mb-3 font-[family-name:var(--font-space-grotesk)]">
+                <p className="text-[10px] tracking-[0.2em] text-neutral-500 uppercase mb-3 font-[family-name:var(--font-inter)]">
                   {col.heading}
                 </p>
                 <ul className="space-y-2" role="group" aria-label={col.heading}>
@@ -426,7 +426,7 @@ export function Navbar({
                           target={isExternal ? "_blank" : "_self"}
                           rel={isExternal ? "noopener noreferrer" : undefined}
                           onClick={closeMega}
-                          className="text-white text-sm font-light hover:text-neutral-400 transition-colors duration-150 font-[family-name:var(--font-space-grotesk)] block"
+                          className="text-white text-sm font-light hover:text-neutral-400 transition-colors duration-150 font-[family-name:var(--font-inter)] block"
                           role="menuitem"
                         >
                           {link.label}
