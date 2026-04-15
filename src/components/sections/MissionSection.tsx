@@ -49,7 +49,7 @@ export function MissionSection() {
   function startFlip() {
     setIsFlipping(true);
     let i = 0;
-    const totalCycles = 10;
+    const totalCycles = 7;
     const totalFlips = FLIP_WORDS.length * totalCycles;
     // Fast phase: cycle through all words 10 times, faster
     const fastInterval = setInterval(() => {
@@ -84,12 +84,6 @@ export function MissionSection() {
     nextStep();
   }
 
-  // Extract parts of mission.text around "Enotrium"
-  // Assumes mission.text contains "Enotrium" somewhere
-  const missionText: string = mission.text;
-  const flipIndex = missionText.indexOf("Enotrium");
-  const before = flipIndex !== -1 ? missionText.slice(0, flipIndex) : missionText;
-  const after = flipIndex !== -1 ? missionText.slice(flipIndex + "Enotrium".length) : "";
 
   const textStyle: React.CSSProperties = {
     fontFamily: '"Söhne", "Inter", system-ui, sans-serif',
@@ -187,7 +181,9 @@ export function MissionSection() {
             color: "rgba(255,255,255,0.5)",
           }}
         >
-          {mission.label}
+          <span className={`flip-word${isFlipping ? " flipping" : ""}`}>
+            {displayWord}
+          </span>
         </p>
       </div>
 
@@ -204,17 +200,7 @@ export function MissionSection() {
             className="text-[24px] md:text-[28px] lg:text-[32px] text-center"
             style={textStyle}
           >
-            {flipIndex !== -1 ? (
-              <>
-                {before}
-                <span className={`flip-word${isFlipping ? " flipping" : ""}`}>
-                  {displayWord}
-                </span>
-                {after}
-              </>
-            ) : (
-              missionText
-            )}
+            {mission.text}
           </p>
         </ScrollReveal>
 
