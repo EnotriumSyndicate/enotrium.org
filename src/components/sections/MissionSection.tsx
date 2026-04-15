@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { siteConfig } from "@/config/content";
-import { section } from "framer-motion/client";
 
 export function MissionSection() {
   const { mission } = siteConfig;
