@@ -8,6 +8,7 @@ const FLIP_WORDS = [
   "Agriculture",
   "Technology",
   "Agri-Base",
+  "Agri-Base",
   "Farming",
   "Arthedain",
   "Industry",
@@ -20,7 +21,7 @@ const FINAL_WORD = "Enotrium";
 export function MissionSection() {
   const { mission } = siteConfig;
   const sectionRef = useRef<HTMLElement>(null);
-  const linesRef = useRef<(SVGLineElement | null)[]>([]);
+  const linesRef = useRef<(SVGLineElement | null)[]>([null, null, null, null, null]);
   const [displayWord, setDisplayWord] = useState(FINAL_WORD);
   const [isFlipping, setIsFlipping] = useState(false);
   const hasFlipped = useRef(false);
@@ -140,19 +141,30 @@ export function MissionSection() {
           stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
+        {/* Horizontal line 1 — top */}
         <line
           ref={(el) => { linesRef.current[2] = el; }}
           className="grid-line"
           style={{ "--l": "100%", transitionDelay: "0.2s" } as React.CSSProperties}
-          x1="0" y1="calc(15% - 1.5cm)" x2="100%" y2="calc(15% - 1.5cm)"
+          x1="0" y1="12%" x2="100%" y2="12%"
           stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
+        {/* Horizontal line 2 — middle */}
         <line
           ref={(el) => { linesRef.current[3] = el; }}
           className="grid-line"
           style={{ "--l": "100%", transitionDelay: "0.3s" } as React.CSSProperties}
-          x1="0" y1="calc(55% + 1.5cm)" x2="100%" y2="calc(55% + 1.5cm)"
+          x1="0" y1="58%" x2="100%" y2="58%"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+        {/* Horizontal line 3 — bottom */}
+        <line
+          ref={(el) => { linesRef.current[4] = el; }}
+          className="grid-line"
+          style={{ "--l": "100%", transitionDelay: "0.4s" } as React.CSSProperties}
+          x1="0" y1="90%" x2="100%" y2="90%"
           stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
