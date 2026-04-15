@@ -45,7 +45,7 @@ export function MissionSection() {
   function startFlip() {
     setIsFlipping(true);
     let i = 0;
-    const totalFlips = FLIP_WORDS.length * 5;
+    const totalFlips = FLIP_WORDS.length * 6;
     const fastInterval = setInterval(() => {
       setDisplayWord(FLIP_WORDS[i % FLIP_WORDS.length]);
       i++;

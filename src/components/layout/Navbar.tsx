@@ -41,7 +41,10 @@ const megaMenuColumns = [
   },
   {
     heading: "WORK WITH US",
-    links: [{ label: "Careers", href: "/careers" }],
+    links: [
+      { label: "Careers", href: "/careers" },
+      { label: "AI Lab", href: "https://www.enotriumai.org" },
+    ],
   },
   {
     heading: "SOCIAL",
