@@ -143,32 +143,29 @@ export function MissionSection() {
           stroke="rgba(255,255,255,0.2)" strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
-        {/* Horizontal line 1 — top */}
+        {/* Horizontal line 1 — top, full width */}
         <line
           ref={(el) => { linesRef.current[2] = el; }}
           className="grid-line"
-          style={{ "--l": "100%", transitionDelay: "0.2s" } as React.CSSProperties}
-          x1="0" y1="12%" x2="100%" y2="12%"
-          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
+          style={{ "--l": "100", transitionDelay: "0.2s" } as React.CSSProperties}
+          x1="0" y1="12" x2="100" y2="12"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="0.2"
         />
-        {/* Horizontal line 2 — middle */}
+        {/* Horizontal line 2 — middle, full width */}
         <line
           ref={(el) => { linesRef.current[3] = el; }}
           className="grid-line"
-          style={{ "--l": "100%", transitionDelay: "0.3s" } as React.CSSProperties}
-          x1="0" y1="58%" x2="100%" y2="58%"
-          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
+          style={{ "--l": "100", transitionDelay: "0.3s" } as React.CSSProperties}
+          x1="0" y1="58" x2="100" y2="58"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="0.2"
         />
-        {/* Horizontal line 3 — bottom */}
+        {/* Horizontal line 3 — bottom, full width */}
         <line
           ref={(el) => { linesRef.current[4] = el; }}
           className="grid-line"
-          style={{ "--l": "100%", transitionDelay: "0.4s" } as React.CSSProperties}
-          x1="0" y1="90%" x2="100%" y2="90%"
-          stroke="rgba(255,255,255,0.2)" strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
+          style={{ "--l": "100", transitionDelay: "0.4s" } as React.CSSProperties}
+          x1="0" y1="90" x2="100" y2="90"
+          stroke="rgba(255,255,255,0.2)" strokeWidth="0.2"
         />
       </svg>
 
