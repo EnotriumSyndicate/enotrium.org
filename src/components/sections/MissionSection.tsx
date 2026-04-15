@@ -8,7 +8,8 @@ const FLIP_WORDS = [
   "Agriculture",
   "Technology",
   "Agri-Base",
-  "Agri-Base",
+  "A New",
+  "Mesopotamia",
   "Farming",
   "Arthedain",
   "Industry",
@@ -51,18 +52,18 @@ export function MissionSection() {
   function startFlip() {
     setIsFlipping(true);
     let i = 0;
-    const totalCycles = 8;
+    const totalCycles = 7;
     const totalFlips = FLIP_WORDS.length * totalCycles;
     // Fast phase: cycle through all words 10 times, faster
     const fastInterval = setInterval(() => {
       setDisplayWord(FLIP_WORDS[i % FLIP_WORDS.length]);
       i++;
-      // After 10 full cycles, slow down for the final land
+      // After 7 full cycles, slow down for the final land
       if (i >= totalFlips) {
         clearInterval(fastInterval);
         slowLand(i);
       }
-    }, 40);
+    }, 35);
   }
 
   function slowLand(startIndex: number) {
@@ -122,6 +123,7 @@ export function MissionSection() {
       {/* Animated Grid Lines — SVG layer */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
