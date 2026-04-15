@@ -35,4 +35,10 @@ export interface SiteConfig {
         stats: Stat[];
     };
     contact: ContactConfig;
+    mission: {
+        label: string;
+        text: string;
+        cta: string;
+        ctaLink: string;
+    };
 }

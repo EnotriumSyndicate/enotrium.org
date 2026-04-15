@@ -5,6 +5,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 
 // Lazy load below-the-fold sections for faster initial load
+const MissionSection = dynamic(
+  () => import("@/components/sections/MissionSection").then(mod => ({ default: mod.MissionSection })),
+  { ssr: true }
+);
+
 const InvectiveSection = dynamic(
   () => import("@/components/sections/InvectiveSection").then(mod => ({ default: mod.InvectiveSection })),
   { ssr: true }
@@ -38,6 +43,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10">
         <HeroSection />
+        <MissionSection />
         <InvectiveSection />
         <div className="mb-36">
           <SupplyChainSection />

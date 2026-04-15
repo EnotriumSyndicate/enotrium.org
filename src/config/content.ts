@@ -55,4 +55,10 @@ export const siteConfig: SiteConfig = {
   contact: {
     ctaHref: "https://calendly.com/enotrium/demo",
   },
+  mission: {
+    label: "Enotrium",
+    text: "Enotrium exists to build next generation infrastructure for industrial agriculture. We will produce technology to make every farm autonomous and regenerative.",
+    cta: "Invective",
+    ctaLink: "/invective",
+  },
 };
