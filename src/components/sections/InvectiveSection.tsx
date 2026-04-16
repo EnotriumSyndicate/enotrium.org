@@ -67,8 +67,7 @@ export function InvectiveSection() {
                                         {/* Author */}
                                         <div>
                                             <p className="text-base md:text-lg lg:text-xl text-foreground/80 font-[family-name:var(--font-space-grotesk)]">
-                                                Aiden Young<br />
-                                                <span className="text-foreground/60">Enotrium CEO</span>
+                                                Enotrium's Founders
                                             </p>
                                         </div>
 
