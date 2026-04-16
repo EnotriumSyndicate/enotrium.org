@@ -11,7 +11,7 @@ export default function CareersPage() {
       <main className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-32 pb-24">
 
         {/* Page Header */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 font-[family-name:var(--font-inter)]">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold mb-6 font-[family-name:var(--font-inter)]">
           Careers
         </h1>
         <div className="h-px w-full bg-black/20 mb-16" />
@@ -52,7 +52,7 @@ export default function CareersPage() {
 
             <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
               If you are an ambitious builder and have what we call &ldquo;Founder
-              Mentality.&rdquo; We&apos;re looking for people who demand excellence from themselves
+              Mentality,&rdquo; We&apos;re looking for people who demand excellence from themselves
               and the individuals around them, obsess over details, and value creating excellence over
               prestige and conformism.
             </p>
