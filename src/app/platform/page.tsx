@@ -165,7 +165,7 @@ export default function PlatformPage() {
 
   return (
     <div className="bg-white text-black min-h-screen font-[family-name:var(--font-inter)]">
-      <Navbar invertLogo lightScrollBg darkText />
+      <Navbar invertLogo lightScrollBg darkText lightMegaMenu />
 
       {/* Hero */}
       <section className="relative pt-28 md:pt-32 px-6 lg:px-16 pb-16 max-w-[1400px] mx-auto overflow-hidden min-h-[60vh]">

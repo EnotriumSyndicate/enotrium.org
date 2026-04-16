@@ -63,11 +63,13 @@ export function Navbar({
   noScrollBg = false,
   lightScrollBg = false,
   darkText = false,
+  lightMegaMenu = false,
 }: {
   invertLogo?: boolean;
   noScrollBg?: boolean;
   lightScrollBg?: boolean;
   darkText?: boolean;
+  lightMegaMenu?: boolean;
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -403,20 +405,24 @@ export function Navbar({
         id="mega-menu"
         onMouseEnter={onEnterZone}
         onMouseLeave={onLeaveZone}
-        className={`fixed inset-x-0 top-16 md:top-20 z-40 transition-all duration-200 ease-out ${
+        className={`fixed inset-x-0 top-16 md:top-20 z-40 transition-all duration-200 ease-out border-b ${
+          lightMegaMenu ? "border-black/10" : "border-white/10"
+        } ${
           megaOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
         role="menu"
         aria-label="Company menu"
-        style={{ backgroundColor: "#0a0a0a" }}
+        style={{ backgroundColor: lightMegaMenu ? "#ffffff" : "#0a0a0a" }}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {megaMenuColumns.map((col) => (
               <div key={col.heading}>
-                <p className="text-[10px] tracking-[0.2em] text-neutral-500 uppercase mb-3 font-[family-name:var(--font-inter)]">
+                <p className={`text-[10px] tracking-[0.2em] uppercase mb-3 font-[family-name:var(--font-inter)] ${
+                  lightMegaMenu ? "text-neutral-400" : "text-neutral-500"
+                }`}>
                   {col.heading}
                 </p>
                 <ul className="space-y-2" role="group" aria-label={col.heading}>
@@ -429,7 +435,11 @@ export function Navbar({
                           target={isExternal ? "_blank" : "_self"}
                           rel={isExternal ? "noopener noreferrer" : undefined}
                           onClick={closeMega}
-                          className="text-white text-sm font-light hover:text-neutral-400 transition-colors duration-150 font-[family-name:var(--font-inter)] block"
+                          className={`${
+                            lightMegaMenu
+                              ? "text-black hover:text-neutral-600"
+                              : "text-white hover:text-neutral-400"
+                          } text-sm font-light transition-colors duration-150 font-[family-name:var(--font-inter)] block`}
                           role="menuitem"
                         >
                           {link.label}

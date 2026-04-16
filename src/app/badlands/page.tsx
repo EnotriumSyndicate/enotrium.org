@@ -48,7 +48,7 @@ export default function BadlandsPage() {
       className={`min-h-screen ${inter.className}`}
       style={{ backgroundColor: "#ffffff", color: "#111" }}
     >
-      <Navbar lightScrollBg invertLogo darkText />
+      <Navbar lightScrollBg invertLogo darkText lightMegaMenu />
 
       {/* Hero */}
       <section className="pt-28 pb-6 px-6 lg:px-16 max-w-[1400px] mx-auto">
