@@ -79,7 +79,7 @@ function AbstractField() {
         const lifeAlpha = Math.min(1, p.life / 30) * Math.min(1, (p.maxLife - p.life) / 30);
         // Fade out toward top of canvas so no hard edge
         const topFade = Math.min(1, p.y / (H * 0.35));
-        const alpha = lifeAlpha * topFade * 0.8;
+        const alpha = lifeAlpha * topFade * 0.45;
         if (alpha < 0.01) return;
 
         ctx.beginPath();
@@ -96,7 +96,7 @@ function AbstractField() {
           const dist = dx * dx + dy * dy;
           if (dist < 7000) {
             const topFade = Math.min(1, Math.min(particles[i].y, particles[j].y) / (H * 0.35));
-            const alpha = (1 - dist / 7000) * 0.12 * topFade;
+            const alpha = (1 - dist / 7000) * 0.06 * topFade;
             ctx.strokeStyle = `rgba(0,0,0,${alpha.toFixed(3)})`;
             ctx.lineWidth = 0.4;
             ctx.beginPath();
