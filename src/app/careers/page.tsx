@@ -75,7 +75,7 @@ export default function CareersPage() {
               <a
                 href="mailto:enotrium@atomicmail.io"
                 target="_self"
-                className="inline-block mt-4 text-base sm:text-lg font-bold text-black hover:opacity-50 transition-opacity"
+                className="inline-block mt-4 text-base sm:text-lg text-black hover:opacity-50 transition-opacity"
               >
                 enotrium@atomicmail.io
               </a>
@@ -100,7 +100,7 @@ export default function CareersPage() {
               <a
                 href="mailto:enotrium@atomicmail.io"
                 target="_self"
-                className="text-base sm:text-lg font-bold text-black hover:opacity-50 transition-opacity"
+                className="text-base sm:text-lg text-black hover:opacity-50 transition-opacity"
               >
                 enotrium@atomicmail.io
               </a>
