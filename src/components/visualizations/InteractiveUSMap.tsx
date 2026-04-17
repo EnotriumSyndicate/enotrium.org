@@ -134,9 +134,9 @@ export function InteractiveUSMap() {
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                     {[...leftStats, ...rightStats].map((stat, i) => (
                         <div key={i} className="w-32 p-3 rounded-xl border border-red-500/20 bg-background/50 backdrop-blur-sm">
-                            <div className="text-2xl font-light text-foreground font-[family-name:var(--font-space-grotesk)]">{stat.value}</div>
-                            <div className="text-[10px] text-muted-foreground tracking-wider uppercase mt-0.5">{stat.label}</div>
-                            <div className="text-[9px] text-muted-foreground/60">{stat.sub}</div>
+                            <div className="text-2xl font-light text-foreground font-[family-name:var(--font-inter)]">{stat.value}</div>
+                            <div className="text-[10px] text-muted-foreground tracking-wider uppercase mt-0.5 font-[family-name:var(--font-inter)]">{stat.label}</div>
+                            <div className="text-[9px] text-muted-foreground/60 font-[family-name:var(--font-inter)]">{stat.sub}</div>
                         </div>
                     ))}
                 </div>
