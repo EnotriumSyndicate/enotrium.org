@@ -148,8 +148,8 @@ function AbstractField() {
 // SECTION 1: HERO SECTION
 // ============================================
 function HeroSection() {
-  const scrollToContent = () => {
-    const element = document.getElementById("teaser");
+  const scrollToPartnerships = () => {
+    const element = document.getElementById("partnerships");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -212,7 +212,7 @@ function HeroSection() {
             </Link>
 
             <button
-              onClick={scrollToContent}
+              onClick={scrollToPartnerships}
               className="group magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] focus-ring"
             >
               Explore Partnerships
@@ -224,7 +224,7 @@ function HeroSection() {
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <button
-          onClick={scrollToContent}
+          onClick={scrollToPartnerships}
           className="text-white/30 hover:text-white/60 transition-all duration-500 focus-ring rounded-full p-2"
           aria-label="Scroll to content"
         >
