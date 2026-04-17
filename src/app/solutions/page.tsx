@@ -609,8 +609,8 @@ function OurStorySection() {
 const benefits = [
   {
     icon: Microscope,
-    title: "Peer-reviewed Science",
-    description: "Every technology we deploy is grounded in rigorous scientific research and validated through extensive field testing.",
+    title: "Open Sourcing Agriculture Science",
+    description: "Every technology we deploy is benchmarked against scientific research and validated through extensive field testing.",
   },
   {
     icon: Globe,
@@ -651,7 +651,7 @@ function WhyEnotriumSection() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
               <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
-                Decentralizio
+                Decentralizion
               </p>
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
                 Why ENOTRIUM
