@@ -266,16 +266,43 @@ function TeaserSection() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={0.2} duration={1}>
-            <div className="relative aspect-[4/3] bg-[#111] border border-white/[0.08] overflow-hidden hover-lift">
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+            <div className="relative aspect-[4/3] bg-[#050a0f] border border-cyan-500/30 overflow-hidden hover-lift group"
+              style={{
+                boxShadow: "inset 0 0 60px rgba(6, 182, 212, 0.1), 0 0 40px rgba(6, 182, 212, 0.15)"
+              }}
+            >
+              {/* Animated self-drawing grid */}
+              <div className="absolute inset-0 grid-lines-animated" />
+              
+              {/* Radial glow center - arc reactor style */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(8, 145, 178, 0.1) 40%, transparent 70%)",
+                  filter: "blur(20px)"
+                }}
+              />
+              
+              {/* Tech scan lines */}
+              <div className="absolute inset-0 opacity-30"
+                style={{
+                  background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6, 182, 212, 0.03) 2px, rgba(6, 182, 212, 0.03) 4px)"
+                }}
+              />
+              
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <Globe className="w-20 h-20 text-white/10 mx-auto mb-6" strokeWidth={0.5} />
-                  <p className="text-sm text-white/30 font-[family-name:var(--font-inter)] tracking-wide uppercase">
+                <div className="text-center relative z-10">
+                  <Globe className="w-20 h-20 text-cyan-400/60 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]" strokeWidth={0.5} />
+                  <p className="text-sm text-cyan-200/70 font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
                     Autonomous Systems × Regenerative Agriculture
                   </p>
                 </div>
               </div>
+              
+              {/* Corner tech brackets */}
+              <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-cyan-500/40" />
+              <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-cyan-500/40" />
+              <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-cyan-500/40" />
+              <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-cyan-500/40" />
             </div>
           </ScrollReveal>
         </div>
