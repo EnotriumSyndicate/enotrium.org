@@ -9,28 +9,28 @@ const inter = Inter({ subsets: ["latin"] });
 
 const stats = [
   {
-    number: "1.6 Million Farms",
-    label: "On Chain",
+    number: "2026",
+    label: "USDA Row Crop Bailouts",
     description:
-      "We help people help the land and improve conservation of the nation's soil and water resources. We track environmental data, on soil health, crop variety, and land conservation to support the work of American farmers.",
+      "Strategic intervention and support programs for row crop producers, ensuring stability and continuity in American agriculture through data-backed assistance.",
   },
   {
-    number: "1 Million Acres",
-    label: "Acres Regenerated",
+    number: "2026",
+    label: "USDA Farmers Bridge Assistance",
     description:
-      "Land Quality requires Stewardship. Enotrium is proud steward of nature and our nation's environment. We seek to convert under-invested regions into regenerative agriculture powerhouses, one farm at a time.",
+      "Bridge financing and operational support for farmers transitioning to regenerative practices, powered by Enotrium's autonomous coordination systems.",
   },
   {
-    number: "30+ Tribes",
-    label: "Creating the Industry",
+    number: "Kenaf",
+    label: "South Dakota Bio-Materials",
     description:
-      "Badlands represents the single largest Regenerative Agriculture and Technology company led by Indigenous Americans across the West, creating thousands of new jobs in agriculture.",
+      "Industrial fiber production and bio-material processing facilities in South Dakota, creating sustainable alternatives to petroleum-based products.",
   },
   {
-    number: "$1 Billion",
-    label: "Annual Production",
+    number: "U.S.",
+    label: "Lumber Costs",
     description:
-      "$1 Billion per year in projected economic output, contributing to America's agriculture and manufacturing production.",
+      "Real-time lumber market intelligence and supply chain optimization, reducing construction costs through autonomous coordination of forest product flows.",
   },
 ];
 
