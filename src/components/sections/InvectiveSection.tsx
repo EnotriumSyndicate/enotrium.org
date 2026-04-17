@@ -87,7 +87,7 @@ export function InvectiveSection() {
             </div>
 
             {/* Map Label */}
-            <div className="px-4 md:px-6 lg:px-12 pt-28 pb-0">
+            <div className="px-4 md:px-6 lg:px-12 pt-14 pb-0 md:pt-40 lg:pt-52">
                 <p className="text-left text-xl md:text-2xl lg:text-3xl text-foreground/50 font-[family-name:var(--font-tektur)]">
                     Autonomous Supply Chain coordination<br />
                     for our Civilization&apos;s Agri-Industrial Base
