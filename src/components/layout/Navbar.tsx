@@ -233,7 +233,7 @@ export function Navbar({
             <Link href="/" target="_self" className="z-10" aria-label="Enotrium home">
               <div className="flex flex-row items-center">
                 <Image
-                  src={megaOpen && lightMegaMenu ? "/logo.png" : "/logo.jpg"}
+                  src={megaOpen && lightMegaMenu ? "/logo-white.png" : "/logo.jpg"}
                   alt=""
                   width={120}
                   height={32}
