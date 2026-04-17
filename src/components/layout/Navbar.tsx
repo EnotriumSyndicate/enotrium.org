@@ -233,11 +233,11 @@ export function Navbar({
             <Link href="/" target="_self" className="z-10" aria-label="Enotrium home">
               <div className="flex flex-row items-center">
                 <Image
-                  src={megaOpen && lightMegaMenu ? "/logo-white.png" : "/logo.jpg"}
+                  src="/logo.jpg"
                   alt=""
                   width={120}
                   height={32}
-                  className={`h-8 w-auto${invertLogo && !megaOpen ? " invert" : ""}`}
+                  className={`h-8 w-auto${invertLogo && !megaOpen ? " invert" : ""}${megaOpen && lightMegaMenu ? " invert" : ""}`}
                   priority
                 />
                 <span
