@@ -772,9 +772,20 @@ function NewsletterSection() {
   return (
     <section className="relative py-32 md:py-40 bg-[#0a0a0a] overflow-hidden grain-overlay">
       <div className="section-divider absolute top-0 left-0 right-0" />
-      
+
+      {/* Abstract Field Particle Animation */}
+      <div className="absolute inset-0 z-0">
+        <AbstractField />
+      </div>
+
+      {/* Top gradient fade */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+      {/* Bottom gradient fade */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
       {/* Subtle radial gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.01] rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.01] rounded-full blur-3xl z-0" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
         <div className="max-w-2xl mx-auto text-center">
