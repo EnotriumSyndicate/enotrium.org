@@ -184,8 +184,8 @@ function HeroSection() {
         <ScrollReveal animation="fade-up" delay={0.15} duration={1}>
           <div className="max-w-2xl space-y-5 text-white/60 text-lg md:text-xl leading-[1.7] font-[family-name:var(--font-inter)] font-light">
             <p className="text-balance">
-              We believe in progress – not as an end in itself, but to merge the old with the new, in an ever greater march towards prosperity.
-              Our technologies put real industry first. Technologies change civilization, and civilization is perserved with technology.
+              We believe in progress – not as an end in itself, but as a way to renew the old and bridge the new.
+              Our technologies put real industry first. Technology changes civilization, and civilization is perserved through technology.
             </p>
             <p className="text-balance">
               Enotrium&apos;s Technologies shift power, strengthen trust, and enable individuals
