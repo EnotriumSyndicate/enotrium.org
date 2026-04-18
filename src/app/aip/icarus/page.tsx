@@ -242,7 +242,7 @@ function WhatIsIcarusSection() {
 
           <div className="space-y-8 text-white/50 text-xl md:text-2xl leading-[1.9] font-[family-name:var(--font-inter)] font-light">
             <p className="text-balance">
-              Icarus is the <span className="text-white font-medium">nervous system of the Earth</span> — a hyperdimensional spiking neural network that understands the earth.
+              Icarus is the <span className="text-white font-medium">nervous system of the Earth</span> — a hyperdimensional spiking neural network that understands the ecological foundation of the earth.
             </p>
             <p className="text-balance">
               Through drone-mounted hyperspectral sensors, it <span className="text-white font-medium">perceives</span> what human eyes cannot: the invisible chemical dance of nutrients, contaminants, and microbial life beneath our feet.
@@ -717,19 +717,67 @@ function SeeThroughTheSoil() {
         ctx.fillText(wavelengths[i], 10, bandY + 3);
       }
 
-      // Draw soil composition metrics panel
-      const metricsX = W - 180;
+      // Draw soil composition metrics panel - expanded to full height with black/red tech theme
+      const metricsX = W - 220;
       const metricsY = 20;
-      ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-      ctx.fillRect(metricsX, metricsY, 170, 120);
-      ctx.strokeStyle = "rgba(6, 182, 212, 0.3)";
+      const metricsH = H - 40;
+      ctx.fillStyle = "rgba(0, 0, 0, 0.85)";
+      ctx.fillRect(metricsX, metricsY, 200, metricsH);
+      ctx.strokeStyle = "rgba(220, 38, 38, 0.4)";
       ctx.lineWidth = 1;
-      ctx.strokeRect(metricsX, metricsY, 170, 120);
+      ctx.strokeRect(metricsX, metricsY, 200, metricsH);
       
-      ctx.font = "10px Inter";
-      ctx.fillStyle = "rgba(6, 182, 212, 0.8)";
+      // Add header
+      ctx.font = "11px Inter";
+      ctx.fillStyle = "rgba(220, 38, 38, 0.9)";
       ctx.textAlign = "left";
-      ctx.fillText("SOIL COMPOSITION", metricsX + 10, metricsY + 20);
+      ctx.fillText("SOIL ANALYTICS", metricsX + 10, metricsY + 20);
+      
+      // Add divider
+      ctx.strokeStyle = "rgba(220, 38, 38, 0.3)";
+      ctx.beginPath();
+      ctx.moveTo(metricsX + 10, metricsY + 30);
+      ctx.lineTo(metricsX + 190, metricsY + 30);
+      ctx.stroke();
+      
+      // Sample data fields
+      const sampleData = [
+        { label: "SampleMedia", value: "Sediment" },
+        { label: "Activity", value: "Sediment" },
+        { label: "Analytical_Method", value: "EPA 8260D" },
+        { label: "CAS_NO", value: "100-41-4" },
+        { label: "Analyte", value: "Ethylbenzene" },
+        { label: "Result_Units", value: "mg/kg" },
+        { label: "Reporting_Limit", value: "0.00539" },
+        { label: "Validation_Level", value: "Final" },
+        { label: "Result_Final", value: "<0.00539" },
+        { label: "Result_Qualifier", value: "U" },
+        { label: "RL_Comparison", value: "No" },
+      ];
+      
+      sampleData.forEach((data, i) => {
+        const y = metricsY + 50 + i * 18;
+        ctx.font = "9px Inter";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.fillText(data.label, metricsX + 10, y);
+        ctx.fillStyle = "rgba(220, 38, 38, 0.8)";
+        ctx.textAlign = "right";
+        ctx.fillText(data.value, metricsX + 190, y);
+        ctx.textAlign = "left";
+      });
+      
+      // Add section divider
+      ctx.strokeStyle = "rgba(220, 38, 38, 0.3)";
+      ctx.beginPath();
+      ctx.moveTo(metricsX + 10, metricsY + 260);
+      ctx.lineTo(metricsX + 190, metricsY + 260);
+      ctx.stroke();
+      
+      // Add composition metrics
+      ctx.font = "11px Inter";
+      ctx.fillStyle = "rgba(220, 38, 38, 0.9)";
+      ctx.textAlign = "left";
+      ctx.fillText("COMPOSITION", metricsX + 10, metricsY + 280);
       
       const metrics = [
         { label: "Nitrogen (N)", value: (45 + Math.sin(t * 0.01) * 5).toFixed(1) + "%" },
@@ -741,28 +789,62 @@ function SeeThroughTheSoil() {
       ];
       
       metrics.forEach((metric, i) => {
-        const y = metricsY + 40 + i * 15;
-        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        const y = metricsY + 300 + i * 18;
+        ctx.font = "9px Inter";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
         ctx.fillText(metric.label, metricsX + 10, y);
-        ctx.fillStyle = colors[i % colors.length];
+        ctx.fillStyle = "rgba(220, 38, 38, 0.8)";
         ctx.textAlign = "right";
-        ctx.fillText(metric.value, metricsX + 160, y);
+        ctx.fillText(metric.value, metricsX + 190, y);
+        ctx.textAlign = "left";
+      });
+      
+      // Add compound lists section
+      ctx.strokeStyle = "rgba(220, 38, 38, 0.3)";
+      ctx.beginPath();
+      ctx.moveTo(metricsX + 10, metricsY + 420);
+      ctx.lineTo(metricsX + 190, metricsY + 420);
+      ctx.stroke();
+      
+      ctx.font = "11px Inter";
+      ctx.fillStyle = "rgba(220, 38, 38, 0.9)";
+      ctx.textAlign = "left";
+      ctx.fillText("TOXINS DETECTED", metricsX + 10, metricsY + 440);
+      
+      const compoundCategories = [
+        { label: "VOCs", count: 20 },
+        { label: "PAHs", count: 16 },
+        { label: "Phthalates", count: 6 },
+        { label: "PFAS", count: 8 },
+        { label: "Dioxins", count: 24 },
+        { label: "Pesticides", count: 14 },
+      ];
+      
+      compoundCategories.forEach((cat, i) => {
+        const y = metricsY + 460 + i * 18;
+        ctx.font = "9px Inter";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.fillText(cat.label, metricsX + 10, y);
+        ctx.fillStyle = "rgba(220, 38, 38, 0.8)";
+        ctx.textAlign = "right";
+        ctx.fillText(cat.count + " detected", metricsX + 190, y);
         ctx.textAlign = "left";
       });
 
-      // Draw spectral curve visualization (simulated HSI spectral signature)
+      // Draw spectral curve visualization (simulated HSI spectral signature) - black/red tech theme
       const curveX = 20;
       const curveY = H - 100;
-      const curveW = 200;
+      const curveW = W - 260;
       const curveH = 80;
       
-      ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
       ctx.fillRect(curveX, curveY, curveW, curveH);
-      ctx.strokeStyle = "rgba(6, 182, 212, 0.3)";
+      ctx.strokeStyle = "rgba(220, 38, 38, 0.4)";
+      ctx.lineWidth = 1;
       ctx.strokeRect(curveX, curveY, curveW, curveH);
       
-      ctx.font = "9px Inter";
-      ctx.fillStyle = "rgba(6, 182, 212, 0.8)";
+      ctx.font = "10px Inter";
+      ctx.fillStyle = "rgba(220, 38, 38, 0.9)";
       ctx.textAlign = "left";
       ctx.fillText("SPECTRAL SIGNATURE", curveX + 10, curveY + 15);
       
@@ -782,9 +864,10 @@ function SeeThroughTheSoil() {
       }
       
       const spectralGradient = ctx.createLinearGradient(curveX, curveY, curveX + curveW, curveY);
-      spectralGradient.addColorStop(0, "rgba(6, 182, 212, 0.8)");
-      spectralGradient.addColorStop(0.5, "rgba(236, 72, 153, 0.8)");
-      spectralGradient.addColorStop(1, "rgba(20, 184, 166, 0.8)");
+      spectralGradient.addColorStop(0, "rgba(220, 38, 38, 0.8)");
+      spectralGradient.addColorStop(0.3, "rgba(255, 100, 100, 0.8)");
+      spectralGradient.addColorStop(0.6, "rgba(220, 38, 38, 0.8)");
+      spectralGradient.addColorStop(1, "rgba(180, 30, 30, 0.8)");
       
       ctx.strokeStyle = spectralGradient;
       ctx.lineWidth = 2;
