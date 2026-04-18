@@ -70,10 +70,8 @@ function HSIDashboard() {
         const barH = p * (H - 8);
         ctx.fillStyle = colors[i] + '55';
         ctx.fillRect(x - 3, H - barH, 6, barH);
-        ctx.beginPath();
-        ctx.arc(x, H - barH - 2, 2.5, 0, Math.PI * 2);
         ctx.fillStyle = p > 0.7 ? '#28a040' : '#e03030';
-        ctx.fill();
+        ctx.fillRect(x - 2.5, H - barH - 4.5, 5, 5);
       });
 
       ctx.strokeStyle = '#1a2f36';
