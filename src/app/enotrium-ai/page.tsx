@@ -561,29 +561,6 @@ function OurStorySection() {
                 While the world chases ever-larger transformer models that serve only scale ambitions, we build <span className="text-white font-medium">sovereign, low-power, biologically-inspired intelligence</span> that actually serves humanity. This is the only viable path forward.
               </p>
 
-              <div className="mt-10 p-8 border border-red-500/30 bg-[#0f0505] relative overflow-hidden group"
-                style={{ boxShadow: "inset 0 0 40px rgba(239, 68, 68, 0.08), 0 0 30px rgba(239, 68, 68, 0.1)" }}
-              >
-                {/* Red glow orb */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-30 blur-3xl"
-                  style={{ background: "radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%)" }}
-                />
-                
-                {/* Corner brackets */}
-                <div className="absolute top-2 left-2 w-6 h-6 border-l border-t border-red-500/40" />
-                <div className="absolute top-2 right-2 w-6 h-6 border-r border-t border-red-500/40" />
-                <div className="absolute bottom-2 left-2 w-6 h-6 border-l border-b border-red-500/40" />
-                <div className="absolute bottom-2 right-2 w-6 h-6 border-r border-b border-red-500/40" />
-                
-                <p className="text-red-400/60 text-xs font-medium tracking-[0.25em] uppercase mb-4 font-[family-name:var(--font-inter)] relative z-10">
-                  Our Manifesto
-                </p>
-                <p className="text-red-200/80 text-xl font-light font-[family-name:var(--font-inter)] leading-relaxed relative z-10"
-                  style={{ textShadow: "0 0 20px rgba(239, 68, 68, 0.3)" }}
-                >
-                  &ldquo;Transformer based Models are capital intensive and waste. Spiking neural nets follow patterns of elegance and efficency. On edge devices, the choice is obvious.&rdquo;
-                </p>
-              </div>
             </div>
           </ScrollReveal>
         </div>
