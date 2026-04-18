@@ -237,6 +237,459 @@ function HeroSection() {
 }
 
 // ============================================
+// SPIKING NEURAL REACTOR CANVAS COMPONENT
+// ============================================
+function SpikingNeuralReactor() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+    let t = 0;
+
+    // Node types
+    type Node = {
+      x: number;
+      y: number;
+      type: 'sphere' | 'hexagon';
+      size: number;
+      pulsePhase: number;
+      connections: number[];
+      energy: number;
+    };
+
+    // Connection type
+    type Connection = {
+      from: number;
+      to: number;
+      progress: number;
+      speed: number;
+      active: boolean;
+      particles: number[];
+    };
+
+    // Spike type
+    type Spike = {
+      nodeIndex: number;
+      progress: number;
+      intensity: number;
+    };
+
+    // Floating particle type
+    type FloatingParticle = {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      alpha: number;
+    };
+
+    let nodes: Node[] = [];
+    let connections: Connection[] = [];
+    let spikes: Spike[] = [];
+    let floatingParticles: FloatingParticle[] = [];
+
+    const NODE_COUNT = 80;
+    const CONNECTION_DENSITY = 0.15;
+    const FLOATING_PARTICLE_COUNT = 50;
+
+    // Initialize nodes
+    const initNodes = (W: number, H: number) => {
+      nodes = [];
+      const centerX = W / 2;
+      const centerY = H / 2;
+      const maxRadius = Math.min(W, H) * 0.35;
+
+      for (let i = 0; i < NODE_COUNT; i++) {
+        const angle = (i / NODE_COUNT) * Math.PI * 2 + Math.random() * 0.5;
+        const radius = Math.random() * maxRadius * 0.8 + maxRadius * 0.2;
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+
+        nodes.push({
+          x,
+          y,
+          type: Math.random() > 0.5 ? 'sphere' : 'hexagon',
+          size: 3 + Math.random() * 5,
+          pulsePhase: Math.random() * Math.PI * 2,
+          connections: [],
+          energy: Math.random(),
+        });
+      }
+
+      // Add some central nodes
+      for (let i = 0; i < 15; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const radius = Math.random() * maxRadius * 0.3;
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+
+        nodes.push({
+          x,
+          y,
+          type: Math.random() > 0.3 ? 'hexagon' : 'sphere',
+          size: 5 + Math.random() * 8,
+          pulsePhase: Math.random() * Math.PI * 2,
+          connections: [],
+          energy: 0.5 + Math.random() * 0.5,
+        });
+      }
+    };
+
+    // Initialize connections
+    const initConnections = () => {
+      connections = [];
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 150 && Math.random() < CONNECTION_DENSITY) {
+            connections.push({
+              from: i,
+              to: j,
+              progress: Math.random(),
+              speed: 0.005 + Math.random() * 0.01,
+              active: true,
+              particles: [],
+            });
+            nodes[i].connections.push(j);
+            nodes[j].connections.push(i);
+          }
+        }
+      }
+    };
+
+    // Initialize floating particles
+    const initFloatingParticles = (W: number, H: number) => {
+      floatingParticles = [];
+      for (let i = 0; i < FLOATING_PARTICLE_COUNT; i++) {
+        floatingParticles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          size: 0.5 + Math.random() * 1.5,
+          alpha: 0.1 + Math.random() * 0.3,
+        });
+      }
+    };
+
+    // Draw hexagon
+    const drawHexagon = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
+        const hx = x + size * Math.cos(angle);
+        const hy = y + size * Math.sin(angle);
+        if (i === 0) ctx.moveTo(hx, hy);
+        else ctx.lineTo(hx, hy);
+      }
+      ctx.closePath();
+    };
+
+    // Draw connection with energy flow
+    const drawConnection = (ctx: CanvasRenderingContext2D, conn: Connection, t: number) => {
+      const fromNode = nodes[conn.from];
+      const toNode = nodes[conn.to];
+
+      if (!fromNode || !toNode) return;
+
+      const dx = toNode.x - fromNode.x;
+      const dy = toNode.y - fromNode.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Update progress
+      conn.progress += conn.speed;
+      if (conn.progress > 1) conn.progress = 0;
+
+      // Randomly deactivate/reactivate connections
+      if (Math.random() < 0.002) {
+        conn.active = !conn.active;
+      }
+
+      if (!conn.active) return;
+
+      // Draw base line
+      const gradient = ctx.createLinearGradient(fromNode.x, fromNode.y, toNode.x, toNode.y);
+      gradient.addColorStop(0, `rgba(6, 182, 212, ${0.1 + conn.energy * 0.2})`);
+      gradient.addColorStop(0.5, `rgba(6, 182, 212, ${0.2 + conn.energy * 0.3})`);
+      gradient.addColorStop(1, `rgba(6, 182, 212, ${0.1 + conn.energy * 0.2})`);
+
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 0.5 + conn.energy * 1;
+      ctx.stroke();
+
+      // Draw energy particle
+      const particleX = fromNode.x + dx * conn.progress;
+      const particleY = fromNode.y + dy * conn.progress;
+
+      ctx.beginPath();
+      ctx.arc(particleX, particleY, 2 + conn.energy * 2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(150, 220, 255, ${0.6 + conn.energy * 0.4})`;
+      ctx.fill();
+
+      // Glow effect
+      ctx.beginPath();
+      ctx.arc(particleX, particleY, 4 + conn.energy * 4, 0, Math.PI * 2);
+      const glowGradient = ctx.createRadialGradient(particleX, particleY, 0, particleX, particleY, 8 + conn.energy * 8);
+      glowGradient.addColorStop(0, `rgba(150, 220, 255, ${0.3 + conn.energy * 0.3})`);
+      glowGradient.addColorStop(1, 'rgba(150, 220, 255, 0)');
+      ctx.fillStyle = glowGradient;
+      ctx.fill();
+    };
+
+    // Draw node
+    const drawNode = (ctx: CanvasRenderingContext2D, node: Node, t: number) => {
+      const pulse = Math.sin(t * 2 + node.pulsePhase) * 0.5 + 0.5;
+      const energyPulse = Math.sin(t * 3 + node.pulsePhase * 2) * 0.5 + 0.5;
+
+      // Inner glow
+      const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.size * 3);
+      glowGradient.addColorStop(0, `rgba(150, 220, 255, ${0.2 + node.energy * 0.3})`);
+      glowGradient.addColorStop(1, 'rgba(150, 220, 255, 0)');
+      ctx.fillStyle = glowGradient;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.size * 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw shape
+      if (node.type === 'sphere') {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size * (0.8 + pulse * 0.4), 0, Math.PI * 2);
+        const fillGradient = ctx.createRadialGradient(node.x - node.size * 0.3, node.y - node.size * 0.3, 0, node.x, node.y, node.size);
+        fillGradient.addColorStop(0, `rgba(255, 255, 255, ${0.8 + node.energy * 0.2})`);
+        fillGradient.addColorStop(0.5, `rgba(150, 220, 255, ${0.6 + node.energy * 0.4})`);
+        fillGradient.addColorStop(1, `rgba(6, 182, 212, ${0.4 + node.energy * 0.3})`);
+        ctx.fillStyle = fillGradient;
+        ctx.fill();
+      } else {
+        drawHexagon(ctx, node.x, node.y, node.size * (0.8 + pulse * 0.4));
+        ctx.fillStyle = `rgba(150, 220, 255, ${0.5 + node.energy * 0.3})`;
+        ctx.fill();
+        ctx.strokeStyle = `rgba(6, 182, 212, ${0.7 + node.energy * 0.3})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // Outer ring
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.size * (1.2 + energyPulse * 0.3), 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(6, 182, 212, ${0.3 + energyPulse * 0.3})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    };
+
+    // Draw orbiting rings
+    const drawOrbitingRings = (ctx: CanvasRenderingContext2D, centerX: number, centerY: number, t: number) => {
+      const rings = [
+        { radius: 80, speed: 0.5, width: 1 },
+        { radius: 120, speed: 0.3, width: 1.5 },
+        { radius: 160, speed: 0.2, width: 0.5 },
+      ];
+
+      rings.forEach((ring, i) => {
+        const angle = t * ring.speed + (i * Math.PI / 3);
+        const x = centerX + Math.cos(angle) * ring.radius * 0.1;
+        const y = centerY + Math.sin(angle) * ring.radius * 0.1;
+
+        ctx.beginPath();
+        ctx.arc(centerX + x, centerY + y, ring.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(6, 182, 212, ${0.1 + Math.sin(t * 2 + i) * 0.05})`;
+        ctx.lineWidth = ring.width;
+        ctx.stroke();
+
+        // Arc segments
+        for (let j = 0; j < 3; j++) {
+          const startAngle = angle + (j * Math.PI * 2 / 3);
+          const endAngle = startAngle + Math.PI / 4;
+          ctx.beginPath();
+          ctx.arc(centerX + x, centerY + y, ring.radius, startAngle, endAngle);
+          ctx.strokeStyle = `rgba(150, 220, 255, ${0.2 + Math.sin(t * 3 + i + j) * 0.1})`;
+          ctx.lineWidth = ring.width + 0.5;
+          ctx.stroke();
+        }
+      });
+    };
+
+    // Draw circuit traces
+    const drawCircuitTraces = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number) => {
+      const traces = 8;
+      for (let i = 0; i < traces; i++) {
+        const angle = (i / traces) * Math.PI * 2 + t * 0.1;
+        const innerRadius = Math.min(W, H) * 0.4;
+        const outerRadius = Math.min(W, H) * 0.45;
+
+        const x1 = W / 2 + Math.cos(angle) * innerRadius;
+        const y1 = H / 2 + Math.sin(angle) * innerRadius;
+        const x2 = W / 2 + Math.cos(angle + 0.2) * outerRadius;
+        const y2 = H / 2 + Math.sin(angle + 0.2) * outerRadius;
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = `rgba(6, 182, 212, ${0.05 + Math.sin(t * 2 + i) * 0.03})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    };
+
+    // Draw spike propagation
+    const drawSpikePropagation = (ctx: CanvasRenderingContext2D, t: number) => {
+      // Randomly trigger spikes
+      if (Math.random() < 0.05 && nodes.length > 0) {
+        const randomNode = Math.floor(Math.random() * nodes.length);
+        spikes.push({
+          nodeIndex: randomNode,
+          progress: 0,
+          intensity: 0.5 + Math.random() * 0.5,
+        });
+      }
+
+      // Update and draw spikes
+      spikes = spikes.filter(spike => {
+        spike.progress += 0.02;
+        if (spike.progress > 1) return false;
+
+        const node = nodes[spike.nodeIndex];
+        if (!node) return false;
+
+        // Draw spike wave
+        const radius = spike.progress * 100;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(150, 220, 255, ${spike.intensity * (1 - spike.progress) * 0.5})`;
+        ctx.lineWidth = 2 * (1 - spike.progress);
+        ctx.stroke();
+
+        return true;
+      });
+    };
+
+    // Draw floating particles
+    const drawFloatingParticles = (ctx: CanvasRenderingContext2D, W: number, H: number) => {
+      floatingParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(150, 220, 255, ${p.alpha})`;
+        ctx.fill();
+      });
+    };
+
+    // Draw text overlay
+    const drawTextOverlay = (ctx: CanvasRenderingContext2D, W: number, H: number) => {
+      const text = "SPIKING NEURAL NETWORKS × EDGE DEPLOYMENT";
+      ctx.font = "10px var(--font-inter)";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "bottom";
+
+      // Text glow
+      ctx.shadowColor = "rgba(150, 220, 255, 0.8)";
+      ctx.shadowBlur = 15;
+      ctx.fillStyle = "rgba(150, 220, 255, 0.9)";
+      ctx.fillText(text, W / 2, H - 30);
+
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = "rgba(150, 220, 255, 0.5)";
+      ctx.lineWidth = 0.5;
+      ctx.strokeText(text, W / 2, H - 30);
+    };
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      const W = canvas.width;
+      const H = canvas.height;
+      initNodes(W, H);
+      initConnections();
+      initFloatingParticles(W, H);
+    };
+
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+
+    const draw = () => {
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // Clear with dark background
+      ctx.fillStyle = "rgba(5, 10, 15, 0.1)";
+      ctx.fillRect(0, 0, W, H);
+
+      // Draw floating particles
+      drawFloatingParticles(ctx, W, H);
+
+      // Draw circuit traces
+      drawCircuitTraces(ctx, W, H, t);
+
+      // Draw orbiting rings
+      drawOrbitingRings(ctx, W / 2, H / 2, t);
+
+      // Draw connections
+      connections.forEach(conn => {
+        conn.energy = Math.sin(t * 2 + conn.from * 0.1) * 0.5 + 0.5;
+        drawConnection(ctx, conn, t);
+      });
+
+      // Draw nodes
+      nodes.forEach(node => {
+        node.energy = Math.sin(t * 2 + node.pulsePhase) * 0.5 + 0.5;
+        drawNode(ctx, node, t);
+      });
+
+      // Draw spike propagation
+      drawSpikePropagation(ctx, t);
+
+      // Draw text overlay
+      drawTextOverlay(ctx, W, H);
+
+      // Central reactor glow
+      const centerX = W / 2;
+      const centerY = H / 2;
+      const reactorGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 100);
+      reactorGradient.addColorStop(0, `rgba(150, 220, 255, ${0.1 + Math.sin(t * 2) * 0.05})`);
+      reactorGradient.addColorStop(0.5, `rgba(6, 182, 212, ${0.05})`);
+      reactorGradient.addColorStop(1, 'rgba(6, 182, 212, 0)');
+      ctx.fillStyle = reactorGradient;
+      ctx.fillRect(0, 0, W, H);
+
+      t += 0.016;
+      animId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
+// ============================================
 // TEASER SECTION
 // ============================================
 function TeaserSection() {
@@ -271,32 +724,7 @@ function TeaserSection() {
                 boxShadow: "inset 0 0 60px rgba(6, 182, 212, 0.1), 0 0 40px rgba(6, 182, 212, 0.15)"
               }}
             >
-              {/* Animated self-drawing grid */}
-              <div className="absolute inset-0 grid-lines-animated" />
-              
-              {/* Radial glow center - arc reactor style */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full"
-                style={{
-                  background: "radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(8, 145, 178, 0.1) 40%, transparent 70%)",
-                  filter: "blur(20px)"
-                }}
-              />
-              
-              {/* Tech scan lines */}
-              <div className="absolute inset-0 opacity-30"
-                style={{
-                  background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6, 182, 212, 0.03) 2px, rgba(6, 182, 212, 0.03) 4px)"
-                }}
-              />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center relative z-10">
-                  <Cpu className="w-20 h-20 text-cyan-400/60 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]" strokeWidth={0.5} />
-                  <p className="text-sm text-cyan-200/70 font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
-                    Spiking Neural Networks × Edge Deployment
-                  </p>
-                </div>
-              </div>
+              <SpikingNeuralReactor />
               
               {/* Corner tech brackets */}
               <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-cyan-500/40" />
