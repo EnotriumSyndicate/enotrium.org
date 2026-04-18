@@ -859,7 +859,6 @@ function HSIDashboard() {
           { label: 'Potassium', id: 'b-k', val: '24.9%', color: '#c09020' },
           { label: 'Moisture', id: 'b-m', val: '65.6%', color: '#2080c0' },
           { label: 'pH Level', id: 'b-ph', val: '6.8', color: '#28a040' },
-          { label: 'Org. Matter', id: 'b-om', val: '3.5%', color: '#8040c0' },
         ].map(bar => (
           <div key={bar.id} style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
             <div style={{ width: '52px', color: '#6a8898', fontSize: '9px', flexShrink: 0 }}>{bar.label}</div>
@@ -927,8 +926,8 @@ function HSIDashboard() {
             padding: '3px 0',
             borderBottom: '1px solid #0e1820'
           }}>
-            <div style={{ color: '#506070', fontSize: '9px' }}>{kv.key}</div>
-            <div style={{ color: kv.neutral ? '#8aaabb' : '#e03030', fontSize: '9px' }}>{kv.val}</div>
+            <div style={{ color: '#ffffff', fontSize: '9px' }}>{kv.key}</div>
+            <div style={{ color: kv.neutral ? '#ffffff' : '#e03030', fontSize: '9px' }}>{kv.val}</div>
           </div>
         ))}
         <div style={{
@@ -955,8 +954,8 @@ function HSIDashboard() {
             padding: '3px 0',
             borderBottom: '1px solid #0e1820'
           }}>
-            <div style={{ color: '#506070', fontSize: '9px' }}>{kv.key}</div>
-            <div style={{ color: kv.neutral ? '#8aaabb' : '#e03030', fontSize: '9px' }}>{kv.val}</div>
+            <div style={{ color: '#ffffff', fontSize: '9px' }}>{kv.key}</div>
+            <div style={{ color: kv.neutral ? '#ffffff' : '#e03030', fontSize: '9px' }}>{kv.val}</div>
           </div>
         ))}
         <div style={{
@@ -982,7 +981,7 @@ function HSIDashboard() {
             alignItems: 'center',
             padding: '3px 0'
           }}>
-            <div style={{ color: '#506070', fontSize: '9px' }}>{toxin.name}</div>
+            <div style={{ color: '#ffffff', fontSize: '9px' }}>{toxin.name}</div>
             <div style={{
               fontSize: '9px',
               color: toxin.level === 'high' ? '#e03030' : toxin.level === 'med' ? '#d07820' : '#28a048'
