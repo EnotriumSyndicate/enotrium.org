@@ -81,7 +81,7 @@ export default function LeadershipPage() {
 
         {/* Page Header */}
         <header className="mb-16 relative">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-start">
             <div className="flex items-end gap-4 mb-2">
               <span className="font-semibold text-base tracking-[0.05em] uppercase text-white pb-4">
                 Team
