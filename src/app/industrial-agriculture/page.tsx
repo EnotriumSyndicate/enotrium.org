@@ -8,7 +8,7 @@ export default function IndustrialAgriculturePage() {
     <div className="min-h-screen bg-white text-black font-[family-name:var(--font-inter)]">
       <Navbar lightScrollBg invertLogo darkText lightMegaMenu />
 
-      <main className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-32 pb-24">
+      <main className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-16 pb-24">
 
         {/* Page Header - Tektur hero */}
         <div className="mb-10 md:mb-16">
