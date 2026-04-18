@@ -33,7 +33,7 @@ export default function MissionPage() {
   return (
     <div className="bg-white text-black min-h-screen">
       {/* Use shared Navbar with light theme props */}
-      <Navbar invertLogo lightScrollBg darkText />
+      <Navbar lightScrollBg invertLogo darkText lightMegaMenu />
 
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 lg:px-16 max-w-[1400px] mx-auto">
