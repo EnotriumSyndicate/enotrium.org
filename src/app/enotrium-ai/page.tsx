@@ -767,7 +767,7 @@ function NewsletterSection() {
               Updates
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-8 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              Join the Spiking Frontier
+              Host Locally
             </h2>
             <p className="text-white/40 text-xl mb-12 font-[family-name:var(--font-inter)] font-light leading-relaxed">
               Subscribe to our Substack for the latest on spiking neural networks, edge deployment, and the future of efficient AI.
