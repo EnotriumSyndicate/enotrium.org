@@ -1281,11 +1281,8 @@ function RSNNSection() {
           </div>
 
           <div className="space-y-12">
-            <h3 className="text-3xl font-light text-white font-[family-name:var(--font-inter)]">
-              Field Programmable Gate Arrays (FPGAs)
-            </h3>
             <p className="text-white/50 text-lg leading-[1.7] font-[family-name:var(--font-inter)] font-light">
-              FPGAs serve as a critical bridge in Arthedain Labs' roadmap, enabling rapid prototyping and validation of our SNN innovations before scaling to custom ASICs. Their reconfigurability allows us to iterate on designs like our two-timescale Hebbian meta-learning rules, optimizing for real-time BCI adaptation while exploiting SNN sparsity for post-Transformer efficiency.
+              FPGAs serve as a critical bridge in Enotrium's roadmap, enabling rapid prototyping and validation of our SNN innovations before scaling to custom ASICs. Their reconfigurability allows us to iterate on designs like our two-timescale Hebbian meta-learning rules, optimizing for real-time BCI adaptation while exploiting SNN sparsity for post-Transformer efficiency.
             </p>
 
             <div className="space-y-8">
