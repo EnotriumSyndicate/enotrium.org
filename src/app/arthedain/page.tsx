@@ -1426,28 +1426,16 @@ function NewsletterSection() {
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-8 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
               Contact
             </h2>
-            <p className="text-white/40 text-xl mb-8 font-[family-name:var(--font-inter)] font-light leading-relaxed">
-              Contact us for Model Access.
-            </p>
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={0.2} duration={1}>
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-8 py-5 bg-white/[0.03] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-white/[0.2] focus:bg-white/[0.05] transition-all duration-500 font-[family-name:var(--font-inter)] font-light tracking-wide"
-              />
-              <button
-                type="submit"
-                className="px-10 py-5 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] magnetic-btn focus-ring"
-              >
-                {submitted ? "Sent!" : "Send"}
-              </button>
-            </form>
+            <a
+              href="mailto:enotriumtech@atomicmail.io"
+              target="_self"
+              className="inline-block px-10 py-5 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] magnetic-btn focus-ring"
+            >
+              Contact Us
+            </a>
           </ScrollReveal>
         </div>
       </div>
