@@ -765,7 +765,7 @@ function SpikingNeuralNetworksSection() {
               Architecture
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-10 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              Spiking Neural Networks
+              Spike Patterns
             </h2>
             <p className="text-white/50 text-xl leading-[1.8] max-w-3xl font-[family-name:var(--font-inter)] font-light">
               Spiking Neural Networks are event-driven, biologically inspired, and possess extreme energy efficiency. They fire only when needed — unlike transformers that continuously consume power regardless of input. This is the <span className="text-white font-medium">massive advantage</span> over wasteful transformer architecture.
