@@ -39,7 +39,7 @@ const megaMenuColumns = [
       { label: "Badlands", href: "/badlands" },
       { label: "AIP", href: "/aip" },
       { label: "Icarus", href: "/aip/icarus" },
-      { label: "EnotriumAI", href: "https://www.enotriumai.org" },
+      { label: "EnotriumAI", href: "/enotrium-ai" },
     ],
   },
   {
