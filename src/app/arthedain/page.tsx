@@ -1242,6 +1242,152 @@ function MetricsSection() {
 }
 
 // ============================================
+// RSNN TECHNICAL SUMMARY SECTION
+// ============================================
+function RSNNSection() {
+  return (
+    <section className="relative py-32 bg-[#0a0a0a] overflow-hidden">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
+        <ScrollReveal animation="fade-up" duration={1}>
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white font-[family-name:var(--font-inter)] text-balance leading-[1.1] mb-4">
+              Recurrent Spiking Neural Network (RSNN) with Leaky Integrate-and-Fire (LIF) neurons
+            </h2>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 font-[family-name:var(--font-inter)] font-medium">
+              Technical Summary
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Neuron Model – Leaky Integrate-and-Fire (LIF):
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Subthreshold dynamics governed by τ_m dV/dt = - (V - V_rest) + R I_syn(t), where V is membrane potential, τ_m is membrane time constant (leak), V_rest is resting potential, R is resistance, and I_syn(t) is synaptic current from weighted incoming spikes.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Spike Generation & Reset:
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  When V ≥ V_th (threshold), emit a binary spike (output = 1), then reset V to V_reset (often V_rest) with optional refractory period to mimic biological action potential.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Recurrent Structure:
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Hidden recurrent layer(s) with LIF neurons receive both external spike inputs (x_t) and recurrent spikes from previous timestep, enabling temporal integration and memory of past states without explicit recurrence unrolling.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Event-Driven & Sparse Computation:
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Processing only on spike arrival (asynchronous, no constant matrix ops), yielding drastic energy/latency savings (10–30x vs. GPU/Transformer benchmarks from CEC articles) and suitability for neuromorphic hardware.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Advantages Over Transformers for Edge/BCI Use:
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Linear-time complexity O(n) vs. O(n²); native handling of sparse, noisy, drifting signals (no frequent recalibration); O(1) memory for online learning (eligibility traces only) vs. O(T) BPTT graphs; biological plausibility via local Hebbian rules (avoids weight transport problem); enables on-chip, implantable adaptation to non-stationarities like electrode drift.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-light text-white mb-4 font-[family-name:var(--font-inter)]">
+                  • Performance in Context:
+                </h3>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Matches/exceeds Kalman filters and BPTT-SNNs on primate datasets; supports closed-loop resilience (learning from scratch, &lt;10% drop on disruptions); hardware-friendly for FPGA/ASIC prototyping toward commercial neuromorphic chips.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-10 border border-white/[0.06] bg-white/[0.01] mb-12">
+            <h3 className="text-2xl font-light text-white mb-6 font-[family-name:var(--font-inter)]">
+              Recurrent Spiking Neural Networks
+            </h3>
+            <p className="text-white/40 text-lg mb-4 font-[family-name:var(--font-inter)] font-light">
+              decoder for brain-computer interfaces (BCIs)
+            </p>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
+                  Leaky Integrate-and-Fire (LIF) neuron
+                </h4>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Predict continuous outputs such as 2D velocities (y_t), enabling real-time, adaptive neural decoding without backpropagation-through-time (BPTT).
+                </p>
+              </div>
+
+              <div>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Arthedain Labs' recurrent spiking neural network (RSNN) employs Leaky Integrate-and-Fire (LIF) neurons to mimic biological neural dynamics in a hardware-efficient, event-driven framework tailored for implantable BCIs. Unlike Transformer-based models with quadratic scaling and constant high energy demands, this RSNN integrates incoming spike currents into a leaky membrane potential that decays over time toward rest, fires a binary spike when crossing a threshold (then resets), and recurs recurrent connections to capture temporal dependencies in non-stationary neural signals.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            <h3 className="text-3xl font-light text-white font-[family-name:var(--font-inter)]">
+              Field Programmable Gate Arrays (FPGAs)
+            </h3>
+            <p className="text-white/50 text-lg leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+              FPGAs serve as a critical bridge in Arthedain Labs' roadmap, enabling rapid prototyping and validation of our SNN innovations before scaling to custom ASICs. Their reconfigurability allows us to iterate on biologically plausible designs like our two-timescale Hebbian meta-learning rules, optimizing for real-time BCI adaptation while exploiting SNN sparsity for post-Transformer efficiency.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
+                  Prototyping Custom SNN Architectures:
+                </h4>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  FPGAs facilitate hardware-aware mapping of our BPTT-free learning rules and dual eligibility traces (fast: 120ms; slow: 700ms) to digital logic. This supports testing on primate datasets (e.g., MC Maze, Zenodo Indy) with 28–35% memory savings over BPTT. Unlike fixed ASICs (e.g., Intel Loihi, IBM TrueNorth from CEC research), FPGAs enable quick tweaks for implantable power constraints. Recent examples include a 2025 Hindmarsh-Rose neuromorphic platform on Virtex-4 achieving 480 MHz operation with just 1% resource utilization, and a spiking attention NN accelerator hitting 94.28% accuracy on MNIST at 0.0004s/frame.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
+                  Energy and Sustainability Advantages:
+                </h4>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  Addressing Transformer's unsustainable GPU scaling (e.g., high water/electricity demands), FPGAs deliver 10–30x energy savings for SNNs via event-driven computation.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
+                  Flexibility for Evolving AI Models:
+                </h4>
+                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                  As AI evolves beyond Transformers, FPGAs' reprogrammability supports experimentation with neuromorphic alternatives and hybrid/multi-timescale SNNs. Unlike matrix-optimized GPUs, they ensure deterministic low-latency for tasks like neural decoding.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
 // NEWSLETTER SECTION
 // ============================================
 function NewsletterSection() {
@@ -1329,6 +1475,7 @@ export default function EnotriumAIPage() {
       <OurStorySection />
       <WhySpikingSection />
       <MetricsSection />
+      <RSNNSection />
       <NewsletterSection />
 
       <Footer />
