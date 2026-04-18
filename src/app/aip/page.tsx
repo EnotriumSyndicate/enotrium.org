@@ -196,7 +196,7 @@ export default function AIPPage() {
       {/* Middle text section — bg matches fade so transition is seamless */}
       <section className="bg-[#0a0a0a] px-6 lg:px-16 py-28">
         <div className="max-w-[1400px] mx-auto space-y-20">
-          <h2 className="text-4xl sm:text-2xl lg:text-5xl font-light leading-tight">
+          <h2 className="text-4xl sm:text-2xl lg:text-5xl font-light leading-tight font-[family-name:var(--font-inter)]">
             Stay ahead of Commodities Futures Markets by understanding the Volume that shapes them
           </h2>
         </div>
