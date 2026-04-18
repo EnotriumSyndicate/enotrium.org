@@ -574,7 +574,8 @@ export default function IcarusPage() {
       <HeroSection />
       <WhatIsIcarusSection />
       <CapabilitiesSection />
-      <TheNeuralEarthSection />
+      <TechnologySection />
+      <WhyItMattersSection />
       <LivePerceptionSection />
       <TheFrontierSection />
 
