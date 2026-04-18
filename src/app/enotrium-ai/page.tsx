@@ -367,7 +367,7 @@ function SpikingNeuralNetworksSection() {
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
             <blockquote className="text-2xl md:text-3xl lg:text-4xl text-white/60 font-extralight leading-[1.5] font-[family-name:var(--font-inter)] text-center text-balance">
-              &ldquo;Transformers are silicon waste. Spiking neural nets are biological elegance. The choice is obvious.&rdquo;
+              &ldquo;Transformer based Models are capital intensive and waste. Spiking neural nets follow patterns of elegance and efficency. On edge devices, the choice is obvious.&rdquo;
             </blockquote>
 
             <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -581,7 +581,7 @@ function OurStorySection() {
                 <p className="text-red-200/80 text-xl font-light font-[family-name:var(--font-inter)] leading-relaxed relative z-10"
                   style={{ textShadow: "0 0 20px rgba(239, 68, 68, 0.3)" }}
                 >
-                  &ldquo;Transformers are silicon waste. Spiking neural nets are biological elegance. The choice is obvious.&rdquo;
+                  &ldquo;Transformer based Models are capital intensive and waste. Spiking neural nets follow patterns of elegance and efficency. On edge devices, the choice is obvious.&rdquo;
                 </p>
               </div>
             </div>
