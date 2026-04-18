@@ -84,6 +84,7 @@ export function Navbar({
 
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverZoneCount = useRef(0);
+  const navbarRef = useRef<HTMLElement>(null);
 
   const CLOSE_DELAY = 4000;
 
@@ -197,8 +198,23 @@ export function Navbar({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && megaOpen) closeMega();
     };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [megaOpen, closeMega]);
+
+  // ── Click outside handler ─────────────────────────────────────────────────
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navbarRef.current && !navbarRef.current.contains(e.target as Node)) {
+        closeMega();
+      }
+    };
+
+    if (megaOpen) {
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }
   }, [megaOpen, closeMega]);
 
   // ── Cleanup timers ────────────────────────────────────────────────────────
@@ -216,6 +232,7 @@ export function Navbar({
   return (
     <>
       <nav
+        ref={navbarRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           lightScrollBg
             ? "bg-white border-b border-black/10"
