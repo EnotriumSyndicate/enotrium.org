@@ -754,10 +754,6 @@ function WhyEnotriumSection() {
                 Why ENOTRIUM
               </h2>
             </div>
-
-            <p className="text-white/30 text-base font-[family-name:var(--font-inter)] font-light">
-              Navigate to explore
-            </p>
           </div>
         </ScrollReveal>
 
