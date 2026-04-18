@@ -674,14 +674,11 @@ function OurStorySection() {
                 <div className="absolute bottom-2 left-2 w-6 h-6 border-l border-b border-red-500/40" />
                 <div className="absolute bottom-2 right-2 w-6 h-6 border-r border-b border-red-500/40" />
                 
-                <p className="text-red-400/60 text-xs font-medium tracking-[0.25em] uppercase mb-4 font-[family-name:var(--font-inter)] relative z-10">
-                  Our Compass
-                </p>
                 <p className="text-red-200/80 text-xl font-light font-[family-name:var(--font-inter)] leading-relaxed relative z-10"
                   style={{ textShadow: "0 0 20px rgba(239, 68, 68, 0.3)" }}
                 >
-                  &ldquo;Technology should serve people, farmers, and doers,
-                  not the other way around.&rdquo;
+                  Technology should serve people, farmers, and doers,
+                  not the other way around.
                 </p>
               </div>
             </div>
