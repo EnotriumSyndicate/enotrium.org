@@ -1023,7 +1023,7 @@ const benefits = [
   },
   {
     icon: Leaf,
-    title: "Biological Inspiration Over Silicon Waste",
+    title: "Neuron Based Patterns",
     description: "Spiking neural nets mimic real neurons. Elegant, efficient, and sustainable by design.",
   },
 ];
