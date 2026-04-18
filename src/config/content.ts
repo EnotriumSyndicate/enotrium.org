@@ -57,7 +57,7 @@ export const siteConfig: SiteConfig = {
   },
   mission: {
     label: "Enotrium",
-    text: "Enotrium exists to build next generation infrastructure for industrial agriculture. We will produce technology to make every farm autonomous and regenerative.",
+    text: "Enotrium exists to build next generation infrastructure for industrial agriculture. Technology will make every farm autonomous and regenerative.",
     cta: "Invective",
     ctaLink: "/invective",
   },
