@@ -1310,32 +1310,6 @@ function RSNNSection() {
             </div>
           </div>
 
-          <div className="p-10 border border-white/[0.06] bg-white/[0.01] mb-12">
-            <h3 className="text-2xl font-light text-white mb-6 font-[family-name:var(--font-inter)]">
-              Recurrent Spiking Neural Networks
-            </h3>
-            <p className="text-white/40 text-lg mb-4 font-[family-name:var(--font-inter)] font-light">
-              decoder for brain-computer interfaces (BCIs)
-            </p>
-
-            <div className="space-y-6">
-              <div>
-                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
-                  Leaky Integrate-and-Fire (LIF) neuron
-                </h4>
-                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
-                  Predict continuous outputs such as 2D velocities (y_t), enabling real-time, adaptive neural decoding without backpropagation-through-time (BPTT).
-                </p>
-              </div>
-
-              <div>
-                <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
-                  Arthedain Labs' recurrent spiking neural network (RSNN) employs Leaky Integrate-and-Fire (LIF) neurons to mimic biological neural dynamics in a hardware-efficient, event-driven framework tailored for implantable BCIs. Unlike Transformer-based models with quadratic scaling and constant high energy demands, this RSNN integrates incoming spike currents into a leaky membrane potential that decays over time toward rest, fires a binary spike when crossing a threshold (then resets), and recurs recurrent connections to capture temporal dependencies in non-stationary neural signals.
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="space-y-12">
             <h3 className="text-3xl font-light text-white font-[family-name:var(--font-inter)]">
               Field Programmable Gate Arrays (FPGAs)
