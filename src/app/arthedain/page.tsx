@@ -194,7 +194,7 @@ function HeroSection() {
               While frontier labs waste gigawatts on ever-larger transformer models that serve only the elite, we create <span className="text-white font-medium">sovereign, low-power, neuron based intelligence</span> that actually serves humanity.
             </p>
             <p className="text-balance">
-              Frontier labs are failing humanity. Spiking neural nets + local LLMs are the only viable path. Artificial Super Intelligence, deployed across local networks.
+              Frontier labs are failing humanity. Spiking neural nets + local LLMs are the only viable path to Artificial Super Intelligence, deployed across local networks and in humanity's service.
             </p>
             <p className="text-white/90 font-normal tracking-wide">
               This is the <span className="text-white font-medium">only viable path forward</span>.
