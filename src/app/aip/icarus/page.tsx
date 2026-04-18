@@ -242,7 +242,7 @@ function WhatIsIcarusSection() {
 
           <div className="space-y-8 text-white/50 text-xl md:text-2xl leading-[1.9] font-[family-name:var(--font-inter)] font-light">
             <p className="text-balance">
-              Icarus is the <span className="text-white font-medium">nervous system of the Earth</span> — a hyperdimensional spiking neural network that breathes with the soil.
+              Icarus is the <span className="text-white font-medium">nervous system of the Earth</span> — a hyperdimensional spiking neural network that understands the earth.
             </p>
             <p className="text-balance">
               Through drone-mounted hyperspectral sensors, it <span className="text-white font-medium">perceives</span> what human eyes cannot: the invisible chemical dance of nutrients, contaminants, and microbial life beneath our feet.
