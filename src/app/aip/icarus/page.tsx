@@ -23,8 +23,10 @@ import {
 function HSIDashboard() {
   const cubeCanvasRef = useRef<HTMLCanvasElement>(null);
   const spectralCanvasRef = useRef<HTMLCanvasElement>(null);
+  const dotCanvasRef = useRef<HTMLCanvasElement>(null);
   const [feedLines, setFeedLines] = useState<Array<{ color: string; text: string }>>([]);
   const [barWidths, setBarWidths] = useState<Record<string, number>>({});
+  const [coordReadout, setCoordReadout] = useState('36.8°N  37.1°E');
 
   // Initialize composition bars animation
   useEffect(() => {
@@ -255,6 +257,163 @@ function HSIDashboard() {
     addFeedLine();
     const interval = setInterval(addFeedLine, 2400);
     return () => clearInterval(interval);
+  }, []);
+
+  // Initialize dot-cluster contamination footprint
+  useEffect(() => {
+    const canvas = dotCanvasRef.current;
+    if (!canvas) return;
+
+    let animId: number;
+
+    const initDotMap = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      canvas.width = parent.offsetWidth || 236;
+      canvas.height = parent.offsetHeight || 155;
+      const W = canvas.width;
+      const H = canvas.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Zone definitions
+      const zones: Array<{ cx: number; cy: number; rx: number; ry: number; type: string; count: number; label: string }> = [
+        { cx: 0.15, cy: 0.22, rx: 0.11, ry: 0.14, type: 'clean', count: 90, label: 'Z1' },
+        { cx: 0.42, cy: 0.20, rx: 0.10, ry: 0.12, type: 'clean', count: 75, label: 'Z2' },
+        { cx: 0.72, cy: 0.28, rx: 0.20, ry: 0.22, type: 'voc',   count: 200, label: 'Z3' },
+        { cx: 0.18, cy: 0.60, rx: 0.12, ry: 0.13, type: 'clean', count: 80, label: 'Z4' },
+        { cx: 0.50, cy: 0.62, rx: 0.16, ry: 0.18, type: 'pfas',  count: 140, label: 'Z5' },
+        { cx: 0.80, cy: 0.70, rx: 0.10, ry: 0.12, type: 'clean', count: 65, label: 'Z6' },
+      ];
+
+      const typeColor: Record<string, { fill: string; ring: string }> = {
+        voc:   { fill: '#e03030', ring: '#ff6060' },
+        pfas:  { fill: '#d07820', ring: '#ffaa40' },
+        clean: { fill: '#28a048', ring: '#50d070' },
+      };
+
+      // Pre-generate dot positions per zone
+      const allDots: Array<{ x: number; y: number; r: number; color: string; alpha: number; phase: number; zone: string }> = [];
+      zones.forEach(z => {
+        const col = typeColor[z.type];
+        for (let i = 0; i < z.count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const rad   = Math.pow(Math.random(), 0.6);
+          const dx    = Math.cos(angle) * rad * z.rx * W;
+          const dy    = Math.sin(angle) * rad * z.ry * H;
+          allDots.push({
+            x:     z.cx * W + dx,
+            y:     z.cy * H + dy,
+            r:     0.8 + Math.random() * 1.6,
+            color: col.fill,
+            alpha: 0.55 + Math.random() * 0.45,
+            phase: Math.random() * Math.PI * 2,
+            zone:  z.label,
+          });
+        }
+      });
+
+      // Sample points
+      const samplePts = [
+        { x: 0.22 * W, y: 0.35 * H },
+        { x: 0.48 * W, y: 0.18 * H },
+        { x: 0.68 * W, y: 0.42 * H },
+        { x: 0.55 * W, y: 0.72 * H },
+        { x: 0.82 * W, y: 0.55 * H },
+        { x: 0.35 * W, y: 0.80 * H },
+        { x: 0.10 * W, y: 0.72 * H },
+      ];
+
+      const drawGrid = () => {
+        ctx.strokeStyle = 'rgba(20,50,60,0.6)';
+        ctx.lineWidth = 0.5;
+        for (let x = 0; x <= W; x += W / 6) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+        }
+        for (let y = 0; y <= H; y += H / 4) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+      };
+
+      let pulseR = 0;
+      const pulseCX = zones[2].cx * W;
+      const pulseCY = zones[2].cy * H;
+      let t = 0;
+
+      const render = () => {
+        t += 0.018;
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.fillStyle = '#04080c';
+        ctx.fillRect(0, 0, W, H);
+
+        drawGrid();
+
+        zones.forEach(z => {
+          const col = typeColor[z.type];
+          ctx.beginPath();
+          ctx.ellipse(z.cx * W, z.cy * H, z.rx * W, z.ry * H, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = col.fill + '18';
+          ctx.lineWidth   = 1;
+          ctx.stroke();
+        });
+
+        pulseR = (pulseR + 0.7) % 38;
+        const pulseAlpha = Math.max(0, 1 - pulseR / 38) * 0.5;
+        ctx.beginPath();
+        ctx.arc(pulseCX, pulseCY, pulseR + 8, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(224,48,48,${pulseAlpha.toFixed(3)})`;
+        ctx.lineWidth   = 1.5;
+        ctx.stroke();
+
+        allDots.forEach(d => {
+          const flicker = 0.85 + Math.sin(t * 1.4 + d.phase) * 0.15;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fillStyle = d.color + Math.round(d.alpha * flicker * 255).toString(16).padStart(2, '0');
+          ctx.fill();
+        });
+
+        samplePts.forEach((p, i) => {
+          const pulse2 = 0.5 + Math.sin(t * 0.8 + i * 1.1) * 0.5;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(200,208,32,${(0.4 + pulse2 * 0.5).toFixed(2)})`;
+          ctx.lineWidth   = 0.8;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 0.8, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(200,208,32,0.7)';
+          ctx.fill();
+        });
+
+        ctx.font = '6px Courier New';
+        zones.forEach(z => {
+          const col = typeColor[z.type];
+          ctx.fillStyle = col.ring + 'cc';
+          ctx.fillText(z.label, z.cx * W - 6, z.cy * H - z.ry * H * 0.7);
+        });
+
+        const latOff = (Math.sin(t * 0.12) * 0.04).toFixed(2);
+        const lonOff = (Math.cos(t * 0.09) * 0.03).toFixed(2);
+        setCoordReadout(`${(36.8 + parseFloat(latOff)).toFixed(2)}°N  ${(37.1 + parseFloat(lonOff)).toFixed(2)}°E`);
+
+        animId = requestAnimationFrame(render);
+      };
+
+      render();
+    };
+
+    initDotMap();
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(animId);
+      setTimeout(initDotMap, 120);
+    });
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', () => {});
+    };
   }, []);
 
   return (
@@ -570,6 +729,37 @@ function HSIDashboard() {
             }}>{toxin.count}</div>
           </div>
         ))}
+
+        {/* CONTAMINATION FOOTPRINT */}
+        <div style={{
+          margin: '12px 0 6px',
+          fontSize: '8px',
+          letterSpacing: '0.14em',
+          color: '#e03030',
+          textTransform: 'uppercase',
+          paddingBottom: '4px',
+          borderBottom: '1px solid #1a2f36'
+        }}>CONTAMINATION FOOTPRINT</div>
+        <div style={{ position: 'relative', width: '100%', height: '155px', background: '#04080c', border: '1px solid #102028', overflow: 'hidden' }}>
+          <canvas ref={dotCanvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
+          {/* Legend */}
+          <div style={{ position: 'absolute', bottom: '5px', left: '6px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '7px', letterSpacing: '0.08em', color: '#7a9aaa' }}>
+              <span style={{ display: 'inline-block', width: '7px', height: '7px', borderRadius: '50%', background: '#e03030', opacity: 0.9 }}></span>VOC / BTEX
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '7px', letterSpacing: '0.08em', color: '#7a9aaa' }}>
+              <span style={{ display: 'inline-block', width: '7px', height: '7px', borderRadius: '50%', background: '#d07820', opacity: 0.9 }}></span>PFAS / Dioxin
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '7px', letterSpacing: '0.08em', color: '#7a9aaa' }}>
+              <span style={{ display: 'inline-block', width: '7px', height: '7px', borderRadius: '50%', background: '#28a048', opacity: 0.9 }}></span>Clean / Nominal
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '7px', letterSpacing: '0.08em', color: '#7a9aaa' }}>
+              <span style={{ display: 'inline-block', width: '7px', height: '7px', borderRadius: '50%', border: '1px solid #c8d020', background: 'transparent' }}></span>Sample Point
+            </div>
+          </div>
+          {/* Coord readout */}
+          <div style={{ position: 'absolute', top: '5px', right: '6px', fontSize: '7px', letterSpacing: '0.08em', color: '#304858' }}>{coordReadout}</div>
+        </div>
       </div>
 
       {/* KEY FINDINGS */}
