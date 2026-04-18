@@ -528,7 +528,7 @@ function TheFrontierSection() {
 
           <div className="space-y-8 text-white/50 text-xl md:text-2xl leading-[1.9] font-[family-name:var(--font-inter)] font-light mb-16">
             <p className="text-balance">
-              Icarus is not just technology — it's a movement to give the Earth a nervous system.
+              Icarus is autonomous oversight for the earth, a nervous system for agriculture.
             </p>
             <p className="text-balance">
               We partner with farmers, research institutions, and regenerative agriculture pioneers to deploy hyperspectral perception across the planet.
