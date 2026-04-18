@@ -194,7 +194,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 mt-16">
             <button
               onClick={scrollToWhat}
-              className="group magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0a0a0a] text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 hover:bg-neutral-200 font-[family-name:var(--font-inter)] focus-ring"
+              className="group magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] focus-ring"
             >
               Understand the Earth
               <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
@@ -433,14 +433,311 @@ function WhyItMattersSection() {
 // ============================================
 // LIVE PERCEPTION SECTION
 // ============================================
-function LivePerceptionSection() {
+function SeeThroughTheSoil() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [liveStatus, setLiveStatus] = useState<string>("LIVE");
+  const [spectralLock, setSpectralLock] = useState<string>("");
+  const [neuralNet, setNeuralNet] = useState<string>("");
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+    let t = 0;
+
+    // Particle types
+    type DataParticle = {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      color: string;
+      life: number;
+      maxLife: number;
+      type: 'background' | 'stream' | 'detection';
+    };
+
+    type DetectionPulse = {
+      x: number;
+      y: number;
+      label: string;
+      life: number;
+      maxLife: number;
+      color: string;
+    };
+
+    let particles: DataParticle[] = [];
+    let detectionPulses: DetectionPulse[] = [];
+
+    const detectionLabels = [
+      "PFAS", "Heavy Metals", "Microbial Activity", "Nutrient Density", "CO₂ Sequestration"
+    ];
+
+    const colors = [
+      "rgba(6, 182, 212, 0.8)",   // cyan
+      "rgba(236, 72, 153, 0.8)",  // magenta
+      "rgba(20, 184, 166, 0.8)",  // teal
+      "rgba(220, 38, 38, 0.8)",    // deep red
+    ];
+
+    const spawnParticle = (W: number, H: number, type: 'background' | 'stream' | 'detection'): DataParticle => {
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      if (type === 'background') {
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
+          size: 0.5 + Math.random() * 1.5,
+          color: color.replace('0.8', '0.3'),
+          life: Math.random() * 200,
+          maxLife: 150 + Math.random() * 100,
+          type: 'background',
+        };
+      } else if (type === 'stream') {
+        return {
+          x: Math.random() * W,
+          y: H + 10,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: -0.5 - Math.random() * 1,
+          size: 1 + Math.random() * 2,
+          color: color,
+          life: 0,
+          maxLife: 200 + Math.random() * 150,
+          type: 'stream',
+        };
+      } else {
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: 2 + Math.random() * 3,
+          color: color,
+          life: 0,
+          maxLife: 100 + Math.random() * 50,
+          type: 'detection',
+        };
+      }
+    };
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      const W = canvas.width;
+      const H = canvas.height;
+      particles = [];
+      detectionPulses = [];
+      
+      // Spawn background particles
+      for (let i = 0; i < 300; i++) {
+        particles.push(spawnParticle(W, H, 'background'));
+      }
+    };
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+
+    // Text overlay cycle
+    const textCycle = () => {
+      const texts = ["LIVE", "SPECTRAL LOCK", "SOIL NEURAL NET ACTIVE"];
+      const randomText = texts[Math.floor(Math.random() * texts.length)];
+      
+      if (Math.random() < 0.01) {
+        setLiveStatus(randomText);
+        setTimeout(() => setLiveStatus("LIVE"), 2000);
+      }
+      
+      if (Math.random() < 0.005) {
+        setSpectralLock("SPECTRAL LOCK");
+        setTimeout(() => setSpectralLock(""), 1500);
+      }
+      
+      if (Math.random() < 0.003) {
+        setNeuralNet("NEURAL NET ACTIVE");
+        setTimeout(() => setNeuralNet(""), 2000);
+      }
+    };
+
+    const draw = () => {
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // Clear with dark background
+      ctx.fillStyle = "rgba(10, 10, 10, 0.1)";
+      ctx.fillRect(0, 0, W, H);
+
+      // Draw soil layers (gradient bands)
+      const gradient = ctx.createLinearGradient(0, 0, 0, H);
+      gradient.addColorStop(0, "rgba(10, 10, 10, 0.8)");
+      gradient.addColorStop(0.3, "rgba(20, 30, 40, 0.6)");
+      gradient.addColorStop(0.6, "rgba(15, 25, 35, 0.6)");
+      gradient.addColorStop(1, "rgba(10, 10, 10, 0.8)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, W, H);
+
+      // Draw horizontal scanning lines
+      const scanY = (t * 0.5) % H;
+      ctx.strokeStyle = "rgba(6, 182, 212, 0.1)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, scanY);
+      ctx.lineTo(W, scanY);
+      ctx.stroke();
+
+      // Draw vertical scanning lines
+      const scanX = (t * 0.3) % W;
+      ctx.strokeStyle = "rgba(236, 72, 153, 0.08)";
+      ctx.beginPath();
+      ctx.moveTo(scanX, 0);
+      ctx.lineTo(scanX, H);
+      ctx.stroke();
+
+      // Update and draw particles
+      particles.forEach((p, index) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life++;
+
+        if (p.type === 'stream') {
+          if (p.y < -10 || p.life > p.maxLife) {
+            particles[index] = spawnParticle(W, H, 'stream');
+          }
+        } else if (p.type === 'detection') {
+          if (p.life > p.maxLife) {
+            particles[index] = spawnParticle(W, H, 'detection');
+          }
+        } else {
+          if (p.x < -10 || p.x > W + 10 || p.y < -10 || p.y > H + 10 || p.life > p.maxLife) {
+            particles[index] = spawnParticle(W, H, 'background');
+          }
+        }
+
+        const lifeAlpha = Math.min(1, p.life / 30) * Math.min(1, (p.maxLife - p.life) / 30);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color.replace(/[\d.]+\)$/, `${lifeAlpha.toFixed(2)})`);
+        ctx.fill();
+
+        // Glow effect for detection particles
+        if (p.type === 'detection') {
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = p.color;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      });
+
+      // Spawn stream particles
+      if (particles.filter(p => p.type === 'stream').length < 50 && Math.random() < 0.3) {
+        particles.push(spawnParticle(W, H, 'stream'));
+      }
+
+      // Spawn detection pulses
+      if (Math.random() < 0.005) {
+        detectionPulses.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          label: detectionLabels[Math.floor(Math.random() * detectionLabels.length)],
+          life: 0,
+          maxLife: 120,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+
+      // Draw detection pulses
+      detectionPulses = detectionPulses.filter(pulse => {
+        pulse.life++;
+        const progress = pulse.life / pulse.maxLife;
+        const alpha = Math.sin(progress * Math.PI);
+
+        // Draw pulse ring
+        ctx.beginPath();
+        ctx.arc(pulse.x, pulse.y, 20 + progress * 30, 0, Math.PI * 2);
+        ctx.strokeStyle = pulse.color.replace(/[\d.]+\)$/, `${(alpha * 0.5).toFixed(2)})`);
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Draw label
+        if (progress < 0.5) {
+          ctx.font = "10px Inter";
+          ctx.fillStyle = pulse.color.replace(/[\d.]+\)$/, `${alpha.toFixed(2)})`);
+          ctx.textAlign = "center";
+          ctx.fillText(pulse.label, pulse.x, pulse.y - 40);
+        }
+
+        return pulse.life < pulse.maxLife;
+      });
+
+      // Draw central soil cross-section (3D-like cube)
+      const centerX = W / 2;
+      const centerY = H / 2;
+      const cubeSize = Math.min(W, H) * 0.25;
+
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(t * 0.001);
+
+      // Draw cube faces with gradient
+      const faces = [
+        { x: 0, y: -cubeSize/2, w: cubeSize, h: cubeSize/2, color: "rgba(6, 182, 212, 0.15)" },
+        { x: -cubeSize/2, y: 0, w: cubeSize/2, h: cubeSize/2, color: "rgba(236, 72, 153, 0.15)" },
+        { x: 0, y: 0, w: cubeSize, h: cubeSize/2, color: "rgba(20, 184, 166, 0.15)" },
+      ];
+
+      faces.forEach(face => {
+        ctx.fillStyle = face.color;
+        ctx.fillRect(face.x, face.y, face.w, face.h);
+        ctx.strokeStyle = face.color.replace('0.15', '0.3');
+        ctx.lineWidth = 1;
+        ctx.strokeRect(face.x, face.y, face.w, face.h);
+      });
+
+      ctx.restore();
+
+      // Draw spectral wavelength bands
+      for (let i = 0; i < 5; i++) {
+        const bandY = (H / 5) * i + (Math.sin(t * 0.02 + i) * 10);
+        const gradient = ctx.createLinearGradient(0, bandY, W, bandY);
+        gradient.addColorStop(0, "rgba(6, 182, 212, 0)");
+        gradient.addColorStop(0.5, colors[i % colors.length].replace('0.8', '0.1'));
+        gradient.addColorStop(1, "rgba(6, 182, 212, 0)");
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, bandY - 2, W, 4);
+      }
+
+      textCycle();
+      t += 1;
+      animId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
   return (
     <section id="live-perception" className="relative py-32 md:py-48 bg-[#0a0a0a] overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-16">
         <ScrollReveal animation="fade-up" duration={1}>
-          <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-6 font-[family-name:var(--font-inter)] font-medium">
-            Live Perception
-          </p>
+          <div className="flex items-start justify-between mb-6">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 font-[family-name:var(--font-inter)] font-medium">
+              Live Perception
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <span className="text-[10px] tracking-[0.2em] uppercase text-red-400 font-[family-name:var(--font-inter)] font-medium">
+                {liveStatus}
+              </span>
+            </div>
+          </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-12 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
             See Through the Soil
@@ -453,40 +750,31 @@ function LivePerceptionSection() {
               boxShadow: "inset 0 0 100px rgba(6, 182, 212, 0.08), 0 0 60px rgba(6, 182, 212, 0.12)"
             }}
           >
-            {/* Radial glow center */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full"
-              style={{
-                background: "radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(8, 145, 178, 0.05) 40%, transparent 70%)",
-                filter: "blur(40px)"
-              }}
+            <canvas
+              ref={canvasRef}
+              style={{ width: "100%", height: "100%", display: "block" }}
             />
 
-            {/* Scan lines */}
-            <div className="absolute inset-0 opacity-20"
-              style={{
-                background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6, 182, 212, 0.03) 2px, rgba(6, 182, 212, 0.03) 4px)"
-              }}
-            />
+            {/* Overlay text elements */}
+            {spectralLock && (
+              <div className="absolute top-4 right-4 text-cyan-400/60 text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase animate-pulse">
+                {spectralLock}
+              </div>
+            )}
 
-            {/* Grid overlay */}
-            <div className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
-                `,
-                backgroundSize: "40px 40px",
-              }}
-            />
+            {neuralNet && (
+              <div className="absolute bottom-4 left-4 text-teal-400/60 text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase animate-pulse">
+                {neuralNet}
+              </div>
+            )}
 
             {/* Center content */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="text-center relative z-10">
-                <Eye className="w-16 h-16 text-cyan-400/50 mx-auto mb-6 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]" strokeWidth={0.5} />
-                <p className="text-cyan-200/60 text-sm font-[family-name:var(--font-inter)] tracking-[0.3em] uppercase">
+                <p className="text-cyan-200/60 text-sm font-[family-name:var(--font-inter)] tracking-[0.3em] uppercase mb-2">
                   Hyperspectral Perception Active
                 </p>
-                <p className="text-cyan-400/40 text-xs mt-2 font-[family-name:var(--font-inter)] tracking-widest">
+                <p className="text-cyan-400/40 text-xs font-[family-name:var(--font-inter)] tracking-widest">
                   [ DEMONSTRATION MODE ]
                 </p>
               </div>
@@ -541,7 +829,7 @@ function TheFrontierSection() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="mailto:contact@enotrium.org"
-              className="group magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0a0a0a] text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 hover:bg-neutral-200 font-[family-name:var(--font-inter)] focus-ring"
+              className="group magnetic-btn inline-flex items-center gap-3 px-8 py-4 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] focus-ring"
             >
               Request Early Access
               <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -576,7 +864,7 @@ export default function IcarusPage() {
       <CapabilitiesSection />
       <TechnologySection />
       <WhyItMattersSection />
-      <LivePerceptionSection />
+      <SeeThroughTheSoil />
       <TheFrontierSection />
 
       <Footer />
