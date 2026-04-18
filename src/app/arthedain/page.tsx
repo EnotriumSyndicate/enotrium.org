@@ -1281,15 +1281,17 @@ function RSNNSection() {
           </div>
 
           <div className="space-y-12">
-            <p className="text-white/50 text-lg leading-[1.7] font-[family-name:var(--font-inter)] font-light">
-              FPGAs serve as a critical bridge in Enotrium's roadmap, enabling rapid prototyping and validation of our SNN innovations before scaling to custom ASICs. Their reconfigurability allows us to iterate on designs like our two-timescale Hebbian meta-learning rules, optimizing for real-time BCI adaptation while exploiting SNN sparsity for post-Transformer efficiency.
-            </p>
+            <div>
+              <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
+                Prototyping Custom SNN Architectures:
+              </h4>
+              <p className="text-white/50 text-lg leading-[1.7] font-[family-name:var(--font-inter)] font-light">
+                FPGAs serve as a critical bridge in Enotrium's roadmap, enabling rapid prototyping and validation of our SNN innovations before scaling to custom ASICs. Their reconfigurability allows us to iterate on designs like our two-timescale Hebbian meta-learning rules, optimizing for real-time BCI adaptation while exploiting SNN sparsity for post-Transformer efficiency.
+              </p>
+            </div>
 
             <div className="space-y-8">
               <div>
-                <h4 className="text-xl font-medium text-white mb-3 font-[family-name:var(--font-inter)]">
-                  Prototyping Custom SNN Architectures:
-                </h4>
                 <p className="text-white/50 text-base leading-[1.7] font-[family-name:var(--font-inter)] font-light">
                   FPGAs facilitate hardware-aware mapping of our BPTT-free learning rules and dual eligibility traces (fast: 120ms; slow: 700ms) to digital logic. This supports testing on primate datasets (e.g., MC Maze, Zenodo Indy) with 28–35% memory savings over BPTT. Unlike fixed ASICs (e.g., Intel Loihi, IBM TrueNorth from CEC research), FPGAs enable quick tweaks for implantable power constraints. Recent examples include a 2025 Hindmarsh-Rose neuromorphic platform on Virtex-4 achieving 480 MHz operation with just 1% resource utilization, and a spiking attention NN accelerator hitting 94.28% accuracy on MNIST at 0.0004s/frame.
                 </p>
