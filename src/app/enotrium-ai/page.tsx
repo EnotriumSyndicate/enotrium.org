@@ -909,8 +909,8 @@ function SectionDivider() {
         className="absolute inset-0 opacity-70"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(150, 220, 255, 0.12) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(150, 220, 255, 0.12) 1px, transparent 1px)
+            linear-gradient(to right, rgba(180, 240, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(180, 240, 255, 0.15) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
@@ -918,9 +918,9 @@ function SectionDivider() {
 
       {/* Horizontal accent lines */}
       <div className="absolute inset-0 flex flex-col justify-center">
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(150,220,255,0.4)] to-transparent" />
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(150,220,255,0.3)] to-transparent mt-8 md:mt-12" />
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(150,220,255,0.4)] to-transparent mt-8 md:mt-12" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(180,240,255,0.5)] to-transparent" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(180,240,255,0.4)] to-transparent mt-8 md:mt-12" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[rgba(180,240,255,0.5)] to-transparent mt-8 md:mt-12" />
       </div>
 
       {/* Glowing dots */}
@@ -933,8 +933,8 @@ function SectionDivider() {
             top: `${dot.top}%`,
             width: `${dot.size}px`,
             height: `${dot.size}px`,
-            backgroundColor: "rgba(150, 220, 255, 1)",
-            boxShadow: "0 0 16px 4px rgba(150, 220, 255, 0.8), 0 0 32px 8px rgba(150, 220, 255, 0.5)",
+            backgroundColor: "rgba(180, 240, 255, 1)",
+            boxShadow: "0 0 16px 4px rgba(180, 240, 255, 0.9), 0 0 32px 8px rgba(180, 240, 255, 0.6)",
             animation: `pulse 4s ease-in-out ${dot.delay}s infinite`,
           }}
         />
@@ -943,11 +943,11 @@ function SectionDivider() {
       {/* Subtle ambient glow orbs */}
       <div
         className="absolute top-1/2 left-1/4 -translate-y-1/2 w-32 h-32 rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(150, 220, 255, 0.45), transparent)" }}
+        style={{ background: "radial-gradient(circle, rgba(180, 240, 255, 0.55), transparent)" }}
       />
       <div
         className="absolute top-1/2 right-1/4 -translate-y-1/2 w-24 h-24 rounded-full opacity-45 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(170, 230, 255, 0.4), transparent)" }}
+        style={{ background: "radial-gradient(circle, rgba(190, 245, 255, 0.5), transparent)" }}
       />
     </section>
   );
