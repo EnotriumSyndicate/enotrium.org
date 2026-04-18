@@ -787,12 +787,6 @@ function SeeThroughTheSoil() {
             <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-cyan-500/30" />
           </div>
         </ScrollReveal>
-
-        <ScrollReveal animation="fade-up" delay={0.4} duration={1}>
-          <p className="text-white/40 text-base leading-relaxed max-w-2xl mt-8 font-[family-name:var(--font-inter)] font-light text-center">
-            Live hyperspectral visualization coming soon. Icarus continuously processes spectral data streams to reveal soil composition in real time.
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );
