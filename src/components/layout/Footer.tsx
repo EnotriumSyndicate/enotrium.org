@@ -39,10 +39,10 @@ const footerColumns = [
   {
     heading: "PRODUCTS",
     links: [
-      { label: "Badlands", href: "/badlands" },
       { label: "AIP", href: "/aip" },
-      { label: "Icarus", href: "/aip/icarus" },
       { label: "EnotriumAI", href: "/enotrium-ai" },
+      { label: "Icarus", href: "/aip/icarus" },
+      { label: "Badlands", href: "/badlands" },
     ],
   },
   {
