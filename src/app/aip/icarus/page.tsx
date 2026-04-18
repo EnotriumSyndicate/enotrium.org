@@ -1224,7 +1224,7 @@ function WhatIsIcarusSection() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-16">
         <ScrollReveal animation="fade-up" duration={1}>
           <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-6 font-[family-name:var(--font-inter)] font-medium">
-            The Neural Earth
+            Spike Networks
           </p>
 
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-16 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
@@ -1326,7 +1326,7 @@ function CapabilitiesSection() {
 }
 
 // ============================================
-// THE NEURAL EARTH SECTION
+// Spike Networks SECTION
 // ============================================
 function TechnologySection() {
   const tech = [
@@ -1410,7 +1410,7 @@ function WhyItMattersSection() {
               Precise, hyperspectral perception for phytoremediation and agricultural security.
             </p>
             <p className="text-white/80 font-medium">
-              This is spectral consciousness. This is the neural Earth.
+              This is spectral consciousness. This is Spike Networks.
             </p>
           </div>
 
