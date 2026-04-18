@@ -746,9 +746,9 @@ function TeaserSection() {
 function SpikingNeuralNetworksSection() {
   const concepts = [
     { icon: Brain, label: "Event-Driven", desc: "Fires only when needed" },
-    { icon: Zap, label: "Ultra-Efficient", desc: "1000x less energy" },
-    { icon: Cpu, label: "Biologically Inspired", desc: "Like real neurons" },
-    { icon: Server, label: "True Edge", desc: "No cloud dependency" },
+    { icon: Zap, label: "Ultra-Efficient", desc: "100x less energy" },
+    { icon: Cpu, label: "Time Scaled", desc: "Like real neurons" },
+    { icon: Server, label: "True Edge", desc: "No cloud dependency, Online, on device" },
   ];
 
   return (
