@@ -270,6 +270,7 @@ function SpikingNeuralReactor() {
       speed: number;
       active: boolean;
       particles: number[];
+      energy: number;
     };
 
     // Spike type
@@ -358,6 +359,7 @@ function SpikingNeuralReactor() {
               speed: 0.005 + Math.random() * 0.01,
               active: true,
               particles: [],
+              energy: Math.random(), // Initialize energy property
             });
             nodes[i].connections.push(j);
             nodes[j].connections.push(i);
