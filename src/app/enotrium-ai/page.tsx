@@ -600,8 +600,8 @@ function SpikingNeuralReactor() {
 
     // Draw text overlay
     const drawTextOverlay = (ctx: CanvasRenderingContext2D, W: number, H: number) => {
-      const text = "SPIKING NEURAL NETWORKS × EDGE DEPLOYMENT";
-      ctx.font = "9px var(--font-inter)";
+      const text = "Arthedian";
+      ctx.font = "12px var(--font-inter)";
       ctx.textAlign = "center";
       ctx.textBaseline = "bottom";
 
@@ -720,7 +720,7 @@ function TeaserSection() {
           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={0.2} duration={1}>
-            <div className="relative aspect-[4/3] bg-[#050a0f] border border-cyan-500/30 overflow-hidden hover-lift group"
+            <div className="relative aspect-square bg-[#050a0f] border border-cyan-500/30 overflow-hidden hover-lift group"
               style={{
                 boxShadow: "inset 0 0 60px rgba(6, 182, 212, 0.1), 0 0 40px rgba(6, 182, 212, 0.15)"
               }}
