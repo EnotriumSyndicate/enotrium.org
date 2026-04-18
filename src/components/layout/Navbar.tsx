@@ -37,7 +37,7 @@ const megaMenuColumns = [
     heading: "PRODUCTS",
     links: [
       { label: "AIP", href: "/aip" },
-      { label: "Arthedain", href: "/enotrium-ai" },
+      { label: "Arthedain", href: "/arthedain" },
       { label: "Icarus", href: "/aip/icarus" },
       { label: "Badlands", href: "/badlands" },
     ],
