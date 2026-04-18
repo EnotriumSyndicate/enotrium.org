@@ -66,12 +66,12 @@ function AbstractField() {
     window.addEventListener("resize", resize, { passive: true });
 
     const flowX = (x: number, y: number, t: number) =>
-      Math.sin(x * 0.0025 + t * 0.4) * Math.cos(y * 0.003 + t * 0.25) +
-      Math.sin(x * 0.006 - y * 0.004 + t * 0.6) * 0.5;
+      Math.cos(x * 0.003 + t * 0.3) * Math.sin(y * 0.0025 + t * 0.35) +
+      Math.cos(x * 0.005 + y * 0.003 - t * 0.5) * 0.6;
 
     const flowY = (x: number, y: number, t: number) =>
-      Math.cos(x * 0.003 + t * 0.35) * Math.sin(y * 0.0025 - t * 0.4) +
-      Math.cos(x * 0.005 + y * 0.007 + t * 0.5) * 0.5;
+      Math.sin(x * 0.0025 - t * 0.4) * Math.cos(y * 0.003 + t * 0.3) +
+      Math.sin(x * 0.004 - y * 0.006 + t * 0.55) * 0.5;
 
     const draw = () => {
       const W = canvas.width;
