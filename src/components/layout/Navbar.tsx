@@ -84,7 +84,7 @@ export function Navbar({
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverZoneCount = useRef(0);
 
-  const CLOSE_DELAY = 300;
+  const CLOSE_DELAY = 4000;
 
   // ── Helpers ───────────────────────────────────────────────────────────────
   const closeMega = useCallback(() => {
