@@ -1160,6 +1160,79 @@ function WhySpikingSection() {
 }
 
 // ============================================
+// METRICS SECTION
+// ============================================
+function MetricsSection() {
+  return (
+    <section className="relative py-32 bg-[#0a0a0a] overflow-hidden">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
+        <ScrollReveal animation="fade-up" duration={1}>
+          <div className="mb-16">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
+              Arthedain SNNs
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+              Post-Transformer Efficiency at the Speed of Biology
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-8 border border-white/[0.06] bg-white/[0.01]">
+              <div className="text-5xl md:text-6xl font-light text-white mb-3 font-[family-name:var(--font-inter)]">
+                30x
+              </div>
+              <p className="text-white/50 text-lg font-[family-name:var(--font-inter)] font-light">
+                Higher energy efficiency (SynOp/J or TOPS/W vs. NVIDIA GPUs / Transformers)*
+              </p>
+            </div>
+
+            <div className="p-8 border border-white/[0.06] bg-white/[0.01]">
+              <div className="text-5xl md:text-6xl font-light text-white mb-3 font-[family-name:var(--font-inter)]">
+                91x
+              </div>
+              <p className="text-white/50 text-lg font-[family-name:var(--font-inter)] font-light">
+                Energy efficiency gains with biologically-plausible Hebbian meta-learning*
+              </p>
+            </div>
+
+            <div className="p-8 border border-white/[0.06] bg-white/[0.01]">
+              <div className="text-5xl md:text-6xl font-light text-white mb-3 font-[family-name:var(--font-inter)]">
+                28–35%
+              </div>
+              <p className="text-white/50 text-lg font-[family-name:var(--font-inter)] font-light">
+                Lower memory usage (vs. BPTT backpropagation)*
+              </p>
+            </div>
+
+            <div className="p-8 border border-white/[0.06] bg-white/[0.01]">
+              <div className="text-5xl md:text-6xl font-light text-white mb-3 font-[family-name:var(--font-inter)]">
+                80–95%+
+              </div>
+              <p className="text-white/50 text-lg font-[family-name:var(--font-inter)] font-light">
+                Lower effective GPU costs & 10x lower TCO (inferences / tokens / power)*
+              </p>
+            </div>
+
+            <div className="p-8 border border-white/[0.06] bg-white/[0.01]">
+              <div className="text-5xl md:text-6xl font-light text-white mb-3 font-[family-name:var(--font-inter)]">
+                50–100x
+              </div>
+              <p className="text-white/50 text-lg font-[family-name:var(--font-inter)] font-light">
+                Lower CO₂ emissions & water footprint (vs. Cloud data centers)*
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-white/30 text-sm font-[family-name:var(--font-inter)] font-light">
+            *Benchmarks derived from primate BCI datasets (MC Maze R ≥ 0.81, Zenodo Indy R ≥ 0.63), CEC neuromorphic comparisons (Akida 30x vs. NVIDIA), and closed-loop Hebbian online learning results. Event-driven sparsity + dual-timescale eligibility traces deliver real-time adaptation with 15–50 W neuromorphic power vs. hundreds of watts on GPUs.
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
 // NEWSLETTER SECTION
 // ============================================
 function NewsletterSection() {
@@ -1246,6 +1319,7 @@ export default function EnotriumAIPage() {
       <SectionDivider />
       <OurStorySection />
       <WhySpikingSection />
+      <MetricsSection />
       <NewsletterSection />
 
       <Footer />
