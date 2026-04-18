@@ -199,6 +199,21 @@ export default function AIPPage() {
           <h2 className="text-4xl sm:text-2xl lg:text-5xl font-light leading-tight font-[family-name:var(--font-inter)]">
             Stay ahead of Commodities Futures Markets by understanding the Volume that shapes them.
           </h2>
+
+          <div className="space-y-8">
+            <h3 className="text-3xl font-light text-white font-[family-name:var(--font-inter)]">
+              Enotrium Agri-Intelligence
+            </h3>
+            <p className="text-white/50 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
+              Agriculture represents the all too often dismissed foundational of the global economy and is critical to domestic industrial production. As the world faces increasing geopolitical pressures and rapid change, the optimized use of natural resources has never been more pressing.
+            </p>
+            <p className="text-white/50 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
+              Monitoring the world's supply chain at scale is an immense opportunity to shaping how it evolves. The rapid acquisition of real time data collection — including high-resolution satellites, IoT sensors, drones, and ground-based systems — is creating unprecedented opportunities to advance agrarian economies. The purpose of intelligence is to change outcomes.
+            </p>
+            <p className="text-white/50 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
+              Enotirum AIP's cuts through the overwhelming complexity of this ever-expanding data landscape by finding pressure points, high leverage trade posts and critical supply chain gaps. By transforming neglected, disparate datasets into coherent analytical frameworks, Enotirum AIP brings simplicity and confidence to the agri-industrial frontier.
+            </p>
+          </div>
         </div>
       </section>
 
