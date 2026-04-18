@@ -67,13 +67,17 @@ function AbstractField() {
     resize();
     window.addEventListener("resize", resize, { passive: true });
 
-    const flowX = (x: number, y: number, t: number) =>
-      Math.cos(x * 0.003 + t * 0.3) * Math.sin(y * 0.0025 + t * 0.35) +
-      Math.cos(x * 0.005 + y * 0.003 - t * 0.5) * 0.6;
+    const flowX = (x: number, y: number, t: number) => {
+      const targetX = x / canvas.width; // Normalized position (0 to 1)
+      const convergenceForce = (1 - targetX) * 0.8; // Stronger convergence toward right
+      return Math.cos(x * 0.003 + t * 0.3) * Math.sin(y * 0.0025 + t * 0.35) * 0.3 +
+             Math.cos(x * 0.005 + y * 0.003 - t * 0.5) * 0.3 +
+             convergenceForce * 0.5; // Add rightward convergence
+    };
 
     const flowY = (x: number, y: number, t: number) =>
-      Math.sin(x * 0.0025 - t * 0.4) * Math.cos(y * 0.003 + t * 0.3) +
-      Math.sin(x * 0.004 - y * 0.006 + t * 0.55) * 0.5;
+      Math.sin(x * 0.0025 - t * 0.4) * Math.cos(y * 0.003 + t * 0.3) * 0.3 +
+      Math.sin(x * 0.004 - y * 0.006 + t * 0.55) * 0.3;
 
     const draw = () => {
       const W = canvas.width;
@@ -101,7 +105,7 @@ function AbstractField() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(150, 220, 255,${alpha.toFixed(3)})`;
         ctx.fill();
       });
 
@@ -113,7 +117,7 @@ function AbstractField() {
           if (dist < 7000) {
             const topFade = Math.min(1, Math.min(particles[i].y, particles[j].y) / (H * 0.35));
             const alpha = (1 - dist / 7000) * 0.08 * topFade;
-            ctx.strokeStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+            ctx.strokeStyle = `rgba(150, 220, 255,${alpha.toFixed(3)})`;
             ctx.lineWidth = 0.4;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
