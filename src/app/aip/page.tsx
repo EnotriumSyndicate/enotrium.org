@@ -132,7 +132,7 @@ function AbstractField() {
 const features = [
   "Procurement Automation",
   "Free Trade Account",
-  "Zero Knowledge Email",
+  "Zero Knowledge Contracts",
   "ERP Intelligence",
   "Supply Chain Tracking",
   "Compliance Filing",
