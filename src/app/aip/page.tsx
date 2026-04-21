@@ -226,7 +226,7 @@ export default function AIPPage() {
               Enotrium Agri-Intelligence
             </h3>
             <p className="text-white/50 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
-              Agriculture represents the all too often dismissed foundational of the global economy and is critical to domestic industrial production. As the world faces increasing geopolitical pressures and rapid change, the optimized use of natural resources has never been more pressing.
+              Agriculture represents the all too often dismissed foundation of the global economy and is critical to domestic industrial production. As the world faces increasing geopolitical pressures and rapid change, the optimized use of natural resources has never been more pressing.
             </p>
             <p className="text-white/50 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
               Monitoring the world's supply chain at scale is an immense opportunity to shaping how it evolves. The rapid acquisition of real time data collection — including high-resolution satellites, IoT sensors, drones, and ground-based systems — is creating unprecedented opportunities to advance agrarian economies. The purpose of intelligence is to change outcomes.
