@@ -74,6 +74,13 @@ export default function MissionPage() {
         </div>
       </div>
 
+      {/* Investing Section */}
+      <section className="px-6 lg:px-16 py-16 max-w-[1400px] mx-auto font-[family-name:var(--font-inter)]">
+        <p className="text-lg md:text-xl font-medium leading-relaxed text-black max-w-3xl">
+          We&apos;re investing aggressively—driven by conviction and aligned with government and farming partners—to expand capacity in precision seeds, autonomous equipment, and biomaterials facilities. These steps build real manufacturing scale, but we must push to autonomous regeneration of degraded ecosystems and autonomy for America and her farmers.
+        </p>
+      </section>
+
       {/* Large Display Text */}
       <section className="w-full overflow-hidden py-8 px-4">
         <h2

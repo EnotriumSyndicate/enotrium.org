@@ -28,7 +28,7 @@ export default function IndustrialAgriculturePage() {
           <p className="font-[family-name:var(--font-inter)] text-base md:text-lg lg:text-[24px] font-normal leading-relaxed text-black/80 max-w-[240px] shrink-0">
             A New Model of
             <br />
-            Sustainability and
+            Self-Sufficiency and
             <br />
             Prosperity
           </p>
@@ -105,13 +105,6 @@ export default function IndustrialAgriculturePage() {
             ensure abundance amid global threats. The U.S. and allies possess the tech, resources,
             talent, and manufacturing to mass-produce these systems and usher in a new golden age
             of agriculture.
-          </p>
-
-          <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
-            We&apos;re investing aggressively—driven by conviction and aligned with government and
-            farming partners—to expand capacity in precision seeds, autonomous equipment, and
-            biotech facilities. These steps build real manufacturing scale, but we must push to
-            autonomous regeneration.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed font-bold text-black">
