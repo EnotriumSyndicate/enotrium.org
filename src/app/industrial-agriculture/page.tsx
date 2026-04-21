@@ -37,9 +37,7 @@ export default function IndustrialAgriculturePage() {
           <p className="font-[family-name:var(--font-inter)] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-medium lg:leading-[58px] leading-snug text-black max-w-2xl">
             AI-driven strategy,
             <br className="hidden lg:block" />
-            execution of the bio-
-            <br className="hidden lg:block" />
-            economy, and
+            execution of the bio-economy, and
             <br className="hidden lg:block" />
             establishment of the
             <br className="hidden lg:block" />
@@ -51,6 +49,9 @@ export default function IndustrialAgriculturePage() {
 
         {/* Opening */}
         <div className="max-w-3xl mb-20">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-8">
+            The Reconstruction of American Agriculture
+          </h2>
           <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium text-black">
             America&apos;s agrarian economy, which founded the nation and led to a free political
             and social system of prosperity and self sufficiency, has deteriorated and failed to
@@ -82,18 +83,18 @@ export default function IndustrialAgriculturePage() {
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
+            A major global conflict or prolonged food supply disruptions would demand production,
+            attrition, and recovery at unimaginable scales—far beyond what today&apos;s agricultural
+            base can handle. America must rebuild rural economies through a radically new approach
+            to defining, designing, and producing agricultural output.
+          </p>
+
+          <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
             Meanwhile, legacy farming systems face unprecedented challenges from the rapid rise of
             AI-powered precision tools, autonomous tractors and drones, widespread sensors,
             predictive software, and other affordable, scalable technologies. This shift is
             happening now—not in the future—seen in farms thriving with robotics, gene-edited
             crops, and data-driven operations, while traditional ones fall behind.
-          </p>
-
-          <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
-            A major global conflict or prolonged food supply disruptions would demand production,
-            attrition, and recovery at unimaginable scales—far beyond what today&apos;s agricultural
-            base can handle. America must rebuild rural economies through a radically new approach
-            to defining, designing, and producing agricultural output.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed font-medium text-black">
@@ -118,6 +119,10 @@ export default function IndustrialAgriculturePage() {
             crop or machine, but a maker of abundance itself. Enotrium is a software-defined
             manufacturing economy for hyper-scale advanced farming capabilities. Years in
             development, it will power everything we create moving forward.
+          </p>
+
+          <p className="text-base sm:text-lg leading-relaxed font-bold text-black">
+            This is what Enotrium is building. Not for today, for the next century.
           </p>
         </div>
 
