@@ -5,15 +5,16 @@ import { Footer } from "@/components/layout/Footer";
 
 const teamMembers = [
   {
-    name: "Aiden Young",
-    title: "CEO",
+    name: "Wilson Smith",
+    title: "",
     links: [
-      { label: "GitHub", href: "https://github.com/Aidistides" },
+      { label: "GitHub", href: "https://github.com/0mWh" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/wilson--smith/" },
     ],
   },
   {
     name: "David Shukhin",
-    title: "CTO",
+    title: "",
     links: [
       { label: "GitHub", href: "https://github.com/davidshukhin" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/david-shukhin/" },
@@ -21,11 +22,11 @@ const teamMembers = [
     ],
   },
   {
-    name: "Wilson Smith",
+    name: "Michael Kim",
     title: "",
     links: [
-      { label: "GitHub", href: "https://github.com/0mWh" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/wilson--smith/" },
+      { label: "GitHub", href: "https://github.com/michaelkim88" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/michael-kim-profile/" },
     ],
   },
   {
@@ -36,11 +37,10 @@ const teamMembers = [
     ],
   },
   {
-    name: "Michael Kim",
+    name: "Aiden Young",
     title: "",
     links: [
-      { label: "GitHub", href: "https://github.com/michaelkim88" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/michael-kim-profile/" },
+      { label: "GitHub", href: "https://github.com/Aidistides" },
     ],
   },
   {
