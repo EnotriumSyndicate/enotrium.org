@@ -25,7 +25,9 @@ const features = [
   {
     title: "Locally Hosted LLMs",
     description: "Run offline with minimal power. Industrial sovereignty. Independence from centralized infrastructure.",
-    label: "INDUSTRIAL"
+    label: "INDUSTRIAL",
+    useSVG: true,
+    svgSrc: "/carousel3.svg"
   },
   {
     title: "",
@@ -90,6 +92,12 @@ export function FeatureCarousel() {
               src={features[currentIndex].imageSrc} 
               alt="Carousel" 
               className="w-full h-full object-cover"
+            />
+          ) : features[currentIndex].useSVG ? (
+            <img 
+              src={features[currentIndex].svgSrc} 
+              alt="Carousel" 
+              className="w-full h-full object-contain"
             />
           ) : null}
         </div>
