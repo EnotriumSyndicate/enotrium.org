@@ -64,6 +64,11 @@ export function HeroSection() {
           </div>
         </div>
 
+        {/* 4. Description text */}
+        <p className="mt-12 max-w-2xl text-center text-white/60 text-base sm:text-lg font-light leading-relaxed font-[family-name:var(--font-inter)]">
+          Hyperspectral soil intelligence and autonomous UAVs built from domestically-sourced composite materials — no international supply chain, no cloud dependency.
+        </p>
+
       </div>
     </section>
   );
