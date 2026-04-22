@@ -11,7 +11,8 @@ const features = [
   {
     title: "Edge Compute Infrastructure",
     description: "AI onboard drones in the physical world.",
-    useHUD: true,
+    useSVG: true,
+    svgSrc: "/carousel1.svg",
     label: "DEFENSE",
     link: "/arthedain"
   },
@@ -74,10 +75,12 @@ export function FeatureCarousel() {
       {/* Full-screen visual background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full h-full flex items-center justify-center">
-          {features[currentIndex].useHUD ? (
-            <div className="w-full h-full">
-              <HUDReticle />
-            </div>
+          {features[currentIndex].useSVG ? (
+            <img 
+              src={features[currentIndex].svgSrc} 
+              alt="Carousel" 
+              className="w-full h-full object-contain"
+            />
           ) : features[currentIndex].useIndustrial ? (
             <div className="w-full h-full">
               <IndustrialAgricultureScene />
@@ -94,21 +97,15 @@ export function FeatureCarousel() {
               alt="Carousel" 
               className="w-full h-full object-cover"
             />
-          ) : features[currentIndex].useSVG ? (
-            <img 
-              src={features[currentIndex].svgSrc} 
-              alt="Carousel" 
-              className="w-full h-full object-contain"
-            />
           ) : null}
         </div>
       </div>
 
       {/* Text content in top corner */}
-      <div className={`relative z-20 w-full ${features[currentIndex].textPosition === 'bottom-left' ? 'absolute bottom-12 left-0' : ''}`}>
+      <div className={`relative z-20 w-full ${features[currentIndex].textPosition === 'bottom-left' ? 'absolute bottom-12 left-0' : features[currentIndex].textPosition === 'center-left' ? 'absolute top-1/2 -translate-y-1/2 left-0' : ''}`}>
         <ScrollReveal animation="fade-up" duration={1}>
-          <div className={`px-6 lg:px-16 ${features[currentIndex].textPosition === 'bottom-left' ? '' : 'py-12'}`}>
-            <div className="max-w-xl">
+          <div className={`px-6 lg:px-16 ${features[currentIndex].textPosition === 'bottom-left' ? '' : features[currentIndex].textPosition === 'center-left' ? '' : 'py-12'}`}>
+            <div className={`max-w-xl ${features[currentIndex].textPosition === 'center-left' ? 'ml-16' : ''}`}>
               {features[currentIndex].link ? (
                 <div className="group">
                   <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
