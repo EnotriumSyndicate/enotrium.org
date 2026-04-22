@@ -14,7 +14,8 @@ const features = [
     useSVG: true,
     svgSrc: "/carousel1.svg",
     label: "DEFENSE",
-    link: "/arthedain"
+    link: "/arthedain",
+    hasTextBox: true
   },
   {
     title: "Edge Deployed Intelligence",
@@ -106,7 +107,35 @@ export function FeatureCarousel() {
         <ScrollReveal animation="fade-up" duration={1}>
           <div className={`px-6 lg:px-16 ${features[currentIndex].textPosition === 'bottom-left' ? '' : features[currentIndex].textPosition === 'center-left' ? '' : 'py-12'}`}>
             <div className={`max-w-xl ${features[currentIndex].textPosition === 'center-left' ? 'ml-16' : ''}`}>
-              {features[currentIndex].link ? (
+              {features[currentIndex].hasTextBox ? (
+                <div className="bg-neutral-800/50 border border-neutral-600 p-6 rounded-lg">
+                  {features[currentIndex].link ? (
+                    <div className="group">
+                      <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
+                        {features[currentIndex].label}
+                      </p>
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1] group-hover:text-white/90 transition-colors">
+                        {features[currentIndex].title}
+                      </h2>
+                      <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-8 group-hover:text-white/60 transition-colors">
+                        {features[currentIndex].description}
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium">
+                        {features[currentIndex].label}
+                      </p>
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+                        {features[currentIndex].title}
+                    </h2>
+                      <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-8">
+                        {features[currentIndex].description}
+                      </p>
+                    </>
+                  )}
+                </div>
+              ) : features[currentIndex].link ? (
                 <div className="group">
                   <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
                     {features[currentIndex].label}
