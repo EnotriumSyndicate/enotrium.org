@@ -25,6 +25,11 @@ const Footer = dynamic(
   { ssr: true }
 );
 
+const FeatureCarousel = dynamic(
+  () => import("@/components/sections/FeatureCarousel").then(mod => ({ default: mod.FeatureCarousel })),
+  { ssr: true }
+);
+
 // Lazy load heavy visualizations
 const DarkVeil = dynamic(() => import("@/components/visualizations/DarkVeil"), {
   ssr: false,
@@ -45,6 +50,8 @@ export default function Home() {
         <HeroSection />
         <MissionSection />
         
+        <FeatureCarousel />
+
         {/* AI Intelligence Section */}
         <section className="px-6 lg:px-16 max-w-[1400px] mx-auto py-24">
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white font-[family-name:var(--font-inter)] text-center">
