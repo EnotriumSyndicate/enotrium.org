@@ -9,6 +9,7 @@ const teamMembers = [
     title: "Co-Founder, Chief Executive Officer",
     links: [
       { label: "GitHub", href: "https://github.com/Aidistides" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/aiden-young-b90243398/" },
     ],
   },
   {
