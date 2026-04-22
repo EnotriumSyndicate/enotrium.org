@@ -118,7 +118,7 @@ export function Footer() {
         {/* Bottom row */}
         <div className="border-t border-neutral-800 pt-8 flex flex-col sm:flex-row sm:justify-between gap-6 text-center sm:text-left">
           <div>
-            <p className="text-[10px] text-white uppercase mb-1">
+            <p className="text-[10px] text-white uppercase mb-1 font-[family-name:var(--font-inter)]">
               Copyright &copy; {new Date().getFullYear()} Enotrium
             </p>
             <p className="text-[10px] text-neutral-500 uppercase mb-4">
