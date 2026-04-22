@@ -49,8 +49,8 @@ const footerColumns = [
     heading: "WORK WITH US",
     links: [
       { label: "Careers", href: "/careers" },
-      { label: "Leadership", href: "/leadership" },
-      { label: "Research", href: "https://www.enotriumai.org" },
+      { label: "Founders", href: "/Founders" },
+      { label: "Research", href: "https://www.enotriumai.org/research" },
       { label: "Farmers", href: "/farmers" },
     ],
   },
@@ -119,7 +119,7 @@ export function Footer() {
         <div className="border-t border-neutral-800 pt-8 flex flex-col sm:flex-row sm:justify-between gap-6 text-center sm:text-left">
           <div>
             <p className="text-[10px] text-white uppercase mb-1">
-              Copyright &copy; {new Date().getFullYear()} Enotrium Syndicate
+              Copyright &copy; {new Date().getFullYear()} Enotrium
             </p>
             <p className="text-[10px] text-neutral-500 uppercase mb-4">
               All Rights Reserved

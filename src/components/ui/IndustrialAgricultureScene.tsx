@@ -10,7 +10,7 @@ export function IndustrialAgricultureScene() {
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#0a0a0a" />
-          <stop offset="50%" stopColor="#1a1a2e" />
+          <stop offset="50%" stopColor="#1a1a1a" />
           <stop offset="100%" stopColor="#0a0a0a" />
         </linearGradient>
         <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">

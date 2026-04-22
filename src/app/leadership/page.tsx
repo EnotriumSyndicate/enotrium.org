@@ -5,6 +5,13 @@ import { Footer } from "@/components/layout/Footer";
 
 const teamMembers = [
   {
+    name: "Aiden Young",
+    title: "Co-Founder, Chief Executive Officer",
+    links: [
+      { label: "GitHub", href: "https://github.com/Aidistides" },
+    ],
+  },
+  {
     name: "Wilson Smith",
     title: "Co-Founder, Lead Developer",
     links: [
@@ -34,13 +41,6 @@ const teamMembers = [
     title: "Co-Founder, Chief Scientific Officer",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/emanuele-gaz-676ba8339/" },
-    ],
-  },
-  {
-    name: "Aiden Young",
-    title: "Co-Founder, Chief Executive Officer",
-    links: [
-      { label: "GitHub", href: "https://github.com/Aidistides" },
     ],
   },
   {
@@ -83,7 +83,7 @@ export default function LeadershipPage() {
         <header className="mb-16 relative">
           <div className="flex flex-col items-start">
             <div className="flex items-end gap-4 mb-2">
-              <span className="font-semibold text-sm tracking-[0.05em] uppercase text-white pb-4">
+              <span className="font-semibold text-sm tracking-[0.02em] text-white pb-4">
                 Team
               </span>
               <h1 className="font-[family-name:var(--font-tektur)] font-normal text-[60px] md:text-[80px] lg:text-[100px] leading-none">
@@ -107,7 +107,7 @@ export default function LeadershipPage() {
                 {member.name}
               </h3>
               {member.title && (
-                <div className="text-xs tracking-[0.1em] uppercase text-white/60 mb-3">
+                <div className="text-xs tracking-[0.02em] text-white/60 mb-3">
                   {member.title}
                 </div>
               )}
