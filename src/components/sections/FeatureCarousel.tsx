@@ -40,73 +40,73 @@ export function FeatureCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % features.length);
-    }, 15000); // Auto-scroll every 15 seconds
+    }, 30000); // Auto-scroll every 30 seconds
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#0a0a0a] flex items-center overflow-hidden">
+    <section className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+      {/* Full-screen visual background */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center">
+          {features[currentIndex].useHUD ? (
+            <div className="w-full h-full">
+              <HUDReticle />
+            </div>
+          ) : (
+            <div className="text-[20rem] opacity-20">{features[currentIndex].icon}</div>
+          )}
+        </div>
+      </div>
+
+      {/* Text content in top corner */}
       <div className="relative z-10 w-full">
         <ScrollReveal animation="fade-up" duration={1}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-            {/* Left side - Text content */}
-            <div className="flex flex-col justify-center px-6 lg:px-16 py-12">
-              <div className="max-w-xl">
-                <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium">
-                  {features[currentIndex].label}
-                </p>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-                  {features[currentIndex].title}
-                </h2>
-                <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-8">
-                  {features[currentIndex].description}
-                </p>
-                
-                {/* Navigation arrows */}
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={goToPrevious}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all duration-300"
-                    aria-label="Previous slide"
-                  >
-                    <ChevronLeft className="w-5 h-5 text-white/70" />
-                  </button>
-                  <button
-                    onClick={goToNext}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all duration-300"
-                    aria-label="Next slide"
-                  >
-                    <ChevronRight className="w-5 h-5 text-white/70" />
-                  </button>
-                </div>
-
-                {/* Carousel indicators */}
-                <div className="flex gap-2 mt-8">
-                  {features.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        index === currentIndex
-                          ? "bg-white w-8"
-                          : "bg-white/30 w-4 hover:bg-white/50"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
+          <div className="px-6 lg:px-16 py-12">
+            <div className="max-w-xl">
+              <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium">
+                {features[currentIndex].label}
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+                {features[currentIndex].title}
+              </h2>
+              <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-8">
+                {features[currentIndex].description}
+              </p>
+              
+              {/* Navigation arrows */}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={goToPrevious}
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all duration-300"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5 text-white/70" />
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all duration-300"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5 text-white/70" />
+                </button>
               </div>
-            </div>
 
-            {/* Right side - Visual content */}
-            <div className="flex items-center justify-center px-6 lg:px-16 py-12 bg-gradient-to-l from-white/[0.02] to-transparent">
-              <div className="w-full max-w-lg aspect-square flex items-center justify-center">
-                {features[currentIndex].useHUD ? (
-                  <HUDReticle />
-                ) : (
-                  <div className="text-9xl">{features[currentIndex].icon}</div>
-                )}
+              {/* Carousel indicators */}
+              <div className="flex gap-2 mt-8">
+                {features.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-white w-8"
+                        : "bg-white/30 w-4 hover:bg-white/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
