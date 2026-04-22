@@ -46,7 +46,7 @@ const megaMenuColumns = [
     heading: "WORK WITH US",
     links: [
       { label: "Careers", href: "/careers" },
-      { label: "Leadership", href: "/leadership" },
+      { label: "Founders", href: "/Founders" },
       { label: "Research", href: "https://www.enotriumai.org/research" },
       { label: "Farmers", href: "/farmers" },
     ],
