@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { HUDReticle } from "@/components/ui/HUDReticle";
+import { IndustrialAgricultureScene } from "@/components/ui/IndustrialAgricultureScene";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -27,9 +28,9 @@ const features = [
   {
     title: "",
     description: "",
-    useVineyard: true,
-    label: "AGRICULTURE",
-    link: "/aip"
+    useIndustrial: true,
+    label: "INDUSTRIAL",
+    link: "/industrial-agriculture"
   }
 ];
 
@@ -65,12 +66,10 @@ export function FeatureCarousel() {
             <div className="w-full h-full">
               <HUDReticle />
             </div>
-          ) : features[currentIndex].useVineyard ? (
-            <img 
-              src="/vineyard.png" 
-              alt="Vineyard" 
-              className="w-full h-full object-contain"
-            />
+          ) : features[currentIndex].useIndustrial ? (
+            <div className="w-full h-full">
+              <IndustrialAgricultureScene />
+            </div>
           ) : null}
         </div>
       </div>
