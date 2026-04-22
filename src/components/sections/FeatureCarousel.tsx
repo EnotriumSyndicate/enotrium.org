@@ -13,7 +13,17 @@ const features = [
     description: "To put AI onboard drones in the physical world.",
     useHUD: true,
     label: "DEFENSE",
-    link: "/uav"
+    link: "/arthedain"
+  },
+  {
+    title: "Edge Deployed Intelligence",
+    description: "Deploy on drones, in manufacturing facilities, across real industrial systems. No cloud dependency.",
+    label: "COMMERCIAL"
+  },
+  {
+    title: "Locally Hosted LLMs",
+    description: "Run offline with minimal power. Industrial sovereignty. Independence from centralized infrastructure.",
+    label: "INDUSTRIAL"
   },
   {
     title: "Restoring American Agriculture",
@@ -52,11 +62,11 @@ export function FeatureCarousel() {
             <div className="w-full h-full">
               <HUDReticle />
             </div>
-          ) : (
+          ) : features[currentIndex].useVineyard ? (
             <div className="w-full h-full">
               <VineyardScene />
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 
