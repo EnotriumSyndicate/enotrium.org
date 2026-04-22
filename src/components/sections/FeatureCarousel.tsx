@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { HUDReticle } from "@/components/ui/HUDReticle";
+import { VineyardScene } from "@/components/ui/VineyardScene";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -11,19 +12,15 @@ const features = [
     title: "Edge Compute Infrastructure",
     description: "To put AI onboard drones in the physical world.",
     useHUD: true,
-    label: "DEFENSE"
+    label: "DEFENSE",
+    link: "/uav"
   },
   {
-    title: "Edge Deployed Intelligence",
-    description: "Deploy on drones, in manufacturing facilities, across real industrial systems. No cloud dependency.",
-    icon: "🚀",
-    label: "COMMERCIAL"
-  },
-  {
-    title: "Locally Hosted LLMs",
-    description: "Run offline with minimal power. Industrial sovereignty. Independence from centralized infrastructure.",
-    icon: "🧠",
-    label: "INDUSTRIAL"
+    title: "Restoring American Agriculture",
+    description: "Enotrium AIP transforms farming with AI-powered intelligence.",
+    useVineyard: true,
+    label: "AGRICULTURE",
+    link: "/aip"
   }
 ];
 
@@ -56,7 +53,9 @@ export function FeatureCarousel() {
               <HUDReticle />
             </div>
           ) : (
-            <div className="text-[20rem] opacity-20">{features[currentIndex].icon}</div>
+            <div className="w-full h-full">
+              <VineyardScene />
+            </div>
           )}
         </div>
       </div>
@@ -66,8 +65,8 @@ export function FeatureCarousel() {
         <ScrollReveal animation="fade-up" duration={1}>
           <div className="px-6 lg:px-16 py-12">
             <div className="max-w-xl">
-              {currentIndex === 0 ? (
-                <Link href="/uav" className="block group">
+              {features[currentIndex].link ? (
+                <Link href={features[currentIndex].link} className="block group">
                   <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-4 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
                     {features[currentIndex].label}
                   </p>
