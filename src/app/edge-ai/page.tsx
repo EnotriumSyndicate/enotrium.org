@@ -200,6 +200,9 @@ export default function EdgeAIPage() {
               <p className="text-base sm:text-lg leading-relaxed font-medium text-black/80 mt-2">
                 When a field's spectral signature suddenly shifts (e.g., new pesticide runoff or PFAS spill), the SNN triggers targeted resampling and routes the data to the Enotrium AIP's contracting layer, which can renegotiate offtake terms or reroute biomass to bio-remediation processing.
               </p>
+              <p className="text-base sm:text-lg leading-relaxed font-medium text-black/80 mt-2">
+                Deployed alongside partner agencies, this capability supports early warning for food and agricultural infrastructure — a sector identified by the Department of Homeland Security as critical to national security.
+              </p>
             </div>
 
             <div className="border-l-2 border-black pl-6">
