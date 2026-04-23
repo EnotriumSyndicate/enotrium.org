@@ -48,11 +48,11 @@ export default function ResearchPage() {
             Enotrium
           </div>
         </div>
-        <nav className="flex items-center gap-4">
-          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]">
+        <nav className="flex flex-col gap-4">
+          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
             enotrium.org
           </a>
-          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]">
+          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
             GitHub
           </a>
         </nav>
@@ -69,7 +69,7 @@ export default function ResearchPage() {
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-gray-900 font-[family-name:var(--font-iceland)] mb-4">
             Research
           </h1>
-          <p className="text-xl md:text-2xl text-gray-500 font-[family-name:var(--font-inter)]">
+          <p className="text-xl md:text-2xl text-gray-500 font-serif">
             Enotrium Labs
           </p>
         </div>
