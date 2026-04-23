@@ -51,7 +51,7 @@ const features = [
   {
     title: "Autonomous Drone Fleet Coordination",
     description: "Vegard enables real-time coordination of drone fleets for precision agriculture and surveillance.",
-    label: "DEFENSE",
+    label: "",
     useImage: true,
     imageSrc: "/vegard-carousel.png",
     link: "/research/vegard",
@@ -122,25 +122,25 @@ export function FeatureCarousel() {
                 <div className="bg-neutral-800/50 border border-neutral-600 p-3 rounded-lg inline-block">
                   {features[currentIndex].link ? (
                     <div className="group">
-                      <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-2 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 mb-2 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
                         {features[currentIndex].label}
                       </p>
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-3 font-[family-name:var(--font-inter)] text-balance leading-[1.1] group-hover:text-white/90 transition-colors">
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-extralight text-white mb-2 font-[family-name:var(--font-inter)] text-balance leading-[1.1] group-hover:text-white/90 transition-colors">
                         {features[currentIndex].title}
                       </h2>
-                      <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-3 group-hover:text-white/60 transition-colors">
+                      <p className="text-sm md:text-base text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-2 group-hover:text-white/60 transition-colors">
                         {features[currentIndex].description}
                       </p>
                     </div>
                   ) : (
                     <>
-                      <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-500 mb-2 font-[family-name:var(--font-inter)] font-medium">
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 mb-2 font-[family-name:var(--font-inter)] font-medium">
                         {features[currentIndex].label}
                       </p>
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-3 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-extralight text-white mb-2 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
                         {features[currentIndex].title}
                     </h2>
-                      <p className="text-lg md:text-xl text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-3">
+                      <p className="text-sm md:text-base text-white/50 leading-relaxed font-[family-name:var(--font-inter)] font-light mb-2">
                         {features[currentIndex].description}
                       </p>
                     </>

@@ -43,7 +43,7 @@ export function InvectiveSection() {
                                 <div className="px-6 py-10 md:px-12 md:py-16 lg:px-16 lg:py-20">
                                     {/* Title */}
                                     <div className="mb-10 md:mb-14 pt-6 md:pt-8">
-                                        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-medium tracking-tight leading-tight font-[family-name:var(--font-tektur)]">
+                                        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl xl:text-9xl font-medium tracking-tight leading-tight font-[family-name:var(--font-tektur)]">
                                             <span className="block text-white">The Agrarian</span>
                                             <span className="block text-white">Republic-</span>
                                             <span className="block bg-gradient-to-b from-white via-white/70 to-white/10 bg-clip-text text-transparent">
