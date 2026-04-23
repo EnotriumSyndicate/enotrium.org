@@ -73,6 +73,14 @@ const features = [
     useImage: true,
     imageSrc: "/carousel8-restore-american-agriculture.png",
     link: "https://www.enotrium.org/forum/one-farm-one-nation"
+  },
+  {
+    title: "",
+    description: "",
+    label: "",
+    useImage: true,
+    imageSrc: "/carousel9-eco.png",
+    link: "/aquisition"
   }
 ];
 
