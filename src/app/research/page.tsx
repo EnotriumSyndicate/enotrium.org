@@ -86,7 +86,7 @@ export default function ResearchPage() {
                   <h2 className="text-2xl md:text-3xl text-gray-900 font-light font-[family-name:var(--font-inter)] group-hover:text-gray-600 transition-colors mb-2">
                     {project.title}
                   </h2>
-                  <div className="text-sm text-gray-400 font-[family-name:var(--font-inter)]">
+                  <div className="text-xs text-gray-300 font-serif">
                     {project.date}
                   </div>
                 </Link>
