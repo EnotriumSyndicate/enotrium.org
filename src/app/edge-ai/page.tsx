@@ -25,10 +25,10 @@ export default function EdgeAIPage() {
         {/* Description row */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16 mb-16">
           {/* Left - Inter Regular 24 */}
-          <p className="font-[family-name:var(--font-inter)] text-base md:text-lg lg:text-[24px] font-normal leading-relaxed text-black/80 max-w-[240px] shrink-0">
+          <p className="font-[family-name:var(--font-inter)] text-base md:text-lg lg:text-[24px] font-normal leading-tight tracking-tight text-black/80 max-w-[240px] shrink-0">
             Real-time,
             <br />
-            Spiking Neural
+            Live Neural
             <br />
             Networks
           </p>
