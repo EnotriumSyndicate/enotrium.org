@@ -84,7 +84,7 @@ export default function EdgeAIPage() {
         {/* Architecture section */}
         <div className="max-w-3xl mb-24">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-8">
-            Architecture: perception, adaptation, action
+            Architecture: Perception, Adaptation, Action
           </h2>
           <p className="text-base sm:text-lg leading-relaxed font-medium text-black mb-8">
             Enotrium Edge AI is a three-layer system that runs directly on the edge:
