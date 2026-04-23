@@ -23,6 +23,7 @@ const features = [
     label: "COMMERCIAL",
     useImage: true,
     imageSrc: "/carousel2.png",
+    link: "/edge-ai",
     hasTextBox: true
   },
   {
