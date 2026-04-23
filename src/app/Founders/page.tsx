@@ -92,7 +92,6 @@ export default function LeadershipPage() {
               </h1>
             </div>
             <div className="flex flex-row gap-4 mt-2">
-              <span>SF</span>
               <span>DC</span>
               <span className="text-white/40">Milan</span>
             </div>
