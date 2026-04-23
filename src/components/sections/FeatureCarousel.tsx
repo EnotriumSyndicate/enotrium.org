@@ -119,7 +119,7 @@ export function FeatureCarousel() {
           <div className={`${features[currentIndex].hasTextBox ? 'px-4' : 'px-6 lg:px-16'} ${features[currentIndex].textPosition === 'bottom-left' ? '' : features[currentIndex].textPosition === 'center-left' ? '' : 'py-12'}`}>
             <div className={`${features[currentIndex].hasTextBox ? 'max-w-fit' : 'max-w-xl'} ${features[currentIndex].textPosition === 'center-left' ? 'ml-16' : ''}`}>
               {features[currentIndex].hasTextBox ? (
-                <div className="bg-neutral-800/50 border border-neutral-600 p-3 rounded-lg inline-block">
+                <div className="bg-neutral-800 border border-neutral-600 p-3 rounded-lg inline-block">
                   {features[currentIndex].link ? (
                     <div className="group">
                       <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 mb-2 font-[family-name:var(--font-inter)] font-medium group-hover:text-neutral-400 transition-colors">
