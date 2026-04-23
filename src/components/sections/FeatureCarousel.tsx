@@ -22,7 +22,8 @@ const features = [
     description: "Deploy on drones, in manufacturing facilities, across real industrial systems. No cloud dependency.",
     label: "COMMERCIAL",
     useImage: true,
-    imageSrc: "/carousel2.png"
+    imageSrc: "/carousel2.png",
+    hasTextBox: true
   },
   {
     title: "Locally Hosted LLMs",
