@@ -181,7 +181,7 @@ export default function EdgeAIPage() {
           </div>
 
           <p className="text-base sm:text-lg leading-relaxed font-medium text-black mt-8">
-            Enotrium's SNNs are not a research demo; they are circuit-level, fixed-point designs that map cleanly to FPGA- and neuromorphic-class accelerators, enabling implantable, drone-mounted, and industrial-IoT deployments from the same core architecture.
+            Enotrium's SNNs are circuit-level, fixed-point designs that map cleanly to FPGA- and neuromorphic-class accelerators, enabling implantable, drone-mounted, and industrial-IoT deployments from the same core architecture.
           </p>
         </div>
 
