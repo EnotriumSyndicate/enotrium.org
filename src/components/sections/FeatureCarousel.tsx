@@ -73,7 +73,7 @@ export function FeatureCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % features.length);
-    }, 30000); // Auto-scroll every 30 seconds
+    }, 45000); // Auto-scroll every 45 seconds
 
     return () => clearInterval(interval);
   }, []);
