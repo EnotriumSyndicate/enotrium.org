@@ -34,7 +34,7 @@ export default function EdgeAIPage() {
           </p>
 
           {/* Right - Inter Medium 48 (Line Height 58) */}
-          <p className="font-[family-name:var(--font-inter)] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-medium lg:leading-[58px] leading-snug text-black max-w-2xl">
+          <p className="font-[family-name:var(--font-inter)] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-normal lg:leading-[48px] leading-tight tracking-tight text-black max-w-2xl">
             A living nervous system that thinks, learns, and acts on-device while flying.
           </p>
         </div>
