@@ -49,10 +49,10 @@ export default function ResearchPage() {
           </div>
         </div>
         <nav className="flex flex-col gap-4">
-          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
+          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
             enotrium.org
           </a>
-          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
+          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
             GitHub
           </a>
         </nav>
@@ -83,7 +83,7 @@ export default function ResearchPage() {
                   href={project.href}
                   className="block group"
                 >
-                  <h2 className="text-2xl md:text-3xl text-gray-900 font-light font-[family-name:var(--font-inter)] group-hover:text-gray-600 transition-colors mb-2">
+                  <h2 className="text-2xl md:text-3xl text-gray-900 font-light font-[family-name:var(--font-inter)] group-hover:text-gray-600 transition-colors mb-2 tracking-tight">
                     {project.title}
                   </h2>
                   <div className="text-xs text-gray-300 font-serif">
