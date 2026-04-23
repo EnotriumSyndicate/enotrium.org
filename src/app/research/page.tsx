@@ -40,19 +40,19 @@ const researchProjects = [
 
 export default function ResearchPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a]">
+    <main className="min-h-screen bg-white">
       {/* Header */}
       <div className="px-6 lg:px-16 max-w-[1400px] mx-auto py-16">
-        <Link href="/" className="inline-block text-white/50 hover:text-white transition-colors mb-8">
+        <Link href="/" className="inline-block text-gray-500 hover:text-gray-900 transition-colors mb-8">
           ← Back
         </Link>
 
         {/* Hero */}
         <div className="mb-16">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-white font-[family-name:var(--font-iceland)] mb-4">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-gray-900 font-[family-name:var(--font-iceland)] mb-4">
             Research
           </h1>
-          <p className="text-xl md:text-2xl text-white/50 font-[family-name:var(--font-inter)]">
+          <p className="text-xl md:text-2xl text-gray-500 font-[family-name:var(--font-inter)]">
             Enotrium Labs
           </p>
         </div>
@@ -61,15 +61,15 @@ export default function ResearchPage() {
         <section>
           <ul className="space-y-6">
             {researchProjects.map((project, index) => (
-              <li key={index} className="border-b border-white/10 pb-6">
+              <li key={index} className="border-b border-gray-200 pb-6">
                 <Link
                   href={project.href}
                   className="block group"
                 >
-                  <h2 className="text-2xl md:text-3xl text-white font-light font-[family-name:var(--font-inter)] group-hover:text-white/70 transition-colors mb-2">
+                  <h2 className="text-2xl md:text-3xl text-gray-900 font-light font-[family-name:var(--font-inter)] group-hover:text-gray-600 transition-colors mb-2">
                     {project.title}
                   </h2>
-                  <div className="text-sm text-white/40 font-[family-name:var(--font-inter)]">
+                  <div className="text-sm text-gray-400 font-[family-name:var(--font-inter)]">
                     {project.date}
                   </div>
                 </Link>
