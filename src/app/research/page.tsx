@@ -40,26 +40,9 @@ const researchProjects = [
 
 export default function ResearchPage() {
   return (
-    <main className="min-h-screen bg-white flex">
-      {/* Left Sidebar */}
-      <aside className="w-64 flex-shrink-0 p-8 border-r border-gray-200">
-        <div className="mb-8">
-          <div className="text-2xl font-extralight text-gray-900 font-[family-name:var(--font-iceland)]">
-            Enotrium
-          </div>
-        </div>
-        <nav className="flex flex-col gap-4">
-          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
-            enotrium.org
-          </a>
-          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
-            GitHub
-          </a>
-        </nav>
-      </aside>
-
+    <main className="min-h-screen bg-white">
       {/* Main Content */}
-      <div className="flex-1 px-6 lg:px-16 max-w-[1400px] mx-auto py-16">
+      <div className="px-6 lg:px-16 max-w-[1400px] mx-auto py-16">
         <Link href="/" className="inline-block text-gray-500 hover:text-gray-900 transition-colors mb-8">
           ← Back
         </Link>
