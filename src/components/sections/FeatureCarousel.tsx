@@ -46,6 +46,14 @@ const features = [
     useVineyard: true,
     label: "AGRICULTURE",
     link: "/aip"
+  },
+  {
+    title: "Autonomous Drone Fleet Coordination",
+    description: "Vegard enables real-time coordination of drone fleets for precision agriculture and surveillance.",
+    label: "DEFENSE",
+    useImage: true,
+    imageSrc: "/vegard-carousel.png",
+    link: "/research/vegard"
   }
 ];
 
