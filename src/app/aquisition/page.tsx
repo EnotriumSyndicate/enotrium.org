@@ -233,7 +233,7 @@ function MetricsSection() {
               Metrics
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-black font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              ECOLOGICAL DATA ACQUISITION
+              ECOLOGICAL DATA COLLECTION
             </h2>
           </div>
 
@@ -538,51 +538,54 @@ function CaseStudySection() {
           <div className="max-w-4xl space-y-8">
             <div>
               <h3 className="text-2xl font-medium text-black mb-4 font-[family-name:var(--font-inter)]">
-                A hard executive mandate
+                HSI Data Acquisition
               </h3>
               <p className="text-gray-600 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
-                A global food manufacturer faced a hard executive mandate: migrate 20+ markets across their global operations to a unified ecological data platform within 24 months. The traditional migration playbook — a rigid, months‑long linear process per market — made that timeline structurally impossible.
+                Hyperspectral imaging sensors capture 200+ spectral bands across visible, near-infrared, and short-wave infrared ranges. Enotrium's edge processing pipeline performs real-time radiometric calibration, atmospheric correction, and spectral unmixing directly on UAV-mounted hardware — delivering analysis-ready data products within seconds of capture.
               </p>
               <p className="text-gray-600 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light mt-4">
-                Decades of decentralized operations had left each country with its own data standards, sensor protocols, and business rules. There was no global template, and institutional knowledge had eroded with every wave of employee turnover.
+                Multi-sensor fusion combines HSI data with LiDAR, thermal, and RGB imagery through neural network-based registration algorithms. Temporal analysis tracks phenological changes at sub-meter resolution, enabling early detection of stress indicators, nutrient deficiencies, and disease vectors before visible symptoms manifest.
               </p>
             </div>
 
             <div>
+              <h3 className="text-2xl font-medium text-black mb-4 font-[family-name:var(--font-inter)]">
+                Manufacturing Data Acquisition
+              </h3>
               <p className="text-gray-600 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light">
-                Enotrium convened with their tech and business team for an intensive 24‑hour working session. Within hours, the AI FDE agent ingested raw field data, automatically generated harmonized‑ready datasets, and inferred existing business rules directly from historical transaction records — bypassing weeks of requirements‑gathering workshops.
+                Industrial IoT gateways ingest time-series data from PLCs, SCADA systems, and distributed sensors at millisecond resolution. Protocol adapters translate Modbus, OPC-UA, EtherNet/IP, and proprietary industrial protocols into a unified streaming architecture with automatic schema inference and anomaly detection.
               </p>
               <p className="text-gray-600 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light mt-4">
-                A validation engine cross‑referenced thousands of records against a global catalog, creating an SME workflow application that prioritized task assignment, approvals, escalations, and audit trails. Human attention shifted entirely to exceptions.
+                Edge computing nodes perform real-time quality control, predictive maintenance, and process optimization using spiking neural networks that operate on 30x less power than traditional transformer models. Data streams are compressed using event-based encoding, reducing bandwidth requirements by 60%+ while preserving critical signal characteristics.
               </p>
               <p className="text-gray-600 text-lg leading-[1.8] font-[family-name:var(--font-inter)] font-light mt-4">
-                The result reframed the model entirely: data is no longer the bottleneck. Parallel workstreams across markets replaced sequential country deployments. A single globally harmonized template replaced bespoke per‑country builds. Projected time to completion, total budget, and personnel requirements were all drastically reduced.
+                Distributed ledger technology ensures immutable audit trails for compliance-critical data, while zero-knowledge proofs enable secure data sharing across organizational boundaries without exposing sensitive process parameters. The system maintains full sovereignty — data never leaves the edge environment unless explicitly authorized.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200">
               <div>
-                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">24h</p>
+                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">200+</p>
                 <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
-                  From kickoff to first validated dataset — bypassing weeks of workshops.
+                  Spectral bands captured per HSI sensor across VNIR and SWIR ranges.
+                </p>
+              </div>
+              <div>
+                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">1ms</p>
+                <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
+                  Time-series data resolution from industrial IoT gateways.
+                </p>
+              </div>
+              <div>
+                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">30x</p>
+                <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
+                  Power efficiency of spiking neural networks vs transformer models.
                 </p>
               </div>
               <div>
                 <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">60%+</p>
                 <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
-                  Reduction in total data payload after rationalization.
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">1</p>
-                <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
-                  Global harmonized template replacing bespoke per‑country builds.
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl font-light text-gray-400 mb-2 font-[family-name:var(--font-inter)]">∥</p>
-                <p className="text-sm text-gray-600 font-[family-name:var(--font-inter)] font-light">
-                  Parallel workstreams across all 20+ markets simultaneously.
+                  Bandwidth reduction through event-based encoding.
                 </p>
               </div>
             </div>
