@@ -60,7 +60,7 @@ export default function EdgeAIPage() {
         {/* Live-thinking UAVs section */}
         <div className="max-w-3xl mb-20">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-8">
-            Live-thinking UAVs, powered by SNNs
+            Autonomous Machines
           </h2>
           <p className="text-base sm:text-lg leading-relaxed font-medium text-black mb-6">
             Enotrium Edge AI gives UAVs a real-time nervous system:
