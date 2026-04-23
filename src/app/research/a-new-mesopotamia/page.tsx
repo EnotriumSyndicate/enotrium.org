@@ -2,8 +2,26 @@ import Link from "next/link";
 
 export default function ANewMesopotamiaPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="px-6 lg:px-16 max-w-[1400px] mx-auto py-16">
+    <main className="min-h-screen bg-white flex">
+      {/* Left Sidebar */}
+      <aside className="w-64 flex-shrink-0 p-8 border-r border-gray-200">
+        <div className="mb-8">
+          <div className="text-2xl font-extralight text-gray-900 font-[family-name:var(--font-iceland)]">
+            Enotrium
+          </div>
+        </div>
+        <nav className="space-y-4">
+          <a href="https://enotrium.org" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]">
+            enotrium.org
+          </a>
+          <a href="https://github.com/EnotriumSyndicate" target="_blank" rel="noopener noreferrer" className="block text-gray-500 hover:text-gray-900 transition-colors font-[family-name:var(--font-inter)]">
+            GitHub
+          </a>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 px-6 lg:px-16 max-w-[1400px] mx-auto py-16">
         <Link href="/research" className="inline-block text-gray-500 hover:text-gray-900 transition-colors mb-8">
           ← Back
         </Link>
