@@ -514,14 +514,8 @@ function CaseStudySection() {
               The 24‑month mandate
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-black mb-10 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              A global food manufacturer faced an executive mandate: migrate 20+ markets to a harmonized ecological data platform within 24 months. The traditional playbook made it structurally impossible.
+              The 24-Month Mandate
             </h2>
-            <p className="text-gray-500 text-lg font-[family-name:var(--font-inter)] font-light uppercase tracking-wider">
-              Food manufacturing & distribution
-            </p>
-            <p className="text-gray-600 text-base font-[family-name:var(--font-inter)] font-light">
-              Global market harmonization: Ecological data platform across 20+ countries
-            </p>
           </div>
         </ScrollReveal>
 
