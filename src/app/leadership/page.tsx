@@ -14,7 +14,7 @@ const teamMembers = [
   },
   {
     name: "Wilson Smith",
-    title: "Co-Founder, Lead Developer",
+    title: "Co-Founder, Chief Engineering Officer",
     links: [
       { label: "GitHub", href: "https://github.com/0mWh" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/wilson--smith/" },
