@@ -33,7 +33,7 @@ function HeroSection() {
             Edge AI
           </p>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-tektur)] text-balance">
+          <h1 className="text-5xl sm:text-7xl lg:text-9xl font-normal leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-tektur)] text-balance">
             Nanosystems
           </h1>
 
@@ -41,21 +41,6 @@ function HeroSection() {
             Biomimetic nanotechnology for ultra-efficient, real-time distributed intelligence.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="mailto:enotriumtech@atomicmail.io"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] hover:bg-gray-200"
-            >
-              Talk to us
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/careers"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-gray-700 text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-500 font-[family-name:var(--font-inter)] hover:border-gray-500"
-            >
-              Careers
-            </Link>
-          </div>
         </ScrollReveal>
       </div>
     </section>
