@@ -30,10 +30,10 @@ function HeroSection() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16 py-32 w-full">
         <ScrollReveal animation="fade-up" duration={1}>
           <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-[family-name:var(--font-inter)] font-medium">
-            Enotrium
+            Edge AI
           </p>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extralight leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-inter)] text-balance">
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-normal leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-tektur)] text-balance">
             Nanosystems
           </h1>
 
