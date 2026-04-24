@@ -29,33 +29,19 @@ function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16 py-32 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal animation="fade-up" duration={1}>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-[family-name:var(--font-inter)] font-medium">
-              Edge AI
-            </p>
+        <ScrollReveal animation="fade-up" duration={1}>
+          <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-[family-name:var(--font-inter)] font-medium">
+            Edge AI
+          </p>
 
-            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-normal leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-tektur)] text-balance">
-              Nanosystems
-            </h1>
+          <h1 className="text-5xl sm:text-7xl lg:text-9xl font-normal leading-[0.95] max-w-5xl text-white mb-8 font-[family-name:var(--font-tektur)] text-balance">
+            Nanosystems
+          </h1>
 
-            <p className="text-xl md:text-2xl text-gray-400 leading-[1.6] max-w-3xl mb-12 font-[family-name:var(--font-inter)] font-light">
-              Biomimetic nanotechnology for ultra-efficient, real-time distributed intelligence.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal animation="fade-up" delay={0.2} duration={1}>
-            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[600px]">
-              <Image
-                src="/Nanosystems.png"
-                alt="Nanosystems"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </ScrollReveal>
-        </div>
+          <p className="text-xl md:text-2xl text-gray-400 leading-[1.6] max-w-3xl mb-12 font-[family-name:var(--font-inter)] font-light">
+            Biomimetic nanotechnology for ultra-efficient, real-time distributed intelligence.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -98,19 +84,30 @@ function NeuromorphicMCUSection() {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
         <ScrollReveal animation="fade-up" duration={1}>
-          <div className="max-w-4xl mb-16">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
-              Hardware
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              Enotrium Neuromorphic Microcontroller
-            </h2>
-            <p className="text-2xl text-gray-400 mb-4 font-[family-name:var(--font-inter)] font-light">
-              Intelligence at the Edge, Efficiency by Design
-            </p>
-            <p className="text-gray-400 text-lg leading-[1.8] max-w-3xl font-[family-name:var(--font-inter)] font-light">
-              The Enotrium Neuromorphic Microcontroller is engineered for real-time intelligence at the sensor edge, delivering brain-like efficiency within a milliwatt power envelope. By mimicking the biological architecture of the human brain, it enables a new generation of always-on, ultra-responsive devices for wearables, IoT, and industrial ecosystems.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
+                Hardware
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+                Enotrium Neuromorphic Microcontroller
+              </h2>
+              <p className="text-2xl text-gray-400 mb-4 font-[family-name:var(--font-inter)] font-light">
+                Intelligence at the Edge, Efficiency by Design
+              </p>
+              <p className="text-gray-400 text-lg leading-[1.8] max-w-3xl font-[family-name:var(--font-inter)] font-light">
+                The Enotrium Neuromorphic Microcontroller is engineered for real-time intelligence at the sensor edge, delivering brain-like efficiency within a milliwatt power envelope. By mimicking the biological architecture of the human brain, it enables a new generation of always-on, ultra-responsive devices for wearables, IoT, and industrial ecosystems.
+              </p>
+            </div>
+            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[500px]">
+              <Image
+                src="/Nanosystems.png"
+                alt="Nanosystems"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
         </ScrollReveal>
 
