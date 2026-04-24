@@ -62,6 +62,112 @@ function HeroSection() {
 }
 
 // ============================================
+// NEUROMORPHIC MCU SECTION
+// ============================================
+function NeuromorphicMCUSection() {
+  const components = [
+    {
+      name: "Spiking Compute Fabric",
+      function: "Advanced event-driven acceleration for ultra-low power SNN workloads.",
+    },
+    {
+      name: "CNN Accelerator",
+      function: "High-efficiency processing for traditional AI and legacy deep learning models.",
+    },
+    {
+      name: "RISC-V CPU",
+      function: "A versatile sub-system for overall management, control, and system-level tasks.",
+    },
+  ];
+
+  return (
+    <section className="relative py-32 md:py-40 bg-[#0a0a0a] overflow-hidden">
+      {/* Checkered pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="w-full h-full" style={{
+          backgroundImage: `
+            linear-gradient(45deg, #333 25%, transparent 25%),
+            linear-gradient(-45deg, #333 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #333 75%),
+            linear-gradient(-45deg, transparent 75%, #333 75%)
+          `,
+          backgroundSize: '40px 40px',
+          backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
+        }} />
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
+        <ScrollReveal animation="fade-up" duration={1}>
+          <div className="max-w-4xl mb-16">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
+              Hardware
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-6 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
+              Enotrium Neuromorphic Microcontroller
+            </h2>
+            <p className="text-2xl text-gray-400 mb-4 font-[family-name:var(--font-inter)] font-light">
+              Intelligence at the Edge, Efficiency by Design
+            </p>
+            <p className="text-gray-400 text-lg leading-[1.8] max-w-3xl font-[family-name:var(--font-inter)] font-light">
+              The Enotrium Neuromorphic Microcontroller is engineered for real-time intelligence at the sensor edge, delivering brain-like efficiency within a milliwatt power envelope. By mimicking the biological architecture of the human brain, it enables a new generation of always-on, ultra-responsive devices for wearables, IoT, and industrial ecosystems.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal animation="fade-up" delay={0.2} duration={1}>
+          <div className="max-w-4xl mb-16">
+            <h3 className="text-2xl font-light text-white mb-6 font-[family-name:var(--font-inter)] tracking-wide">
+              The Architecture: Spiking Neural Networks (SNNs)
+            </h3>
+            <p className="text-gray-400 text-lg leading-[1.8] max-w-3xl font-[family-name:var(--font-inter)] font-light">
+              Traditional AI often struggles with the power demands of continuous edge processing. Our MCU solves this by utilizing Spiking Neural Networks (SNNs)—an event-driven approach that mirrors how neurons in the brain communicate via discrete electrical pulses (spikes). This ensures energy is consumed only when relevant data is detected.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal animation="fade-up" delay={0.3} duration={1}>
+          <div className="max-w-4xl">
+            <h3 className="text-2xl font-light text-white mb-6 font-[family-name:var(--font-inter)] tracking-wide">
+              Heterogeneous Single-Chip Platform
+            </h3>
+            <p className="text-gray-400 text-lg leading-[1.8] max-w-3xl mb-8 font-[family-name:var(--font-inter)] font-light">
+              The Enotrium MCU (Pulsar) integrates three specialized processing domains to handle end-to-end sensor data with maximum flexibility:
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-gray-800">
+                    <th className="text-left py-4 px-6 text-sm font-medium text-gray-500 uppercase tracking-wider font-[family-name:var(--font-inter)]">
+                      Component
+                    </th>
+                    <th className="text-left py-4 px-6 text-sm font-medium text-white uppercase tracking-wider font-[family-name:var(--font-inter)]">
+                      Function
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {components.map((comp, index) => (
+                    <tr key={index} className="border-b border-gray-800/50">
+                      <td className="py-4 px-6 text-sm text-white font-[family-name:var(--font-inter)]">
+                        {comp.name}
+                      </td>
+                      <td className="py-4 px-6 text-sm text-gray-400 font-[family-name:var(--font-inter)]">
+                        {comp.function}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
 // BEYOND CONVENTIONAL SECTION
 // ============================================
 function BeyondConventionalSection() {
@@ -190,10 +296,10 @@ function BenefitCardsSection() {
         <ScrollReveal animation="fade-up" duration={1}>
           <div className="max-w-4xl mb-16">
             <p className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mb-5 font-[family-name:var(--font-inter)] font-medium">
-              Benefits
+            
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extralight text-white mb-10 font-[family-name:var(--font-inter)] text-balance leading-[1.1]">
-              Where Our Technology Makes a Difference
+              The Edge of the Future
             </h2>
           </div>
         </ScrollReveal>
@@ -665,6 +771,7 @@ export default function NanosystemsPage() {
       <Navbar />
 
       <HeroSection />
+      <NeuromorphicMCUSection />
       <BeyondConventionalSection />
       <AdvantageSection />
       <BenefitCardsSection />
