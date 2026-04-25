@@ -40,6 +40,7 @@ const footerColumns = [
     heading: "PRODUCT",
     links: [
       { label: "Nanosystems", href: "/nanosystems" },
+      { label: "Agents", href: "/jarvus" },
       { label: "AIP", href: "/aip" },
       { label: "Arthedain", href: "/arthedain" },
       { label: "Icarus", href: "/aip/icarus" },
