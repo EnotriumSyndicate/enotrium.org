@@ -389,7 +389,7 @@ export default function MesopotamiaPage() {
 
       {/* ── TWO-COLUMN BODY (like HTML reference) ── */}
       <section className="max-w-[960px] mx-auto px-8 pb-40">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-12 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-12 lg:gap-12 min-h-[calc(100vh-6rem)]">
 
           {/* ── LEFT: Timeline ── */}
           <main>
