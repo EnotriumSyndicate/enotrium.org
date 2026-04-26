@@ -45,6 +45,7 @@ const megaMenuColumns = [
       { label: "Founders", href: "/Founders" },
       { label: "Research", href: "/research" },
       { label: "Farmers", href: "/farmers" },
+      { label: "Platform", href: "/platform" },
     ],
   },
   {
