@@ -394,73 +394,12 @@ export default function MesopotamiaPage() {
         </Link>
       </section>
 
-      {/* ── THREE-COLUMN BODY ── */}
-      <section className="max-w-[1320px] mx-auto px-6 pb-40">
-        <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_240px] gap-0">
+      {/* ── TWO-COLUMN BODY (like HTML reference) ── */}
+      <section className="max-w-[960px] mx-auto px-8 pb-40">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-12 lg:gap-12 items-start">
 
-          {/* ── LEFT SIDEBAR: Global farmers + sparkline, sticky ── */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 pr-8 border-r border-neutral-800/50">
-              <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#6a7e4a] mb-4 pb-2.5 border-b border-white/[0.06]">
-                Global farmers
-              </p>
-
-              {/* Year above count */}
-              <p className="text-[11px] font-mono text-[#6a7e4a] mb-0.5">
-                {activeMilestone && hasPop ? activeMilestone.year : "Hover a year"}
-              </p>
-
-              {/* Big animated number */}
-              <div className="mb-1">
-                <div
-                  className="font-light leading-none transition-all duration-500"
-                  style={{
-                    fontFamily: "var(--font-tektur, Georgia, serif)",
-                    fontSize: hasPop ? "42px" : "32px",
-                    color: hasPop ? "#c8e898" : "#2a2a2a",
-                  }}
-                >
-                  {hasPop ? `${pop!.toFixed(2)}B` : "—"}
-                </div>
-              </div>
-
-              {/* Label below count */}
-              <p className="text-[11px] font-mono text-neutral-500/50 mb-6">
-                global agricultural workers (est.)
-              </p>
-
-              {/* Sparkline */}
-              <div className="mb-6 w-full h-[180px]">
-                <Sparkline active={hasPop ? pop : null} />
-              </div>
-
-              {/* Legend */}
-              <div className="space-y-2 mb-6">
-                {(["TECHNOLOGY", "CORPORATE", "LEGISLATION", "CHEMICAL"] as TagType[]).map((t) => (
-                  <div key={t} className="flex items-center gap-2">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full shrink-0"
-                      style={{ background: tagColors[t].dot }}
-                    />
-                    <span className="text-[9px] font-mono tracking-[0.12em] uppercase text-neutral-700">
-                      {t}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="h-px w-full bg-neutral-800/60 mb-4" />
-
-              {/* Hayek pullquote — with left border like HTML */}
-              <p className="text-[13px] text-neutral-500/55 leading-[1.6] italic border-l border-[#6a7e4a]/30 pl-3 font-light" style={{ fontFamily: "var(--font-tektur, Georgia, serif)" }}>
-                &ldquo;Few people will deny that the main problem has become that of how policy can extricate itself from the situation it has produced.&rdquo;
-              </p>
-              <p className="text-[9px] font-mono text-neutral-800 mt-2">— F.A. Hayek</p>
-            </div>
-          </aside>
-
-          {/* ── CENTER: Cursor-style numbered list ── */}
-          <main className="lg:px-16">
+          {/* ── LEFT: Timeline ── */}
+          <main>
             <ol className="list-none m-0 p-0">
               {milestones.map((m, i) => (
                 <li
@@ -545,48 +484,63 @@ export default function MesopotamiaPage() {
             </div>
           </main>
 
-          {/* ── RIGHT SIDEBAR: active event context, sticky ── */}
+          {/* ── RIGHT SIDEBAR: Global farmers + sparkline, sticky (like HTML) ── */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 pl-8 border-l border-neutral-800/50">
-              <p className="text-[9px] font-mono tracking-[0.28em] uppercase text-neutral-700 mb-6">
-                Active event
+              <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#6a7e4a] mb-4 pb-2.5 border-b border-white/[0.06]">
+                Global farmers
               </p>
 
-              {activeMilestone ? (
-                <div className="space-y-4 transition-all duration-500">
-                  {/* year */}
-                  <p className="text-[11px] font-mono text-[#6a7e4a]">
-                    {activeMilestone.year}
-                  </p>
-                  {/* who */}
-                  <p className="text-xs text-neutral-500 leading-relaxed">
-                    {activeMilestone.who}
-                  </p>
-                  {/* tag dot */}
-                  <div className="flex items-center gap-2">
+              {/* Year above count */}
+              <p className="text-[11px] font-mono text-[#6a7e4a] mb-0.5">
+                {activeMilestone && hasPop ? activeMilestone.year : "Hover a year"}
+              </p>
+
+              {/* Big animated number */}
+              <div className="mb-1">
+                <div
+                  className="font-light leading-none transition-all duration-500"
+                  style={{
+                    fontFamily: "var(--font-tektur, Georgia, serif)",
+                    fontSize: hasPop ? "42px" : "32px",
+                    color: hasPop ? "#c8e898" : "#2a2a2a",
+                  }}
+                >
+                  {hasPop ? `${pop!.toFixed(2)}B` : "—"}
+                </div>
+              </div>
+
+              {/* Label below count */}
+              <p className="text-[11px] font-mono text-neutral-500/50 mb-6">
+                global agricultural workers (est.)
+              </p>
+
+              {/* Sparkline */}
+              <div className="mb-6 w-full h-[180px]">
+                <Sparkline active={hasPop ? pop : null} />
+              </div>
+
+              {/* Legend */}
+              <div className="space-y-2 mb-6">
+                {(["TECHNOLOGY", "CORPORATE", "LEGISLATION", "CHEMICAL"] as TagType[]).map((t) => (
+                  <div key={t} className="flex items-center gap-2">
                     <span
                       className="w-1.5 h-1.5 rounded-full shrink-0"
-                      style={{ background: tagColors[activeMilestone.tag].dot }}
+                      style={{ background: tagColors[t].dot }}
                     />
-                    <span className="text-[9px] font-mono tracking-widest uppercase text-neutral-700">
-                      {activeMilestone.tag}
+                    <span className="text-[9px] font-mono tracking-[0.12em] uppercase text-neutral-700">
+                      {t}
                     </span>
                   </div>
+                ))}
+              </div>
 
-                  <div className="h-px w-full bg-neutral-800" />
+              <div className="h-px w-full bg-neutral-800/60 mb-4" />
 
-                  <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-neutral-700">
-                    context
-                  </p>
-                  <p className="text-[11px] text-neutral-500 leading-[1.7]">
-                    {activeMilestone.note}
-                  </p>
-                </div>
-              ) : (
-                <p className="text-[11px] text-neutral-800 italic">
-                  Scroll to explore the timeline
-                </p>
-              )}
+              {/* Note with left border like HTML */}
+              <p className="text-[13px] text-neutral-500/55 leading-[1.6] italic border-l border-[#6a7e4a]/30 pl-3 font-light" style={{ fontFamily: "var(--font-tektur, Georgia, serif)" }}>
+                {activeMilestone?.note ?? "Hover any event to see the farming population at that moment in history."}
+              </p>
             </div>
           </aside>
         </div>
