@@ -14,12 +14,7 @@ function isExternalUrl(href: string): boolean {
   }
 }
 
-const navItems = [
-  { title: "Platform", href: "/platform" },
-  { title: "AIP", href: "/aip" },
-  { title: "Invective", href: "/invective" },
-  { title: "Forum", href: "/forum" },
-  { title: "Badlands", href: "/badlands" },
+const navItems: Array<{ title: string; href: string }> = [
 ];
 
 const megaMenuColumns = [
@@ -27,6 +22,7 @@ const megaMenuColumns = [
     heading: "COMPANY",
     links: [
       { label: "Mission", href: "/mission" },
+      { label: "Forum", href: "/forum" },
       { label: "Solutions", href: "/solutions" },
       { label: "Industrial Agriculture", href: "/industrial-agriculture" },
       { label: "Food and Agriculture", href: "/food-and-agriculture" },
@@ -40,7 +36,6 @@ const megaMenuColumns = [
       { label: "AIP", href: "/aip" },
       { label: "Arthedain", href: "/arthedain" },
       { label: "Icarus", href: "/aip/icarus" },
-      { label: "Badlands", href: "/badlands" },
     ],
   },
   {

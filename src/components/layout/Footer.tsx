@@ -31,20 +31,22 @@ const footerColumns = [
     heading: "COMPANY",
     links: [
       { label: "Mission", href: "/mission" },
+      { label: "Forum", href: "/forum" },
       { label: "Solutions", href: "/solutions" },
       { label: "Industrial Agriculture", href: "/industrial-agriculture" },
       { label: "Food and Agriculture", href: "/food-and-agriculture" },
+      { label: "Badlands", href: "/badlands" },
     ],
   },
   {
     heading: "PRODUCT",
     links: [
       { label: "Nanosystems", href: "/nanosystems" },
+      { label: "Edge AI", href: "/edge-ai" },
       { label: "Agents", href: "/jarvus" },
       { label: "AIP", href: "/aip" },
       { label: "Arthedain", href: "/arthedain" },
       { label: "Icarus", href: "/aip/icarus" },
-      { label: "Badlands", href: "/badlands" },
     ],
   },
   {
