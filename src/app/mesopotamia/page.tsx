@@ -396,35 +396,37 @@ export default function MesopotamiaPage() {
           {/* ── LEFT SIDEBAR: Global farmers + sparkline, sticky ── */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 pr-8 border-r border-neutral-800/50">
-              <p className="text-[9px] font-mono tracking-[0.28em] uppercase text-neutral-700 mb-6">
+              <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#6a7e4a] mb-4 pb-2.5 border-b border-white/[0.06]">
                 Global farmers
               </p>
 
+              {/* Year above count */}
+              <p className="text-[11px] font-mono text-[#6a7e4a] mb-0.5">
+                {activeMilestone && hasPop ? activeMilestone.year : "Hover a year"}
+              </p>
+
               {/* Big animated number */}
-              <div className="mb-6">
+              <div className="mb-1">
                 <div
-                  className="font-light leading-none mb-2 transition-all duration-500"
+                  className="font-light leading-none transition-all duration-500"
                   style={{
                     fontFamily: "var(--font-tektur, Georgia, serif)",
-                    fontSize: hasPop ? "48px" : "32px",
+                    fontSize: hasPop ? "42px" : "32px",
                     color: hasPop ? "#c8e898" : "#2a2a2a",
                   }}
                 >
                   {hasPop ? `${pop!.toFixed(2)}B` : "—"}
                 </div>
-                <p className="text-[10px] font-mono text-neutral-700">
-                  {activeMilestone && hasPop
-                    ? `est. ${activeMilestone.year}`
-                    : "scroll to reveal"}
-                </p>
               </div>
 
+              {/* Label below count */}
+              <p className="text-[11px] font-mono text-neutral-500/50 mb-6">
+                global agricultural workers (est.)
+              </p>
+
               {/* Sparkline */}
-              <div className="mb-6 w-full">
+              <div className="mb-6 w-full h-[180px]">
                 <Sparkline active={hasPop ? pop : null} />
-                <p className="text-[8px] font-mono text-neutral-800 mt-1">
-                  global agricultural workers (est.)
-                </p>
               </div>
 
               {/* Legend */}
@@ -444,8 +446,8 @@ export default function MesopotamiaPage() {
 
               <div className="h-px w-full bg-neutral-800/60 mb-4" />
 
-              {/* Hayek pullquote — static */}
-              <p className="text-[10px] text-neutral-700 leading-[1.7] italic">
+              {/* Hayek pullquote — with left border like HTML */}
+              <p className="text-[13px] text-neutral-500/55 leading-[1.6] italic border-l border-[#6a7e4a]/30 pl-3 font-light" style={{ fontFamily: "var(--font-tektur, Georgia, serif)" }}>
                 &ldquo;Few people will deny that the main problem has become that of how policy can extricate itself from the situation it has produced.&rdquo;
               </p>
               <p className="text-[9px] font-mono text-neutral-800 mt-2">— F.A. Hayek</p>
