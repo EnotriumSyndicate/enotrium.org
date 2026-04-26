@@ -36,6 +36,7 @@ const footerColumns = [
       { label: "Industrial Agriculture", href: "/industrial-agriculture" },
       { label: "Food and Agriculture", href: "/food-and-agriculture" },
       { label: "Badlands", href: "/badlands" },
+      { label: "Mesopotamia", href: "/mesopotamia" },
     ],
   },
   {
