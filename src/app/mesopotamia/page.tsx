@@ -395,7 +395,7 @@ export default function FutureOfAgriculturePage() {
 
           {/* LEFT SIDEBAR — Farmer Count */}
           <div className="hidden lg:block relative">
-            <div className="sticky top-24 pr-8 border-r border-neutral-800/60">
+            <div className="fixed top-24 left-6 z-40 bg-[#0a0a0a] pr-8 border-r border-neutral-800/60 w-[260px] max-h-[calc(100vh-120px)] overflow-y-auto">
               <p className="text-[9px] font-mono tracking-[0.25em] uppercase text-neutral-600 mb-5">
                 US farm operations
               </p>
@@ -446,7 +446,7 @@ export default function FutureOfAgriculturePage() {
           </div>
 
           {/* CENTER — Timeline */}
-          <div className="lg:px-12">
+          <div className="lg:px-12 lg:pl-[272px]">
             {milestones.map((milestone, index) => (
               <div
                 key={`${milestone.year}-${index}`}
