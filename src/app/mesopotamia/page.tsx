@@ -386,9 +386,6 @@ export default function FutureOfAgriculturePage() {
         <p className="max-w-xl text-neutral-400 text-lg font-light leading-relaxed mb-12">
           With Enotrium, we are building the bridge back to sovereign agriculture. There is great work to be done. And you're part of it.
         </p>
-        <Link href="/aip" className="text-[10px] font-mono tracking-[0.15em] uppercase text-[#6a7e4a] border-b border-[#6a7e4a]/40 pb-0.5 hover:text-[#9ab868] hover:border-[#9ab868] transition-colors">
-          What could we grow together? →
-        </Link>
         <div className="mt-16 h-px w-full bg-neutral-800" />
       </section>
 
