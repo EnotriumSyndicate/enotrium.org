@@ -208,7 +208,7 @@ function BeyondConventionalSection() {
 // ============================================
 function AdvantageSection() {
   const advantages = [
-    "Ultra-low power operation enabling processing in picowatt-to-nanowatt regimes",
+    "Ultra-low power operation enabling processing from neuromorphic MCUs",
     "Real-time responsiveness through asynchronous, event-driven signal propagation",
     "Privacy by design via fully distributed, on-node data processing",
     "Massively scalable architectures optimized for dense nanoscale integration",
