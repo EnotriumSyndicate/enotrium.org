@@ -53,7 +53,7 @@ const teamMembers = [
   },
   {
     name: "John Giaudrone",
-    title: "Software Engineer",
+    title: "Founding Software Engineer",
     links: [
       { label: "GitHub", href: "https://github.com/giaudrone" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/johngiaudrone" },
