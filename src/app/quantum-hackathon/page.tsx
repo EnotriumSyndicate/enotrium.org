@@ -1,8 +1,65 @@
+"use client";
+
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useState } from "react";
 
 export default function QuantumHackathonPage() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: "",
+    major: "",
+    minor: "",
+    year: "",
+    linkedin: "",
+    github: "",
+    interest: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/register-hackathon", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          age: "",
+          major: "",
+          minor: "",
+          year: "",
+          linkedin: "",
+          github: "",
+          interest: "",
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <main className="min-h-screen bg-black text-white font-[family-name:var(--font-inter)]">
       <Navbar darkText />
@@ -46,9 +103,160 @@ export default function QuantumHackathonPage() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-4">Registration</h2>
-            <p className="text-white/80 leading-relaxed">
-              Registration details coming soon. Stay tuned for more information on how to participate in this groundbreaking hackathon.
-            </p>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Age</label>
+                  <input
+                    type="number"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Year</label>
+                  <select
+                    name="year"
+                    value={formData.year}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  >
+                    <option value="">Select Year</option>
+                    <option value="Freshman">Freshman</option>
+                    <option value="Sophomore">Sophomore</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Major</label>
+                  <input
+                    type="text"
+                    name="major"
+                    value={formData.major}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Minor</label>
+                  <input
+                    type="text"
+                    name="minor"
+                    value={formData.minor}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">LinkedIn</label>
+                  <input
+                    type="url"
+                    name="linkedin"
+                    value={formData.linkedin}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">GitHub</label>
+                  <input
+                    type="url"
+                    name="github"
+                    value={formData.github}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Are you looking to join Enotrium or Do Quantum?</label>
+                <select
+                  name="interest"
+                  value={formData.interest}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white/10 border border-white/20 rounded px-4 py-3 text-white focus:outline-none focus:border-white/40 transition-colors"
+                >
+                  <option value="">Select Option</option>
+                  <option value="Enotrium">Enotrium</option>
+                  <option value="Do Quantum">Do Quantum</option>
+                  <option value="Both">Both</option>
+                  <option value="Neither">Neither</option>
+                </select>
+              </div>
+
+              {submitStatus === "success" && (
+                <div className="bg-green-500/20 border border-green-500/40 rounded px-4 py-3 text-green-400 text-sm">
+                  Registration successful! Check your email for confirmation.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="bg-red-500/20 border border-red-500/40 rounded px-4 py-3 text-red-400 text-sm">
+                  Registration failed. Please try again.
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-white text-black font-semibold px-6 py-3 rounded hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Submitting..." : "Register"}
+              </button>
+            </form>
           </div>
         </section>
       </div>
