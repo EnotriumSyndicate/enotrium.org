@@ -52,19 +52,19 @@ const teamMembers = [
     ],
   },
   {
-    name: "John Giaudrone",
-    title: "Founding Software Engineer",
-    links: [
-      { label: "GitHub", href: "https://github.com/giaudrone" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/johngiaudrone" },
-    ],
-  },
-  {
     name: "Francesco Martignoni",
     title: "Founding Software Engineer",
     links: [
       { label: "GitHub", href: "https://github.com/frax01" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/francesco-martignoni-4a1264199/" },
+    ],
+  },
+  {
+    name: "John Giaudrone",
+    title: "Software Engineer",
+    links: [
+      { label: "GitHub", href: "https://github.com/giaudrone" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/johngiaudrone" },
     ],
   },
 ];
