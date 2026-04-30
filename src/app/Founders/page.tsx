@@ -69,7 +69,7 @@ const teamMembers = [
   },
   {
     name: "Rafael Virador",
-    title: "Software Engineer",
+    title: "Process Engineer",
     links: [
       { label: "GitHub", href: "https://github.com/rjmvirador" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/rafael-virador-304758290/" },
