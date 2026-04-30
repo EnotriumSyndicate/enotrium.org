@@ -59,7 +59,7 @@ const megaMenuColumns = [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/enotriumsyndicate" },
       { label: "BlueSky", href: "https://bsky.app/profile/enotrium.bsky.social" },
       { label: "Medium", href: "https://medium.com/@enotrium" },
-      { label: "GitHub", href: "https://github.com/EnotriumSyndicate" },
+      { label: "GitHub", href: "https://github.com/EnotriumTech" },
       { label: "Zotero", href: "https://www.zotero.org/enotrium" },
     ],
   },
