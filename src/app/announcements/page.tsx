@@ -5,8 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 const announcements = [
   {
     date: "Saturday, May 16, 2026",
-    title: "Enotrium Do Quantum Hackathon",
+    title: "Enotrium x Do Quantum Hackathon",
     description: "Join the Enotrium x DO Quantum Hackathon! Saturday, May 16 at 1:00 PM",
+    link: "/quantum-hackathon",
   },
 ];
 
@@ -36,9 +37,17 @@ export default function AnnouncementsPage() {
               <time className="text-xs tracking-[0.05em] text-white/60 mb-2 block">
                 {announcement.date}
               </time>
-              <h2 className="text-2xl font-semibold mb-3">
-                {announcement.title}
-              </h2>
+              {announcement.link ? (
+                <Link href={announcement.link} className="block">
+                  <h2 className="text-2xl font-semibold mb-3 hover:text-white/80 transition-colors">
+                    {announcement.title}
+                  </h2>
+                </Link>
+              ) : (
+                <h2 className="text-2xl font-semibold mb-3">
+                  {announcement.title}
+                </h2>
+              )}
               <p className="text-white/80 leading-relaxed">
                 {announcement.description}
               </p>
