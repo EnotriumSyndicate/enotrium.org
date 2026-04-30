@@ -219,13 +219,12 @@ export default function QuantumHackathonPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Minor</label>
+                  <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">Minor <span className="text-white/40">(optional)</span></label>
                   <input
                     type="text"
                     name="minor"
                     value={formData.minor}
                     onChange={handleChange}
-                    required
                     className={fieldClass}
                   />
                 </div>
@@ -236,13 +235,13 @@ export default function QuantumHackathonPage() {
                 <div>
                   <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">LinkedIn</label>
                   <input
-                    type="url"
+                    type="text"
                     name="linkedin"
                     value={formData.linkedin}
                     onChange={handleChange}
                     required={!noLinkedin}
                     disabled={noLinkedin}
-                    placeholder={noLinkedin ? "N/A" : "https://linkedin.com/in/..."}
+                    placeholder={noLinkedin ? "N/A" : "Paste your LinkedIn URL..."}
                     className={`${fieldClass} disabled:opacity-40 disabled:cursor-not-allowed`}
                   />
                   {/* "No LinkedIn" checkbox */}
@@ -259,12 +258,11 @@ export default function QuantumHackathonPage() {
                 <div>
                   <label className="block text-xs tracking-[0.05em] text-white/60 mb-2">GitHub</label>
                   <input
-                    type="url"
+                    type="text"
                     name="github"
                     value={formData.github}
                     onChange={handleChange}
-                    required
-                    placeholder="https://github.com/..."
+                    placeholder="Paste your GitHub URL..."
                     className={fieldClass}
                   />
                 </div>
