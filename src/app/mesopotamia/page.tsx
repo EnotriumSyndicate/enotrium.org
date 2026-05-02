@@ -362,29 +362,43 @@ export default function MesopotamiaPage() {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section className="pt-36 pb-24 px-6 max-w-[1400px] mx-auto">
-        <p className="text-[10px] font-mono tracking-[0.28em] uppercase text-neutral-600 mb-6">
-          Enotrium — A new civilization
-        </p>
-
-        <h1
-          className="text-5xl sm:text-6xl font-light leading-[1.08] text-neutral-100 mb-8"
-          style={{ fontFamily: "var(--font-tektur, Georgia, serif)" }}
+      {/* ── HERO WITH EARTH BACKGROUND ── */}
+      <section className="relative min-h-[70vh] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/earth.jpg')" }}
         >
-          Mesopotamia,<br />
-          <em className="text-[#c8e898] not-italic">the Cradle of Civilization</em>
-        </h1>
+          <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay */}
+        </div>
 
-        <p className="text-neutral-400 text-lg font-light leading-relaxed mb-5">
-          For millennia, the distance between a farmer and his harvest was measured in seasons, soil, and the knowledge passed hand to hand across generations.
-        </p>
-        <p className="text-neutral-400 text-lg font-light leading-relaxed mb-5">
-          For a century, that distance has been filled by the administrative state — its subsidies, its price floors, its corporate beneficiaries. The takeover of agriculture has been a slow encroachment of centralized power determining what we as individuals can do with our operations and our destiny.
-        </p>
-        <p className="text-neutral-400 text-lg font-light leading-relaxed mb-10">
-          With Enotrium, we are building the technology necessary to recreate the cradle of civilization. There is great work to be done. And you&apos;re part of it.
-        </p>
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-36">
+          <p className="text-[10px] font-mono tracking-[0.28em] uppercase text-white/60 mb-6">
+            Enotrium — A new civilization
+          </p>
+
+          <h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.08] text-white mb-4"
+            style={{ fontFamily: "var(--font-tektur, Georgia, serif)" }}
+          >
+            The Cradle of Civilization
+          </h1>
+
+          <p className="text-xl sm:text-2xl font-light text-[#c8e898] mb-8">
+            Mesopotamia
+          </p>
+
+          <p className="text-white/70 text-lg font-light leading-relaxed max-w-2xl mb-5">
+            For millennia, the distance between a farmer and his harvest was measured in seasons, soil, and the knowledge passed hand to hand across generations.
+          </p>
+          <p className="text-white/70 text-lg font-light leading-relaxed max-w-2xl mb-5">
+            For a century, that distance has been filled by the administrative state — its subsidies, its price floors, its corporate beneficiaries.
+          </p>
+          <p className="text-white/70 text-lg font-light leading-relaxed max-w-2xl">
+            With Enotrium, we are building the technology necessary to recreate the cradle of civilization.
+          </p>
+        </div>
       </section>
 
       {/* ── TWO-COLUMN BODY (like HTML reference) ── */}
