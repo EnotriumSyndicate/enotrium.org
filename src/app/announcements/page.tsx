@@ -6,7 +6,7 @@ const announcements = [
   {
     date: "Saturday, May 9, 2026",
     title: "Enotrium Do Quantum Hackathon",
-    description: "Join the Enotrium x DO Quantum Hackathon",
+    description: "Join the Enotrium  DO Quantum Hackathon",
     link: "/quantum-hackathon",
   },
 ];

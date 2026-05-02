@@ -47,7 +47,6 @@ export function InvectiveSection() {
                                             <span className="block text-white">The Agrarian</span>
                                             <span className="block text-white">Republic-</span>
                                             <span className="block bg-gradient-to-b from-white via-white/70 to-white/10 bg-clip-text text-transparent">
-                                                An Invective
                                             </span>
                                         </h2>
                                     </div>
