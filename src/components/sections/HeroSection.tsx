@@ -52,7 +52,7 @@ export function HeroSection() {
             Defend the<br />Earth
           </span>
           <Image
-            src="/logo.jpg"
+            src="/logo.svg"
             alt="Enotrium"
             width={110}
             height={110}
